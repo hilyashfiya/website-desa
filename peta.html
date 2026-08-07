@@ -447,7 +447,7 @@
                   <a id="btnDownloadBatasPDF" href="data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf" target="_blank" class="btn btn-danger rounded-pill px-3 shadow-sm">
                     <i class="bi bi-file-earmark-pdf-fill me-1"></i>Unduh Berkas PDF
                   </a>
-                  <button id="btnViewBatasHD" class="btn btn-outline-primary rounded-pill px-3 shadow-sm" onclick="openMapModal('assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png', 'Peta Batas RT RW Tahun 2026')">
+                  <button id="btnViewBatasHD" class="btn btn-outline-primary rounded-pill px-3 shadow-sm" onclick="openMapModal('assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.jpg', 'Peta Batas RT RW Tahun 2026')">
                     <i class="bi bi-arrows-angle-expand me-1"></i>Perbesar HD
                   </button>
                 </div>
@@ -455,22 +455,22 @@
 
               <!-- Static Map Quick Nav Pills -->
               <div class="d-flex gap-2 mb-3 flex-wrap">
-                <button class="btn btn-sm btn-primary rounded-pill px-3 btn-statis-switch active" data-title="Peta Batas RT RW Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf">
+                <button class="btn btn-sm btn-primary rounded-pill px-3 btn-statis-switch active" data-title="Peta Batas RT RW Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.jpg" data-pdf="data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf">
                   Peta Batas RT RW 2026
                 </button>
-                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas RW Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas RW Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas RW Tahun 2026.pdf">
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas RW Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas RW Tahun 2026.jpg" data-pdf="data/Peta Batas/Peta Batas RW Tahun 2026.pdf">
                   Peta Batas RW 2026
                 </button>
-                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas Dusun Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas Dusun Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas Dusun Tahun 2026.pdf">
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas Dusun Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas Dusun Tahun 2026.jpg" data-pdf="data/Peta Batas/Peta Batas Dusun Tahun 2026.pdf">
                   Peta Batas Dusun 2026
                 </button>
-                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas Desa Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas Desa Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas Desa Tahun 2026.pdf">
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas Desa Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas Desa Tahun 2026.jpg" data-pdf="data/Peta Batas/Peta Batas Desa Tahun 2026.pdf">
                   Peta Batas Desa 2026
                 </button>
               </div>
 
               <div class="map-preview-frame text-center">
-                <img id="imgBatasStatisPreview" src="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png" alt="Peta Batas RT RW Tahun 2026" class="map-preview-img img-fluid" onclick="openMapModal(this.src, document.getElementById('titleBatasStatis').textContent)">
+                <img id="imgBatasStatisPreview" src="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.jpg" alt="Peta Batas RT RW Tahun 2026" class="map-preview-img img-fluid" onclick="openMapModal(this.src, document.getElementById('titleBatasStatis').textContent)">
               </div>
             </div>
 
@@ -552,7 +552,7 @@
               </div>
 
               <div class="map-preview-frame text-center">
-                <img id="imgTematikPreview" src="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png" alt="Preview Peta Tematik" class="map-preview-img img-fluid" onclick="openMapModal(this.src, document.getElementById('activeMapTitle').textContent)">
+                <img id="imgTematikPreview" src="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.jpg" alt="Preview Peta Tematik" class="map-preview-img img-fluid" onclick="openMapModal(this.src, document.getElementById('activeMapTitle').textContent)">
               </div>
             </div>
 
@@ -885,19 +885,19 @@
 
   // ─── Map Data Store for Peta Tematik ───────────────────────────────────────
   const tematikMapData = {
-    "peta_rt_rw_2026": { title: "Peta Batas RT RW Tahun 2026", category: "Batas Administrasi", desc: "Peta resmi batas RT dan RW Desa Gunungsari tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf", catKey: "batas" },
-    "peta_rw_2026": { title: "Peta Batas RW Tahun 2026", category: "Batas Administrasi", desc: "Peta pembagian batas wilayah Rukun Warga (RW) Desa Gunungsari tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas RW Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas RW Tahun 2026.pdf", catKey: "batas" },
-    "peta_dusun_2026": { title: "Peta Batas Dusun Tahun 2026", category: "Batas Administrasi", desc: "Peta pembagian batas kedusunan (Dusun Desa, Dusun Cikatomas, Dusun Cilopadang) 2026", img: "assets/uploads/peta_gambar/Peta Batas Dusun Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas Dusun Tahun 2026.pdf", catKey: "batas" },
-    "peta_desa_2026": { title: "Peta Batas Desa Tahun 2026", category: "Batas Administrasi", desc: "Peta batas administrasi utama Desa Gunungsari, Sadananya tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas Desa Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas Desa Tahun 2026.pdf", catKey: "batas" },
-    "fasum_desa": { title: "Peta Persebaran Fasilitas Umum Desa Gunungsari", category: "Fasilitas Umum", desc: "Peta lokasi seluruh fasilitas publik & sosial di seluruh wilayah Desa Gunungsari", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Desa Gunungsari.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Desa Gunungsari.pdf", catKey: "fasum" },
-    "fasum_dusun_desa": { title: "Peta Persebaran Fasilitas Umum Dusun Desa", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Desa", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Desa.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Desa.pdf", catKey: "fasum" },
-    "fasum_cikatomas": { title: "Peta Persebaran Fasilitas Umum Dusun Cikatomas", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Cikatomas", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Cikatomas.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Cikatomas.pdf", catKey: "fasum" },
-    "fasum_cilopadang": { title: "Peta Persebaran Fasilitas Umum Dusun Cilopadang", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Cilopadang", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Cilopadang.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Cilopadang.pdf", catKey: "fasum" },
-    "umkm_desa": { title: "UMKM Desa Gunungsari", category: "UMKM", desc: "Peta sebaran industri kreatif & usaha mikro warga Desa Gunungsari secara menyeluruh", img: "assets/uploads/peta_gambar/UMKM Desa Gunungsari.png", pdf: "data/UMKM/UMKM Desa Gunungsari.pdf", catKey: "umkm" },
-    "umkm_dusun_desa": { title: "UMKM Dusun Desa", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Desa", img: "assets/uploads/peta_gambar/UMKM Dusun Desa.png", pdf: "data/UMKM/UMKM Dusun Desa.pdf", catKey: "umkm" },
-    "umkm_cikatomas": { title: "UMKM Dusun Cikatomas", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Cikatomas", img: "assets/uploads/peta_gambar/UMKM Dusun Cikatomas.png", pdf: "data/UMKM/UMKM Dusun Cikatomas.pdf", catKey: "umkm" },
-    "umkm_cilopadang": { title: "UMKM Dusun Cilopadang", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Cilopadang", img: "assets/uploads/peta_gambar/UMKM Dusun Cilopadang.png", pdf: "data/UMKM/UMKM Dusun Cilopadang.pdf", catKey: "umkm" },
-    "longsor": { title: "Peta Bahaya Longsor", category: "Bahaya Longsor", desc: "Peta mitigasi & zonasi kerawanan bahaya longsor Desa Gunungsari", img: "assets/uploads/peta_gambar/Peta Bahaya Longsor.png", pdf: "data/Bahaya Longsor/Peta Bahaya Longsor.pdf", catKey: "longsor" }
+    "peta_rt_rw_2026": { title: "Peta Batas RT RW Tahun 2026", category: "Batas Administrasi", desc: "Peta resmi batas RT dan RW Desa Gunungsari tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.jpg", pdf: "data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf", catKey: "batas" },
+    "peta_rw_2026": { title: "Peta Batas RW Tahun 2026", category: "Batas Administrasi", desc: "Peta pembagian batas wilayah Rukun Warga (RW) Desa Gunungsari tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas RW Tahun 2026.jpg", pdf: "data/Peta Batas/Peta Batas RW Tahun 2026.pdf", catKey: "batas" },
+    "peta_dusun_2026": { title: "Peta Batas Dusun Tahun 2026", category: "Batas Administrasi", desc: "Peta pembagian batas kedusunan (Dusun Desa, Dusun Cikatomas, Dusun Cilopadang) 2026", img: "assets/uploads/peta_gambar/Peta Batas Dusun Tahun 2026.jpg", pdf: "data/Peta Batas/Peta Batas Dusun Tahun 2026.pdf", catKey: "batas" },
+    "peta_desa_2026": { title: "Peta Batas Desa Tahun 2026", category: "Batas Administrasi", desc: "Peta batas administrasi utama Desa Gunungsari, Sadananya tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas Desa Tahun 2026.jpg", pdf: "data/Peta Batas/Peta Batas Desa Tahun 2026.pdf", catKey: "batas" },
+    "fasum_desa": { title: "Peta Persebaran Fasilitas Umum Desa Gunungsari", category: "Fasilitas Umum", desc: "Peta lokasi seluruh fasilitas publik & sosial di seluruh wilayah Desa Gunungsari", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Desa Gunungsari.jpg", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Desa Gunungsari.pdf", catKey: "fasum" },
+    "fasum_dusun_desa": { title: "Peta Persebaran Fasilitas Umum Dusun Desa", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Desa", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Desa.jpg", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Desa.pdf", catKey: "fasum" },
+    "fasum_cikatomas": { title: "Peta Persebaran Fasilitas Umum Dusun Cikatomas", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Cikatomas", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Cikatomas.jpg", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Cikatomas.pdf", catKey: "fasum" },
+    "fasum_cilopadang": { title: "Peta Persebaran Fasilitas Umum Dusun Cilopadang", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Cilopadang", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Cilopadang.jpg", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Cilopadang.pdf", catKey: "fasum" },
+    "umkm_desa": { title: "UMKM Desa Gunungsari", category: "UMKM", desc: "Peta sebaran industri kreatif & usaha mikro warga Desa Gunungsari secara menyeluruh", img: "assets/uploads/peta_gambar/UMKM Desa Gunungsari.jpg", pdf: "data/UMKM/UMKM Desa Gunungsari.pdf", catKey: "umkm" },
+    "umkm_dusun_desa": { title: "UMKM Dusun Desa", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Desa", img: "assets/uploads/peta_gambar/UMKM Dusun Desa.jpg", pdf: "data/UMKM/UMKM Dusun Desa.pdf", catKey: "umkm" },
+    "umkm_cikatomas": { title: "UMKM Dusun Cikatomas", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Cikatomas", img: "assets/uploads/peta_gambar/UMKM Dusun Cikatomas.jpg", pdf: "data/UMKM/UMKM Dusun Cikatomas.pdf", catKey: "umkm" },
+    "umkm_cilopadang": { title: "UMKM Dusun Cilopadang", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Cilopadang", img: "assets/uploads/peta_gambar/UMKM Dusun Cilopadang.jpg", pdf: "data/UMKM/UMKM Dusun Cilopadang.pdf", catKey: "umkm" },
+    "longsor": { title: "Peta Bahaya Longsor", category: "Bahaya Longsor", desc: "Peta mitigasi & zonasi kerawanan bahaya longsor Desa Gunungsari", img: "assets/uploads/peta_gambar/Peta Bahaya Longsor.jpg", pdf: "data/Bahaya Longsor/Peta Bahaya Longsor.pdf", catKey: "longsor" }
   };
 
   const katConfig = {
@@ -958,7 +958,9 @@
       function smartReproject(gj, epsg) {
         if (!gj) return null;
         if (isAlreadyWgs84(gj)) return gj;  // already WGS84, no reprojection needed
-        return reprojectGeoJSON(gj, epsg);
+        // reprojectGeoJSON may not be available if proj4 library is not loaded
+        if (typeof reprojectGeoJSON === 'function') return reprojectGeoJSON(gj, epsg);
+        return gj; // fallback: return as-is if reproject not available
       }
 
       // Load boundary data (already WGS84 if converted by Python script)
@@ -1300,7 +1302,7 @@
             layer.bindPopup('<div class="p-2"><h6 class="fw-bold mb-1">' + rtText + '</h6></div>');
           }
         }).addTo(groupRT);
-        if (!fitTarget) fitTarget = rtGeo;
+        if (!fitTarget) fitTarget = groupRT;
       }
 
       [groupDesa, groupDusun, groupRW, groupRT].forEach(g => g.addTo(mapBatasAdmin));

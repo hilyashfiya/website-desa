@@ -3259,6 +3259,7 @@ a:hover {
   .hero-section-new { min-height: auto; padding: 3.5rem 0 4rem; }
   .hero-image-card img { height: 380px; }
   .editorial-img-box img { height: 320px; }
+  .editorial-img-box.portrait img { height: auto !important; max-height: 580px !important; object-fit: contain !important; background: #0f1913; width: 100%; }
   .featured-potensi-img img { height: 340px; }
   .kades-card { flex-direction: column; text-align: center; }
   .kades-avatar, .kades-avatar-placeholder { margin: 0 auto; }
@@ -3275,6 +3276,11 @@ a:hover {
   .activity-card.featured .card-img-top { height: 260px; }
   .cta-banner-title { font-size: 1.9rem; }
   .page-header-clean h1 { font-size: 2rem; }
+  .quick-access-section { margin-top: 1rem; }
+  .quick-access-card { padding: 0.85rem 0.8rem; gap: 0.65rem; }
+  .quick-icon-box { width: 42px; height: 42px; font-size: 1.2rem; }
+  .quick-access-card h6 { font-size: 0.88rem; }
+  .quick-access-card small { font-size: 0.7rem; }
 }
 
 @media (max-width: 575.98px) {
@@ -3289,6 +3295,12 @@ a:hover {
   .filter-pills { gap: 0.35rem; }
   .filter-pill,
   .filter-btn { padding: 0.4rem 0.85rem !important; font-size: var(--text-xs) !important; }
+  .quick-access-section { margin-top: 0.75rem; padding-bottom: 0.5rem; }
+  .quick-access-card { padding: 0.75rem 0.65rem !important; gap: 0.55rem !important; border-radius: var(--radius-md) !important; }
+  .quick-icon-box { width: 38px !important; height: 38px !important; font-size: 1.1rem !important; border-radius: 8px !important; }
+  .quick-access-card h6 { font-size: 0.82rem !important; line-height: 1.25 !important; }
+  .quick-access-card small { font-size: 0.66rem !important; line-height: 1.2 !important; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .editorial-img-box.portrait img { max-height: 480px !important; }
 }
 
 /* Print styles */

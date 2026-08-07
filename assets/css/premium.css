@@ -700,6 +700,14 @@
   .keunggulan-card:hover, .direktori-card:hover, .stat-card-clean:hover {
     transform: translateY(-3px) !important;
   }
+  /* Prevent hover lift on touch, keep cards readable */
+  .quick-access-card:hover {
+    transform: none !important;
+    box-shadow: var(--shadow-lg) !important;
+  }
+  .quick-access-card:hover .quick-icon-box {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
