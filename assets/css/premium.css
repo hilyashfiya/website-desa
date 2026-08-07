@@ -689,7 +689,7 @@
 /* ==========================================================================
    11. MOBILE & REDUCED MOTION
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 1199.98px) {
   .hero-image-card img {
     animation-duration: 24s;
   }
@@ -700,7 +700,7 @@
   .keunggulan-card:hover, .direktori-card:hover, .stat-card-clean:hover {
     transform: translateY(-3px) !important;
   }
-  /* Prevent hover lift on touch devices (incl. Desktop Site on phone) */
+  /* Prevent hover lift on touch devices (incl. Desktop Site on phone ≤1199px) */
   .quick-access-card:hover {
     transform: none !important;
     box-shadow: var(--shadow-lg) !important;

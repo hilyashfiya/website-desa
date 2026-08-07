@@ -3304,6 +3304,23 @@ a:hover {
   .quick-card-sub   { font-size: 0.69rem !important; white-space: normal !important; line-height: 1.3 !important; }
 }
 
+/* ≤1199px: covers iOS Desktop Site (~1024px) and Android Desktop Site (~1280px fallback)
+   col-xl-3 only kicks in at ≥1200px so this always means 2-column layout here */
+@media (max-width: 1199.98px) {
+  .quick-access-section { margin-top: 1rem; }
+  .quick-access-card {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 1.1rem 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  .quick-card-text  { width: 100%; }
+  .quick-icon-box   { width: 46px; height: 46px; font-size: 1.25rem; }
+  .quick-card-title { font-size: 0.85rem !important; white-space: normal !important; }
+  .quick-card-sub   { font-size: 0.69rem !important; white-space: normal !important; line-height: 1.3 !important; }
+}
+
 @media (max-width: 767.98px) {
   .hero-main-title { font-size: 2.1rem; letter-spacing: -1px; }
   .hero-image-card img { height: 300px; }
