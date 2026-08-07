@@ -1,0 +1,865 @@
+/* ==========================================================================
+   PREMIUM ENHANCEMENTS — Desa Gunungsari WebGIS Portal (v3.0 Apple/Stripe Polish)
+   Preserves layout, structure, primary color palette (Purple, White, Gold, Sage accent).
+   Enhances: Glassmorphism badges, Ken Burns cinematic vignette, navbar spacing,
+   Apple-like soft shadows, 60fps micro-interactions, stats display.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. NAVBAR — Lightweight spacing + Sticky Blur
+   ========================================================================== */
+.sticky-top-wrapper {
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              backdrop-filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.sticky-top-wrapper.scrolled {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08),
+              0 10px 30px rgba(15, 5, 30, 0.25);
+}
+
+.sticky-top-wrapper.scrolled #mainNavbar {
+  background-color: rgba(45, 17, 76, 0.88) !important;
+}
+.sticky-top-wrapper.scrolled .navbar-topbar {
+  background-color: rgba(28, 10, 50, 0.85) !important;
+}
+
+/* Menu item spacing polish — lighter & elegant */
+#mainNavbar .navbar-nav {
+  gap: 0.15rem;
+}
+#mainNavbar .nav-link {
+  padding-left: 0.55rem !important;
+  padding-right: 0.55rem !important;
+  font-size: 0.86rem !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  position: relative;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  #mainNavbar .nav-link {
+    padding-left: 0.45rem !important;
+    padding-right: 0.45rem !important;
+    font-size: 0.82rem !important;
+  }
+}
+
+/* Animated indicator line on active/hover menu */
+#mainNavbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#mainNavbar .nav-link:hover::after,
+#mainNavbar .nav-link.active::after {
+  width: 75%;
+  left: 12.5%;
+}
+#mainNavbar .nav-link:hover {
+  color: rgba(255,255,255,0.98) !important;
+}
+
+/* Navbar CTA button */
+.navbar-cta {
+  background: linear-gradient(135deg, rgba(212,144,31,0.25) 0%, rgba(212,144,31,0.12) 100%);
+  border: 1px solid rgba(212,144,31,0.4) !important;
+  border-radius: 50px !important;
+  padding: 0.38rem 1rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  transition: all 0.25s ease !important;
+}
+.navbar-cta:hover {
+  background: rgba(212,144,31,0.35) !important;
+  box-shadow: 0 4px 16px rgba(212,144,31,0.28) !important;
+  transform: translateY(-1px);
+}
+
+/* Expandable Search Button */
+.nav-search-btn {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  padding: 0.38rem 0.6rem !important;
+  border-radius: 50px !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1) !important;
+  width: 36px;
+  cursor: pointer;
+  background: transparent;
+  vertical-align: middle;
+  text-decoration: none;
+}
+.nav-search-btn i {
+  font-size: 0.88rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+.nav-search-input {
+  width: 0;
+  opacity: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #fff;
+  font-size: 0.82rem;
+  transition: width 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+.nav-search-btn.expanded {
+  width: 190px;
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.3) !important;
+  padding: 0.38rem 0.85rem !important;
+  gap: 0.45rem;
+}
+.nav-search-btn.expanded .nav-search-input {
+  width: 100%;
+  opacity: 1;
+}
+.nav-search-btn.expanded i {
+  color: var(--gold) !important;
+}
+
+/* ==========================================================================
+   2. HERO SECTION — Cinematic Ken Burns + Vignette + Glassmorphism Overlay
+   ========================================================================== */
+
+.bg-topo-pattern {
+  background-image:
+    radial-gradient(rgba(92, 45, 142, 0.025) 1px, transparent 0),
+    radial-gradient(rgba(78, 110, 82, 0.02) 1px, transparent 0) !important;
+  position: relative;
+}
+.bg-topo-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 75% 50%,
+    rgba(92,45,142,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 80%,
+    rgba(78,110,82,0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.topographic-lines { opacity: 0.16 !important; }
+
+/* Hero Image Card — Cinematic Framing */
+.hero-image-card {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.04),
+    0 12px 32px rgba(92,45,142,0.12),
+    0 32px 64px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+  will-change: transform;
+  border: 1px solid rgba(255,255,255,0.7);
+}
+/* Vignette + Subtle Lighting Overlay */
+.hero-image-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 30%, transparent 45%, rgba(15, 5, 30, 0.22) 100%),
+    linear-gradient(180deg, transparent 55%, rgba(18, 6, 32, 0.35) 100%);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.hero-image-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.04),
+    0 16px 40px rgba(92,45,142,0.16),
+    0 48px 80px rgba(0,0,0,0.16);
+}
+
+/* Image Ken Burns Animation */
+.hero-image-card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  animation: kenBurns 20s ease-in-out infinite alternate;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+@keyframes kenBurns {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  33%  { transform: scale(1.04) translate(-0.6%, -0.4%); }
+  66%  { transform: scale(1.06) translate(0.4%, -0.8%); }
+  100% { transform: scale(1.08) translate(0.6%, -0.6%); }
+}
+
+/* Glassmorphism Location Badge (Top Left) */
+.hero-image-location {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  background: rgba(255,255,255,0.22);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.42rem 0.95rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+  animation: floatBadge 6s ease-in-out infinite;
+}
+.hero-image-location:hover {
+  background: rgba(255,255,255,0.32);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* Glassmorphism Floating Info Card (Bottom) — Replaces solid green with elegant white glass */
+.hero-image-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-xl);
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow:
+    0 12px 32px -4px rgba(0, 0, 0, 0.12),
+    0 4px 12px -2px rgba(92, 45, 142, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-image-badge:hover {
+  background: rgba(255, 255, 255, 0.97);
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 40px -4px rgba(0, 0, 0, 0.15),
+    0 6px 16px -2px rgba(92, 45, 142, 0.12),
+    inset 0 1px 0 #ffffff;
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* Hero Title Gradient Accent */
+.hero-main-title span {
+  background: linear-gradient(135deg,
+    #7A3FC0 0%,
+    #5C2D8E 40%,
+    #8B5CF6 70%,
+    #5C2D8E 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+  font-weight: 900;
+}
+
+/* Stat pills polish */
+.hero-stat-pill {
+  transition: all 0.25s ease;
+  cursor: default;
+}
+.hero-stat-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(92,45,142,0.12);
+}
+
+/* Geo tag pills polish */
+.geo-tag-pill {
+  transition: all 0.22s ease;
+}
+.geo-tag-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.hero-badge-tag {
+  transition: all 0.25s ease;
+}
+.hero-badge-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(92,45,142,0.15);
+}
+
+/* ==========================================================================
+   3. STATISTIK DEMOGRAFI — Modern Large Numbers & Clean Icons
+   ========================================================================== */
+.stat-card-clean {
+  background: var(--bg-white) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 1.4rem 1rem !important;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm) !important;
+}
+.stat-card-clean:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px rgba(92, 45, 142, 0.10), 0 4px 10px rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(92, 45, 142, 0.2) !important;
+}
+.stat-card-clean .stat-icon {
+  font-size: 1.35rem !important;
+  margin-bottom: 0.4rem !important;
+  opacity: 0.95;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  display: inline-block;
+}
+.stat-card-clean:hover .stat-icon {
+  transform: scale(1.18);
+}
+.stat-card-clean .stat-number {
+  font-size: 2.1rem !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--text-dark) !important;
+  display: block;
+  margin-bottom: 0.25rem !important;
+}
+.stat-card-clean .stat-label {
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  color: var(--text-muted) !important;
+}
+
+/* ==========================================================================
+   4. CARDS — Consistent Apple/Stripe Elevation & Shadows
+   ========================================================================== */
+
+/* Quick Access Cards */
+.quick-access-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 1px solid var(--border-color);
+  will-change: transform;
+}
+.quick-access-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 32px rgba(92,45,142,0.12), 0 4px 8px rgba(0,0,0,0.04) !important;
+  border-color: rgba(92,45,142,0.18) !important;
+}
+.quick-icon-box {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.quick-access-card:hover .quick-icon-box {
+  transform: scale(1.12) rotate(-3deg);
+}
+
+/* Keunggulan cards */
+.keunggulan-card {
+  transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+.keunggulan-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.03) !important;
+}
+.keunggulan-card .card-icon {
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.keunggulan-card:hover .card-icon {
+  transform: scale(1.15) rotate(-4deg);
+}
+
+/* Info cards */
+.info-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+.info-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.08) !important;
+}
+
+/* Direktori / UMKM cards */
+.direktori-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+.direktori-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.09), 0 4px 10px rgba(0,0,0,0.04) !important;
+}
+.direktori-card .dir-img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.direktori-card:hover .dir-img {
+  transform: scale(1.06) !important;
+}
+
+/* Org / Aparatur cards */
+.org-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+.org-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 40px rgba(92,45,142,0.12), 0 4px 10px rgba(0,0,0,0.04) !important;
+  border-color: rgba(92,45,142,0.2) !important;
+}
+.org-avatar {
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  border: 3px solid transparent;
+}
+.org-card:hover .org-avatar {
+  border-color: rgba(92,45,142,0.2);
+  box-shadow: 0 0 0 4px rgba(92,45,142,0.06);
+}
+
+/* Activity / Berita cards */
+.activity-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+.activity-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.08) !important;
+}
+.activity-card img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.activity-card:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* Layanan cards */
+.layanan-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+.layanan-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.03) !important;
+  border-color: rgba(92,45,142,0.18) !important;
+}
+.layanan-icon {
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  display: inline-block;
+}
+.layanan-card:hover .layanan-icon {
+  transform: scale(1.18) rotate(-5deg);
+}
+
+/* Testimonial cards */
+.testimonial-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 32px rgba(0,0,0,0.08) !important;
+  border-color: rgba(92,45,142,0.15) !important;
+}
+
+/* Gallery items */
+.gallery-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.gallery-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.14) !important;
+  z-index: 2;
+}
+
+/* Featured potensi image */
+.featured-potensi-img {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.featured-potensi-img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.14) !important;
+}
+
+/* WebGIS Banner */
+.webgis-banner-box {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.webgis-banner-box:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 24px 60px rgba(92,45,142,0.28) !important;
+}
+.webgis-feature-pill {
+  transition: all 0.22s ease !important;
+}
+.webgis-feature-pill:hover {
+  background: rgba(255,255,255,0.15) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Editorial Image Box */
+.editorial-img-box {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.editorial-img-box:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 24px 60px rgba(92,45,142,0.14) !important;
+}
+.editorial-img-box img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.editorial-img-box:hover img {
+  transform: scale(1.03) !important;
+}
+
+/* ==========================================================================
+   5. BUTTON MICRO-INTERACTIONS — Shimmer Effect
+   ========================================================================== */
+.btn-primary-custom,
+.btn-accent,
+.btn-gold,
+.btn-sage,
+.btn-outline-purple,
+.btn-outline-gold,
+.btn-outline-charcoal {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-primary-custom::before,
+.btn-gold::before,
+.btn-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+    transparent 35%,
+    rgba(255,255,255,0.15) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.55s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+.btn-primary-custom:hover::before,
+.btn-gold:hover::before,
+.btn-accent:hover::before {
+  transform: translateX(100%);
+}
+
+#btnBackTop {
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+#btnBackTop:hover {
+  transform: translateY(-4px) scale(1.08) !important;
+  box-shadow: 0 8px 24px rgba(92,45,142,0.35) !important;
+}
+
+/* ==========================================================================
+   6. SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+.fade-in-up,
+.fade-in-left,
+.fade-in-right {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.fade-in-left  { transform: translateX(-28px); }
+.fade-in-right { transform: translateX(28px); }
+
+.fade-in-up.visible,
+.fade-in-left.visible,
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translate(0, 0) !important;
+}
+
+.stagger-children > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.12s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.19s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.26s; }
+.stagger-children > *:nth-child(5) { transition-delay: 0.33s; }
+
+@keyframes countPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+.stat-number.counting {
+  animation: countPulse 0.6s ease;
+}
+
+/* ==========================================================================
+   7. SCROLL PROGRESS INDICATOR
+   ========================================================================== */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2.5px;
+  background: linear-gradient(90deg, #5C2D8E 0%, #D4901F 100%);
+  z-index: 9999;
+  transition: width 0.08s linear;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(92,45,142,0.4);
+}
+
+/* ==========================================================================
+   8. FOOTER — Polish
+   ========================================================================== */
+.footer-section a.btn-dark {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.footer-section a.btn-dark:hover {
+  background: rgba(255,255,255,0.18) !important;
+  transform: translateY(-3px) scale(1.08) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25) !important;
+}
+
+/* ==========================================================================
+   9. ACCESSIBILITY & FOCUS RINGS
+   ========================================================================== */
+:focus-visible {
+  outline: 2.5px solid #5C2D8E;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Feature check list hover */
+.feature-check-list li {
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+.feature-check-list li:hover {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   10. SHADOW SYSTEM SCALE — Inspired by Apple & Stripe
+   ========================================================================== */
+:root {
+  --shadow-xs:    0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-md:    0 2px 4px rgba(0,0,0,0.03), 0 6px 16px rgba(0,0,0,0.06);
+  --shadow-lg:    0 4px 8px rgba(0,0,0,0.04), 0 12px 28px rgba(0,0,0,0.08);
+  --shadow-xl:    0 8px 16px rgba(0,0,0,0.04), 0 20px 48px rgba(0,0,0,0.10);
+  --shadow-purple:0 4px 14px rgba(92,45,142,0.16), 0 12px 32px rgba(92,45,142,0.12);
+  --shadow-gold:  0 4px 12px rgba(212,144,31,0.20), 0 10px 24px rgba(212,144,31,0.14);
+  --shadow-sage:  0 4px 12px rgba(78,110,82,0.16), 0 10px 24px rgba(78,110,82,0.10);
+}
+
+/* ==========================================================================
+   11. MOBILE & REDUCED MOTION
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-image-card img {
+    animation-duration: 24s;
+  }
+  .sticky-top-wrapper.scrolled {
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+  }
+  .keunggulan-card:hover, .direktori-card:hover, .stat-card-clean:hover {
+    transform: translateY(-3px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-card img { animation: none !important; }
+  .fade-in-up, .fade-in-left, .fade-in-right {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+  }
+  .keunggulan-card:hover, .direktori-card:hover, .stat-card-clean:hover,
+  .org-card:hover, .layanan-card:hover, .testimonial-card:hover,
+  .activity-card:hover { transform: none !important; }
+}
+
+/* ==========================================================================
+   12. PROFIL DESA SPECIALIZED ENHANCEMENTS
+   Timeline, Infographics, Photo Gallery, Digital Vision, and KKN SPIG UPI Credit Block
+   ========================================================================== */
+
+/* Modern Timeline Component */
+.timeline-modern-wrapper {
+  position: relative;
+  padding-left: 2rem;
+  margin-top: 1.5rem;
+}
+.timeline-modern-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 11px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--gold) 50%, var(--sage) 100%);
+  border-radius: 3px;
+}
+.timeline-modern-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-modern-item:last-child {
+  margin-bottom: 0;
+}
+.timeline-modern-dot {
+  position: absolute;
+  left: -2rem;
+  top: 4px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 0 4px rgba(92, 45, 142, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+.timeline-modern-item:hover .timeline-modern-dot {
+  transform: scale(1.25);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 6px rgba(212, 144, 31, 0.2);
+}
+.timeline-modern-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.timeline-modern-card:hover {
+  transform: translateX(6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(92, 45, 142, 0.2);
+}
+
+/* Profil Photo Gallery Grid */
+.profil-gallery-card {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  aspect-ratio: 4 / 3;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.profil-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.profil-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(20, 10, 35, 0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  color: #fff;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+.profil-gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+.profil-gallery-card:hover img {
+  transform: scale(1.08);
+}
+.profil-gallery-card:hover .profil-gallery-overlay {
+  opacity: 1;
+  background: linear-gradient(180deg, transparent 20%, rgba(20, 10, 35, 0.92) 100%);
+}
+
+/* Digital Vision Showcase Box */
+.visi-digital-box {
+  background: linear-gradient(135deg, #1C1526 0%, #2D114C 60%, #1A281E 100%);
+  border-radius: var(--radius-2xl);
+  padding: 3rem 2.5rem;
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(45, 17, 76, 0.3);
+}
+.visi-digital-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212,144,31,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Professional KKN SPIG UPI Credit Block in Footer */
+.credit-kkn-block {
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(92,45,142,0.1) 100%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 2rem;
+  margin-top: 2rem;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.credit-kkn-block:hover {
+  border-color: rgba(212,144,31,0.4);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.credit-upi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(212,144,31,0.18);
+  border: 1px solid rgba(212,144,31,0.35);
+  color: #F8FAFC;
+  padding: 0.35rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}

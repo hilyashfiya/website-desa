@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistem Informasi Geospasial (WebGIS) Desa Gunungsari: Peta interaktif fasilitas umum, UMKM, direktori lokasi, batas dusun GeoJSON, dan poligon kerawanan longsor.">
+  <meta name="keywords" content="WebGIS Desa Gunungsari, Peta Interaktif, Batas Dusun, Sadananya, Ciamis, Peta Tematik, UMKM, Fasilitas Umum">
+  <meta name="robots" content="index, follow">
+  <title>Portal WebGIS &amp; Peta Administrasi — Desa Gunungsari</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🏡</text></svg>">
+
+  <!-- Google Fonts: Outfit + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <!-- Proj4js: UTM to WGS84 reprojection -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+  .custom-gis-marker {
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  /* Permanent RT Label Style */
+  .polygon-rt-label {
+    background: transparent !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    font-weight: 900 !important;
+    font-size: 12px !important;
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    text-shadow: 2px 2px 4px #000000, -2px -2px 4px #000000, 2px -2px 4px #000000, -2px 2px 4px #000000, 0 0 6px #000000 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    pointer-events: none !important;
+  }
+  .polygon-rt-label::before { display: none !important; }
+  
+  .leaflet-popup-content-wrapper { border-radius: 12px; font-family: 'Inter', sans-serif; }
+  
+  /* Hero section styling */
+  .peta-hero-section {
+    background: #FAF7F2;
+    padding: 2.5rem 0 2rem 0;
+    border-bottom: 1px solid #EFEAE1;
+  }
+  .peta-breadcrumb {
+    font-size: 0.85rem;
+    color: #8C857B;
+    margin-bottom: 0.75rem;
+  }
+  .peta-breadcrumb a {
+    color: #8C857B;
+    text-decoration: none;
+  }
+  .peta-breadcrumb a:hover {
+    color: #2D114C;
+  }
+  .peta-subbadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #B45309;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .peta-subbadge::before, .peta-subbadge::after {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background-color: #F59E0B;
+  }
+  .peta-hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: #1E1B4B;
+    margin-bottom: 0.5rem;
+  }
+  .peta-hero-desc {
+    color: #64748B;
+    font-size: 0.95rem;
+  }
+
+  /* High Contrast Nav Tabs */
+  #petaTabs .nav-link {
+    background-color: #FFFFFF !important;
+    color: #421C6B !important;
+    border: 1px solid #CBD5E1 !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease-in-out !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04) !important;
+  }
+  #petaTabs .nav-link i {
+    color: #5C2D8E !important;
+  }
+  #petaTabs .nav-link:hover {
+    background-color: #F1F5F9 !important;
+    color: #2D114C !important;
+    border-color: #94A3B8 !important;
+  }
+  #petaTabs .nav-link.active {
+    background-color: #421C6B !important;
+    color: #FFFFFF !important;
+    border-color: #421C6B !important;
+    box-shadow: 0 4px 12px rgba(66, 28, 107, 0.3) !important;
+  }
+  #petaTabs .nav-link.active i {
+    color: #FFD700 !important;
+  }
+  
+  .legend-card-map {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    width: 245px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 12px 14px;
+  }
+  .legend-item-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: #334155;
+    margin-bottom: 4px;
+  }
+  .legend-color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .map-preview-frame {
+    background: #0F172A;
+    border-radius: 16px;
+    padding: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  }
+  .map-preview-img {
+    width: 100%;
+    height: auto;
+    max-height: 650px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #1E293B;
+    transition: transform 0.3s ease;
+  }
+  .map-preview-img:hover {
+    cursor: zoom-in;
+  }
+  </style>
+</head>
+<body>
+
+<!-- Sticky Header Wrapper -->
+<div class="sticky-top-wrapper" style="position:sticky; top:0; z-index:1030;">
+  <div class="navbar-topbar" style="background-color:#2D114C; border-bottom:1px solid rgba(255,255,255,0.08); padding:0.35rem 0;">
+    <div class="container-fluid container-xl d-flex justify-content-between align-items-center">
+      <small class="text-white-50 d-flex align-items-center gap-2" style="font-size:0.75rem; letter-spacing:0.3px;">
+        <i class="bi bi-geo-alt-fill text-gold" style="font-size:0.75rem;"></i>
+        Portal Digital &amp; WebGIS Desa Gunungsari
+      </small>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <i class="bi bi-shield-fill text-warning" style="font-size:0.65rem;"></i>Kec. Sadananya
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <img src="assets/img/logo-ciamis.png" alt="Ciamis" style="height:14px; max-height:14px; width:auto; vertical-align:middle;">
+          Kab. Ciamis
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(212,144,31,0.25); border:1px solid rgba(212,144,31,0.4); color:#FFFFFF;">
+          <i class="bi bi-circle-fill text-success" style="font-size:0.55rem;"></i>Data GeoJSON Aktif
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-xl navbar-dark" id="mainNavbar" style="background-color:#421C6B !important; padding:0.55rem 0;">
+    <div class="container-fluid container-xl">
+      <a class="navbar-brand py-0 d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/logo-ciamis.png" alt="Logo Desa Gunungsari" style="height:40px; max-height:40px; width:auto; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));" class="me-1">
+        <div class="d-flex flex-column lh-1">
+          <span class="fw-bold text-white font-outfit" style="font-size:1.1rem; letter-spacing:-0.2px;">Desa Gunungsari</span>
+          <small class="text-white-50" style="font-size:0.65rem; letter-spacing:0.4px; margin-top:3px;">Kec. Sadananya &bull; Kab. Ciamis</small>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto align-items-xl-center my-2 my-xl-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i>Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="profil.html"><i class="bi bi-building me-1"></i>Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="apbdes.html"><i class="bi bi-pie-chart-fill me-1"></i>APBDes</a></li>
+          <li class="nav-item"><a class="nav-link" href="potensi.html"><i class="bi bi-shop me-1"></i>Potensi</a></li>
+          <li class="nav-item"><a class="nav-link active" href="peta.html"><i class="bi bi-map-fill me-1"></i>Wilayah &amp; Peta</a></li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="bi bi-newspaper me-1"></i>Informasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="dokumentasi.html"><i class="bi bi-images me-1"></i>Dokumentasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="pelayanan.html"><i class="bi bi-file-earmark-text me-1"></i>Pelayanan</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0 ms-xl-2">
+          <a class="nav-link nav-search-btn me-1" href="search.html" title="Cari di Portal"><i class="bi bi-search"></i></a>
+          <a class="nav-link navbar-cta ms-xl-1" href="kontak.html"><i class="bi bi-envelope-fill me-1"></i>Kontak</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- Header Hero Title -->
+<section class="peta-hero-section text-center">
+  <div class="container-fluid container-xl">
+    <div class="peta-breadcrumb">
+      <a href="index.html">Beranda</a> / <span>Wilayah &amp; Peta</span>
+    </div>
+    <div class="peta-subbadge">PETA INTERAKTIF WEBGIS &amp; TEMATIK</div>
+    <h1 class="peta-hero-title">Wilayah &amp; Peta Administrasi</h1>
+    <p class="peta-hero-desc mb-0">Sistem Informasi Geospasial Desa Gunungsari, Kecamatan Sadananya, Kabupaten Ciamis</p>
+  </div>
+</section>
+
+<!-- Tabs Container -->
+<section class="py-4">
+  <div class="container-fluid container-xl">
+
+    <!-- Nav Tabs -->
+    <ul class="nav nav-pills justify-content-center gap-2 mb-4 flex-wrap" id="petaTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active rounded-pill px-4 fw-semibold shadow-sm" id="webgis-tab" data-bs-toggle="tab" data-bs-target="#webgis-pane" type="button" role="tab">
+          <i class="bi bi-geo-alt-fill me-2"></i>Peta WebGIS Interaktif
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill px-4 fw-semibold shadow-sm" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin-pane" type="button" role="tab">
+          <i class="bi bi-diagram-3-fill me-2"></i>Peta Batas Administrasi
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill px-4 fw-semibold shadow-sm" id="tematik-tab" data-bs-toggle="tab" data-bs-target="#tematik-pane" type="button" role="tab">
+          <i class="bi bi-map-fill me-2"></i>Peta Tematik
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link rounded-pill px-4 fw-semibold shadow-sm" id="direktori-tab" data-bs-toggle="tab" data-bs-target="#direktori-pane" type="button" role="tab">
+          <i class="bi bi-journal-bookmark-fill me-2"></i>Direktori Lokasi
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="petaTabsContent">
+
+      <!-- TAB 1: PETA WEBGIS INTERAKTIF -->
+      <div class="tab-pane fade show active" id="webgis-pane" role="tabpanel">
+
+        <div class="row g-3">
+          <!-- Sidebar Filters -->
+          <div class="col-lg-3">
+            <!-- Card 1: Dusun Filter -->
+            <div class="card border-0 shadow-sm rounded-4 mb-3">
+              <div class="card-header bg-white py-3 border-bottom-0">
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-geo-fill text-primary me-2"></i>Pilih Dusun / Wilayah</h6>
+              </div>
+              <div class="card-body pt-0">
+                <div class="d-grid gap-1" id="dusunBtnGroup">
+                  <button class="btn btn-primary py-2 text-start rounded-3 btn-dusun-item d-flex justify-content-between align-items-center active" data-dusun="semua">
+                    <span><i class="bi bi-pin-map-fill me-2"></i>Semua Dusun</span>
+                    <span class="badge bg-white text-primary border rounded-pill" id="badgeDusunSemua">150</span>
+                  </button>
+                  <button class="btn btn-outline-secondary py-2 text-start rounded-3 btn-dusun-item d-flex justify-content-between align-items-center" data-dusun="Dusun Desa">
+                    <span><i class="bi bi-geo-alt me-2"></i>Dusun Desa</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeDusunDesa">62</span>
+                  </button>
+                  <button class="btn btn-outline-secondary py-2 text-start rounded-3 btn-dusun-item d-flex justify-content-between align-items-center" data-dusun="Dusun Cikatomas">
+                    <span><i class="bi bi-geo-alt me-2"></i>Dusun Cikatomas</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeDusunCikatomas">65</span>
+                  </button>
+                  <button class="btn btn-outline-secondary py-2 text-start rounded-3 btn-dusun-item d-flex justify-content-between align-items-center" data-dusun="Dusun Cilopadang">
+                    <span><i class="bi bi-geo-alt me-2"></i>Dusun Cilopadang</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeDusunCilopadang">23</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Layer Directory Filter -->
+            <div class="card border-0 shadow-sm rounded-4">
+              <div class="card-header bg-white py-3 border-bottom-0 d-flex justify-content-between align-items-center">
+                <h6 class="fw-bold mb-0 text-dark"><i class="bi bi-layers-fill text-primary me-2"></i>Direktori Layer</h6>
+                <button class="btn btn-sm btn-link text-decoration-none p-0 small" id="btnResetAllFilters">Reset</button>
+              </div>
+              <div class="card-body pt-0">
+                <div class="list-group list-group-flush border-0" id="katFilterGroup">
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 active btn-kat-item" data-kat="semua">
+                    <span><i class="bi bi-grid-fill me-2"></i>Semua Layer</span>
+                    <span class="badge bg-primary rounded-pill" id="badgeSemuaCount">150</span>
+                  </button>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 btn-kat-item" data-kat="pemerintahan">
+                    <span><i class="bi bi-building-gear me-2" style="color:#5C2D8E;"></i>Pemerintahan &amp; Pelayanan</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgePemCount">4</span>
+                  </button>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 btn-kat-item" data-kat="pendidikan">
+                    <span><i class="bi bi-mortarboard-fill me-2" style="color:#2E5339;"></i>Fasilitas Pendidikan</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgePendCount">15</span>
+                  </button>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 btn-kat-item" data-kat="kesehatan">
+                    <span><i class="bi bi-heart-pulse-fill me-2" style="color:#D9534F;"></i>Fasilitas Kesehatan</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeKesCount">1</span>
+                  </button>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 btn-kat-item" data-kat="keagamaan">
+                    <span><i class="bi bi-moon-stars-fill me-2" style="color:#0284C7;"></i>Tempat Ibadah &amp; Keagamaan</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeAgamaCount">22</span>
+                  </button>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 btn-kat-item" data-kat="umkm">
+                    <span><i class="bi bi-shop me-2" style="color:#8B4CB5;"></i>UMKM &amp; Industri Warga</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeUmkmCount">93</span>
+                  </button>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 btn-kat-item" data-kat="wisata">
+                    <span><i class="bi bi-tree-fill me-2" style="color:#F2A93B;"></i>Wisata &amp; Alam</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeWisataCount">4</span>
+                  </button>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between align-items-center rounded-3 border-0 mb-1 btn-kat-item" data-kat="fasilitas_umum">
+                    <span><i class="bi bi-geo-alt-fill me-2" style="color:#6C757D;"></i>Fasilitas Umum &amp; Lainnya</span>
+                    <span class="badge bg-light text-dark border rounded-pill" id="badgeFasumCount">11</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Interactive Map Canvas -->
+          <div class="col-lg-9">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden position-relative">
+              <div class="card-header bg-white py-2 px-3 d-flex justify-content-between align-items-center border-bottom">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge bg-primary-subtle text-primary border px-2 py-1" id="activeFilterLabel">Menampilkan: Semua Layer | Semua Dusun</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge bg-success-subtle text-success border px-2 py-1"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem;"></i>WebGIS GeoJSON Aktif</span>
+                  <button class="btn btn-sm btn-outline-secondary rounded-pill px-3" id="btnResetMap"><i class="bi bi-arrow-counterclockwise me-1"></i>Reset Map</button>
+                </div>
+              </div>
+
+              <!-- Map Container -->
+              <div id="mapContainer" style="height: 640px; width: 100%; position: relative;"></div>
+
+              <!-- Floating Map Legend -->
+              <div class="legend-card-map">
+                <h6 class="fw-bold mb-2 small text-dark d-flex align-items-center gap-1"><i class="bi bi-info-circle text-primary"></i>Legenda Peta WebGIS</h6>
+                <div class="legend-item-row"><span class="legend-color-dot" style="background:#5C2D8E;"></span><span>Pemerintahan &amp; Pelayanan</span></div>
+                <div class="legend-item-row"><span class="legend-color-dot" style="background:#2E5339;"></span><span>Fasilitas Pendidikan</span></div>
+                <div class="legend-item-row"><span class="legend-color-dot" style="background:#D9534F;"></span><span>Fasilitas Kesehatan</span></div>
+                <div class="legend-item-row"><span class="legend-color-dot" style="background:#0284C7;"></span><span>Tempat Ibadah &amp; Keagamaan</span></div>
+                <div class="legend-item-row"><span class="legend-color-dot" style="background:#8B4CB5;"></span><span>UMKM &amp; Industri Warga</span></div>
+                <div class="legend-item-row"><span class="legend-color-dot" style="background:#F2A93B;"></span><span>Wisata &amp; Alam</span></div>
+                <div class="legend-item-row"><span class="legend-color-dot" style="background:#6C757D;"></span><span>Fasilitas Umum &amp; Lainnya</span></div>
+                <hr class="my-2">
+                <div class="fw-bold text-dark mb-1" style="font-size:0.72rem;">Batas Wilayah (Batas Dusun SHP):</div>
+                <div class="d-flex flex-column gap-1" style="font-size:0.7rem;">
+                  <span><span style="display:inline-block;width:18px;height:4px;background:#E65100;border-radius:2px;margin-right:4px;"></span>Dusun Desa</span>
+                  <span><span style="display:inline-block;width:18px;height:4px;background:#1565C0;border-radius:2px;margin-right:4px;"></span>Dusun Cikatomas</span>
+                  <span><span style="display:inline-block;width:18px;height:4px;background:#2E7D32;border-radius:2px;margin-right:4px;"></span>Dusun Cilopadang</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 2: PETA BATAS ADMINISTRASI -->
+      <div class="tab-pane fade" id="admin-pane" role="tabpanel">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+          <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+              <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-diagram-3 text-primary me-2"></i>Peta Batas Administrasi Dusun &amp; RT</h5>
+              <small class="text-muted">Interaktif SHP Spasial &amp; Cetak Resmi Peta Batas RT RW Tahun 2026</small>
+            </div>
+
+            <!-- Version Switcher -->
+            <div class="btn-group rounded-pill p-1 bg-light border" role="group">
+              <button type="button" class="btn btn-sm rounded-pill btn-primary px-3 active" id="btnModeInteraktif">
+                <i class="bi bi-globe me-1"></i>1. Versi Interaktif WebGIS
+              </button>
+              <button type="button" class="btn btn-sm rounded-pill btn-outline-secondary px-3" id="btnModeStatis">
+                <i class="bi bi-file-earmark-image me-1"></i>2. Versi Peta Statis (Cetak Resmi)
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body p-4">
+
+            <!-- Sub-Pane 1: Versi Interaktif -->
+            <div id="viewBatasInteraktif">
+              <div class="alert alert-info border-0 rounded-3 d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-info-circle-fill fs-5"></i>
+                <div>Data peta interaktif memuat seluruh file Shapefile (SHP): Batas Desa, Batas Dusun, Batas RT (RT 001 - RT 022), dan Batas RW. Gunakan kontrol layer di kanan atas peta untuk menyalakan/mematikan layer.</div>
+              </div>
+              <div id="mapBatasAdmin" style="height: 580px; width: 100%; border-radius: 16px;"></div>
+            </div>
+
+            <!-- Sub-Pane 2: Versi Statis (Peta Cetak Resmi) -->
+            <div id="viewBatasStatis" class="d-none">
+              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                <div>
+                  <h5 class="fw-bold text-dark mb-1" id="titleBatasStatis">Peta Batas RT RW Tahun 2026</h5>
+                  <p class="text-muted small mb-0">Peta Statis Hasil Pengukuran Administrasi Resmi Desa Gunungsari</p>
+                </div>
+                <div class="d-flex gap-2">
+                  <a id="btnDownloadBatasPDF" href="data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf" target="_blank" class="btn btn-danger rounded-pill px-3 shadow-sm">
+                    <i class="bi bi-file-earmark-pdf-fill me-1"></i>Unduh Berkas PDF
+                  </a>
+                  <button id="btnViewBatasHD" class="btn btn-outline-primary rounded-pill px-3 shadow-sm" onclick="openMapModal('assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png', 'Peta Batas RT RW Tahun 2026')">
+                    <i class="bi bi-arrows-angle-expand me-1"></i>Perbesar HD
+                  </button>
+                </div>
+              </div>
+
+              <!-- Static Map Quick Nav Pills -->
+              <div class="d-flex gap-2 mb-3 flex-wrap">
+                <button class="btn btn-sm btn-primary rounded-pill px-3 btn-statis-switch active" data-title="Peta Batas RT RW Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf">
+                  Peta Batas RT RW 2026
+                </button>
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas RW Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas RW Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas RW Tahun 2026.pdf">
+                  Peta Batas RW 2026
+                </button>
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas Dusun Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas Dusun Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas Dusun Tahun 2026.pdf">
+                  Peta Batas Dusun 2026
+                </button>
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-statis-switch" data-title="Peta Batas Desa Tahun 2026" data-img="assets/uploads/peta_gambar/Peta Batas Desa Tahun 2026.png" data-pdf="data/Peta Batas/Peta Batas Desa Tahun 2026.pdf">
+                  Peta Batas Desa 2026
+                </button>
+              </div>
+
+              <div class="map-preview-frame text-center">
+                <img id="imgBatasStatisPreview" src="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png" alt="Peta Batas RT RW Tahun 2026" class="map-preview-img img-fluid" onclick="openMapModal(this.src, document.getElementById('titleBatasStatis').textContent)">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: PETA TEMATIK -->
+      <div class="tab-pane fade" id="tematik-pane" role="tabpanel">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+          <div class="card-header bg-white py-3 border-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+              <h5 class="fw-bold mb-0 text-dark"><i class="bi bi-map-fill text-primary me-2"></i>Peta Tematik &amp; Administrasi Desa Gunungsari</h5>
+              <p class="text-muted small mb-0 mt-1">Pilih nama peta dari alat seleksi di bawah untuk menampilkan gambar preview HD dan mengunduh format PDF original.</p>
+            </div>
+            <span class="badge bg-primary-subtle text-primary border px-3 py-2 rounded-pill"><i class="bi bi-layers-fill me-1"></i>13 Berkas Peta Tersedia</span>
+          </div>
+          <div class="card-body p-4">
+
+            <!-- Selection Tools Card -->
+            <div class="card border-0 bg-light rounded-4 p-3 mb-4 border">
+              <div class="row g-3 align-items-center">
+                <div class="col-lg-5">
+                  <label for="selectMapTematik" class="form-label fw-bold text-dark small mb-1"><i class="bi bi-card-checklist text-primary me-1"></i>Pilih Nama Peta Tematik:</label>
+                  <select id="selectMapTematik" class="form-select form-select-lg rounded-3 shadow-sm border-primary" style="font-size:0.95rem;">
+                    <optgroup label="PETA BATAS ADMINISTRASI">
+                      <option value="peta_rt_rw_2026" selected>Peta Batas RT RW Tahun 2026</option>
+                      <option value="peta_rw_2026">Peta Batas RW Tahun 2026</option>
+                      <option value="peta_dusun_2026">Peta Batas Dusun Tahun 2026</option>
+                      <option value="peta_desa_2026">Peta Batas Desa Tahun 2026</option>
+                    </optgroup>
+                    <optgroup label="PETA PERSEBARAN FASILITAS UMUM">
+                      <option value="fasum_desa">Peta Persebaran Fasilitas Umum Desa Gunungsari</option>
+                      <option value="fasum_dusun_desa">Peta Persebaran Fasilitas Umum Dusun Desa</option>
+                      <option value="fasum_cikatomas">Peta Persebaran Fasilitas Umum Dusun Cikatomas</option>
+                      <option value="fasum_cilopadang">Peta Persebaran Fasilitas Umum Dusun Cilopadang</option>
+                    </optgroup>
+                    <optgroup label="PETA PERSEBARAN UMKM">
+                      <option value="umkm_desa">UMKM Desa Gunungsari</option>
+                      <option value="umkm_dusun_desa">UMKM Dusun Desa</option>
+                      <option value="umkm_cikatomas">UMKM Dusun Cikatomas</option>
+                      <option value="umkm_cilopadang">UMKM Dusun Cilopadang</option>
+                    </optgroup>
+                    <optgroup label="PETA TEMATIK BENCANA">
+                      <option value="longsor">Peta Bahaya Longsor</option>
+                    </optgroup>
+                  </select>
+                </div>
+                
+                <div class="col-lg-7">
+                  <label class="form-label fw-bold text-dark small mb-1"><i class="bi bi-filter me-1 text-primary"></i>Kategori Peta Fast-Filter:</label>
+                  <div class="d-flex gap-2 flex-wrap" id="tematikCatNav">
+                    <button class="btn btn-sm btn-primary rounded-pill px-3 active btn-tematik-cat" data-cat="all">Semua</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-tematik-cat" data-cat="batas">Batas Administrasi</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-tematik-cat" data-cat="fasum">Fasilitas Umum</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-tematik-cat" data-cat="umkm">UMKM</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 btn-tematik-cat" data-cat="longsor">Bahaya Longsor</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Map Viewer Canvas -->
+            <div class="card border-0 shadow-sm rounded-4 p-4 border" style="background:#FAF9F6;">
+              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                <div>
+                  <span class="badge bg-primary rounded-pill px-3 py-1 mb-1" id="activeMapCatBadge">Batas Administrasi</span>
+                  <h4 class="fw-bold text-dark font-outfit mb-0" id="activeMapTitle">Peta Batas RT RW Tahun 2026</h4>
+                  <small class="text-muted" id="activeMapDesc">Peta batas RT dan RW wilayah Desa Gunungsari tahun 2026</small>
+                </div>
+                <div class="d-flex gap-2">
+                  <a id="btnTematikDownloadPdf" href="data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf" target="_blank" class="btn btn-danger rounded-pill px-4 py-2 shadow-sm font-outfit fw-semibold">
+                    <i class="bi bi-file-earmark-pdf-fill me-2"></i>Unduh Format PDF
+                  </a>
+                  <button id="btnTematikExpand" class="btn btn-outline-dark rounded-pill px-3 py-2 shadow-sm" onclick="openMapModal(document.getElementById('imgTematikPreview').src, document.getElementById('activeMapTitle').textContent)">
+                    <i class="bi bi-fullscreen me-1"></i>Perbesar HD
+                  </button>
+                </div>
+              </div>
+
+              <div class="map-preview-frame text-center">
+                <img id="imgTematikPreview" src="assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png" alt="Preview Peta Tematik" class="map-preview-img img-fluid" onclick="openMapModal(this.src, document.getElementById('activeMapTitle').textContent)">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: DIREKTORI LOKASI -->
+      <div class="tab-pane fade" id="direktori-pane" role="tabpanel">
+        <div class="card border-0 shadow-sm rounded-4 p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <div>
+              <h4 class="fw-bold mb-0 text-dark"><i class="bi bi-journal-bookmark text-primary me-2"></i>Direktori Lokasi &amp; Fasilitas Publik</h4>
+              <small class="text-muted">Daftar spasial UMKM dan Fasilitas Umum Desa Gunungsari (Data GeoJSON UMKM &amp; Fasum)</small>
+            </div>
+            <div class="d-flex gap-2 align-items-center">
+              <input type="text" id="searchDir" class="form-control form-control-md rounded-pill shadow-sm" placeholder="Cari nama lokasi atau dusun..." style="min-width: 280px;">
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" id="dirTable">
+              <thead class="table-light">
+                <tr>
+                  <th style="width:30%;">Nama Lokasi</th>
+                  <th style="width:20%;">Kategori</th>
+                  <th style="width:20%;">Dusun / Wilayah</th>
+                  <th style="width:20%;">Keterangan</th>
+                  <th style="width:10%;" class="text-end">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="dirTableBody">
+                <!-- JS Populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modal Detail Lokasi Popup -->
+<div class="modal fade" id="modalDetailLokasi" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="modal-header text-white" id="modalHeaderBg" style="background:#5C2D8E;">
+        <h5 class="modal-title font-outfit fw-bold d-flex align-items-center gap-2">
+          <i id="modalIconClass" class="bi bi-geo-alt-fill"></i>
+          <span id="modalNamaLokasi">Detail Lokasi</span>
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="mb-3 d-flex align-items-center justify-content-between">
+          <span class="badge bg-primary rounded-pill px-3 py-1" id="modalKategoriLabel">UMKM</span>
+          <small class="text-muted fw-semibold" id="modalDusunVal">Dusun Desa</small>
+        </div>
+
+        <div id="modalLongsorAlert" class="alert d-none rounded-3 mb-3">
+          <div class="fw-bold" id="modalLongsorLevel">🔴 Tingkat Kerawanan TINGGI</div>
+          <small id="modalLongsorNote">Zona ini memiliki risiko longsor yang tinggi.</small>
+        </div>
+
+        <p class="text-muted mb-3" id="modalDeskripsiVal">Deskripsi lokasi...</p>
+
+        <div class="bg-light p-3 rounded-3 border mb-3">
+          <small class="text-muted d-block mb-1">Koordinat GPS (WGS84):</small>
+          <strong class="font-monospace text-dark" id="modalKoordinat">-7.256000, 108.305000</strong>
+        </div>
+
+        <div class="d-grid">
+          <a href="#" id="btnGoogleMaps" target="_blank" class="btn btn-outline-primary rounded-pill py-2 fw-semibold">
+            <i class="bi bi-google me-2"></i>Buka di Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Image Fullscreen Lightbox -->
+<div class="modal fade" id="modalViewImageHD" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-dark border-0 rounded-4 overflow-hidden">
+      <div class="modal-header border-bottom border-secondary text-white py-2">
+        <h6 class="modal-title font-outfit fw-bold" id="modalImageHDTitle">Preview Gambar Peta HD</h6>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center p-2" style="background:#0F172A;">
+        <img id="imgHDSource" src="" alt="Map Fullscreen" class="img-fluid rounded" style="max-height:85vh; object-fit:contain;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-section" role="contentinfo" style="background-color:#171520; color:rgba(255,255,255,0.7); padding-top:4rem; padding-bottom:2.5rem;">
+  <div class="container-fluid container-xl">
+    <div class="row g-4 g-lg-5 mb-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div style="width:48px; height:48px; background:rgba(212,144,31,0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">🏡</div>
+          <div style="width:1px; height:32px; background:rgba(255,255,255,0.15);"></div>
+          <img src="assets/img/logo-ciamis.png" alt="Logo Kabupaten Ciamis" style="height:42px; width:auto;" title="Kabupaten Ciamis">
+        </div>
+        <div class="mb-3">
+          <h5 class="text-white fw-bold font-outfit mb-1" style="font-size:1.25rem;">Desa Gunungsari</h5>
+          <small class="text-white-50" style="font-size:0.78rem;">Kecamatan Sadananya, Kabupaten Ciamis</small>
+        </div>
+        <p class="small text-white-50 lh-base mb-3" style="font-size:0.85rem;">
+          Portal Informasi Digital Desa Gunungsari berbasis WebGIS — menyajikan profil wilayah, data kependudukan, potensi lokal, pelayanan publik, dan pemetaan geospasial yang transparan dan terverifikasi.
+        </p>
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Navigasi
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-0" style="font-size:0.85rem;">
+          <li><a href="index.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Beranda</a></li>
+          <li><a href="profil.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Profil Desa</a></li>
+          <li><a href="peta.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Peta WebGIS</a></li>
+          <li><a href="potensi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Potensi Desa</a></li>
+          <li><a href="informasi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Berita &amp; Info</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Kantor Desa
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-3 mb-0" style="font-size:0.85rem; color:rgba(255,255,255,0.65);">
+          <li class="d-flex align-items-start gap-2">
+            <i class="bi bi-geo-alt-fill text-warning mt-1" style="flex-shrink:0;"></i>
+            <span>Desa Gunungsari, Kecamatan Sadananya, Kabupaten Ciamis, Jawa Barat</span>
+          </li>
+          <li class="d-flex align-items-center gap-2">
+            <i class="bi bi-telephone-fill text-warning" style="flex-shrink:0;"></i>
+            <a href="tel:082133176920" class="text-white-50 text-decoration-none">082133176920</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Jam Operasional
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-3" style="font-size:0.83rem;">
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Senin – Kamis</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 15.00</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Jumat</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 11.30</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr style="border-color:rgba(255,255,255,0.08); margin:1.75rem 0;">
+
+    <div class="row align-items-center g-3">
+      <div class="col-md-7 text-center text-md-start">
+        <p class="mb-0 text-white-50" style="font-size:0.82rem;">
+          &copy; 2026 Portal Digital Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis. KKN SPIG.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="btn btn-back-top rounded-circle shadow-lg" id="btnBackTop" aria-label="Kembali ke atas" style="position:fixed; bottom:25px; right:25px; width:44px; height:44px; background:#5C2D8E; color:#FFF; border:none; display:none; z-index:1050; align-items:center; justify-content:center;">
+  <i class="bi bi-chevron-up"></i>
+</button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<!-- Proj4js for UTM → WGS84 reprojection -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.min.js"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  // ─── Proj4 Definitions ─────────────────────────────────────────────────────
+  if (typeof proj4 !== 'undefined') {
+    proj4.defs('EPSG:32749', '+proj=utm +zone=49 +south +datum=WGS84 +units=m +no_defs');
+    proj4.defs('EPSG:32748', '+proj=utm +zone=48 +south +datum=WGS84 +units=m +no_defs');
+  }
+
+  // ─── UTM → WGS84 Reprojection Helpers ──────────────────────────────────────
+  function utmCoordToWgs84(c, epsg) {
+    if (typeof proj4 === 'undefined') return c;
+    try { return proj4(epsg, 'WGS84', [c[0], c[1]]); } catch(e) { return c; }
+  }
+  function reprojectRing(ring, epsg) {
+    return ring.map(c => utmCoordToWgs84(c, epsg));
+  }
+  function reprojectGeometry(geom, epsg) {
+    if (!geom) return;
+    const t = geom.type;
+    if      (t === 'Polygon')         geom.coordinates = geom.coordinates.map(r => reprojectRing(r, epsg));
+    else if (t === 'MultiPolygon')    geom.coordinates = geom.coordinates.map(p => p.map(r => reprojectRing(r, epsg)));
+    else if (t === 'LineString')      geom.coordinates = reprojectRing(geom.coordinates, epsg);
+    else if (t === 'MultiLineString') geom.coordinates = geom.coordinates.map(r => reprojectRing(r, epsg));
+    else if (t === 'Point')           geom.coordinates = utmCoordToWgs84(geom.coordinates, epsg);
+  }
+  function reprojectGeoJSON(gj, epsg) {
+    if (!gj || !gj.features) return gj;
+    const clone = JSON.parse(JSON.stringify(gj));
+    clone.features.forEach(f => { if (f.geometry) reprojectGeometry(f.geometry, epsg); });
+    return clone;
+  }
+
+  // ─── Normalize Boundary Properties ─────────────────────────────────────────
+  function normaliseDusunProps(gj) {
+    const colors = { 'Dusun Desa': '#E65100', 'Dusun Cikatomas': '#1565C0', 'Dusun Cilopadang': '#2E7D32' };
+    (gj.features || []).forEach(f => {
+      const p = f.properties || {};
+      const name = p.Nama_Dusun || p.NAMA_DUSUN || p.nama_dusun || p.DUSUN || '';
+      p.nama_dusun = name;
+      p.warna = colors[name] || '#8B4CB5';
+    });
+    return gj;
+  }
+  function normaliseRtProps(gj) {
+    (gj.features || []).forEach(f => {
+      const p = f.properties || {};
+      p.nama_rt = p.Nama_RT || p.NAMA_RT || p.RT || p.nama_rt || '';
+    });
+    return gj;
+  }
+  function normaliseRwProps(gj) {
+    (gj.features || []).forEach((f, idx) => {
+      const p = f.properties || {};
+      // Try all common field names for RW number
+      const rawRw = p.Nama_RW || p.NAMA_RW || p.RW || p.nama_rw || p.Nomor_RW || p.NOMOR_RW || p.No_RW || p.NO_RW || '';
+      p.nama_rw = rawRw;
+      // Extract numeric RW number for dusun mapping
+      const numMatch = String(rawRw).match(/(\d+)/);
+      p.rw_num = numMatch ? parseInt(numMatch[1]) : (idx + 1);
+    });
+    return gj;
+  }
+
+  // ─── Build Dusun Boundaries from RW Polygons ───────────────────────────────
+  // Dusun Desa = RW 1+2, Cikatomas = RW 3+4, Cilopadang = RW 5+6
+  function buildDusunFromRW(rwGeoJSON) {
+    if (!rwGeoJSON || !rwGeoJSON.features || !rwGeoJSON.features.length) return null;
+
+    const dusunMap = {
+      'Dusun Desa':       { rws: [1, 2], color: '#E65100', features: [] },
+      'Dusun Cikatomas':  { rws: [3, 4], color: '#1565C0', features: [] },
+      'Dusun Cilopadang': { rws: [5, 6], color: '#2E7D32', features: [] }
+    };
+
+    rwGeoJSON.features.forEach(feat => {
+      const rwNum = (feat.properties || {}).rw_num;
+      if (!rwNum || !feat.geometry) return;
+      for (const [dusunName, cfg] of Object.entries(dusunMap)) {
+        if (cfg.rws.includes(rwNum)) {
+          cfg.features.push(feat);
+          break;
+        }
+      }
+    });
+
+    const dusunFeatures = [];
+    for (const [dusunName, cfg] of Object.entries(dusunMap)) {
+      if (!cfg.features.length) continue;
+      // Collect all polygon rings from the RW features for this dusun
+      const allPolygons = [];
+      cfg.features.forEach(feat => {
+        const geom = feat.geometry;
+        if (geom.type === 'Polygon') {
+          allPolygons.push(geom.coordinates);
+        } else if (geom.type === 'MultiPolygon') {
+          geom.coordinates.forEach(p => allPolygons.push(p));
+        }
+      });
+      // Represent as MultiPolygon (union-like, visually they form a dusun)
+      dusunFeatures.push({
+        type: 'Feature',
+        properties: { nama_dusun: dusunName, warna: cfg.color },
+        geometry: { type: 'MultiPolygon', coordinates: allPolygons }
+      });
+    }
+
+    if (!dusunFeatures.length) return null;
+    return { type: 'FeatureCollection', features: dusunFeatures };
+  }
+
+  // ─── Point in Polygon (Ray Casting) ─────────────────────────────────────────
+  function pointInRing(point, ring) {
+    const x = point[0], y = point[1];
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const xi = ring[i][0], yi = ring[i][1];
+      const xj = ring[j][0], yj = ring[j][1];
+      if (((yi > y) !== (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  }
+  function pointInPolygon(point, geom) {
+    if (!geom) return false;
+    if (geom.type === 'Polygon') return pointInRing(point, geom.coordinates[0]);
+    if (geom.type === 'MultiPolygon') return geom.coordinates.some(poly => pointInRing(point, poly[0]));
+    return false;
+  }
+
+  function getDusunFromPolygonOrLat(lng, lat) {
+    if (hilyaGeoJsonMap.Batas_Dusun && hilyaGeoJsonMap.Batas_Dusun.features) {
+      for (const feat of hilyaGeoJsonMap.Batas_Dusun.features) {
+        if (feat.geometry && pointInPolygon([lng, lat], feat.geometry)) {
+          return feat.properties.nama_dusun || 'Dusun Desa';
+        }
+      }
+    }
+    if (lat > -7.247) return 'Dusun Cilopadang';
+    if (lat > -7.254) return 'Dusun Cikatomas';
+    return 'Dusun Desa';
+  }
+
+  // ─── Map Data Store for Peta Tematik ───────────────────────────────────────
+  const tematikMapData = {
+    "peta_rt_rw_2026": { title: "Peta Batas RT RW Tahun 2026", category: "Batas Administrasi", desc: "Peta resmi batas RT dan RW Desa Gunungsari tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas RT RW Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas RT RW Tahun 2026.pdf", catKey: "batas" },
+    "peta_rw_2026": { title: "Peta Batas RW Tahun 2026", category: "Batas Administrasi", desc: "Peta pembagian batas wilayah Rukun Warga (RW) Desa Gunungsari tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas RW Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas RW Tahun 2026.pdf", catKey: "batas" },
+    "peta_dusun_2026": { title: "Peta Batas Dusun Tahun 2026", category: "Batas Administrasi", desc: "Peta pembagian batas kedusunan (Dusun Desa, Dusun Cikatomas, Dusun Cilopadang) 2026", img: "assets/uploads/peta_gambar/Peta Batas Dusun Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas Dusun Tahun 2026.pdf", catKey: "batas" },
+    "peta_desa_2026": { title: "Peta Batas Desa Tahun 2026", category: "Batas Administrasi", desc: "Peta batas administrasi utama Desa Gunungsari, Sadananya tahun 2026", img: "assets/uploads/peta_gambar/Peta Batas Desa Tahun 2026.png", pdf: "data/Peta Batas/Peta Batas Desa Tahun 2026.pdf", catKey: "batas" },
+    "fasum_desa": { title: "Peta Persebaran Fasilitas Umum Desa Gunungsari", category: "Fasilitas Umum", desc: "Peta lokasi seluruh fasilitas publik & sosial di seluruh wilayah Desa Gunungsari", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Desa Gunungsari.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Desa Gunungsari.pdf", catKey: "fasum" },
+    "fasum_dusun_desa": { title: "Peta Persebaran Fasilitas Umum Dusun Desa", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Desa", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Desa.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Desa.pdf", catKey: "fasum" },
+    "fasum_cikatomas": { title: "Peta Persebaran Fasilitas Umum Dusun Cikatomas", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Cikatomas", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Cikatomas.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Cikatomas.pdf", catKey: "fasum" },
+    "fasum_cilopadang": { title: "Peta Persebaran Fasilitas Umum Dusun Cilopadang", category: "Fasilitas Umum", desc: "Peta detail fasilitas umum di wilayah Dusun Cilopadang", img: "assets/uploads/peta_gambar/Peta Persebaran Fasilitas Umum Dusun Cilopadang.png", pdf: "data/Fasilitas Umum/Peta Persebaran Fasilitas Umum Dusun Cilopadang.pdf", catKey: "fasum" },
+    "umkm_desa": { title: "UMKM Desa Gunungsari", category: "UMKM", desc: "Peta sebaran industri kreatif & usaha mikro warga Desa Gunungsari secara menyeluruh", img: "assets/uploads/peta_gambar/UMKM Desa Gunungsari.png", pdf: "data/UMKM/UMKM Desa Gunungsari.pdf", catKey: "umkm" },
+    "umkm_dusun_desa": { title: "UMKM Dusun Desa", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Desa", img: "assets/uploads/peta_gambar/UMKM Dusun Desa.png", pdf: "data/UMKM/UMKM Dusun Desa.pdf", catKey: "umkm" },
+    "umkm_cikatomas": { title: "UMKM Dusun Cikatomas", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Cikatomas", img: "assets/uploads/peta_gambar/UMKM Dusun Cikatomas.png", pdf: "data/UMKM/UMKM Dusun Cikatomas.pdf", catKey: "umkm" },
+    "umkm_cilopadang": { title: "UMKM Dusun Cilopadang", category: "UMKM", desc: "Peta sebaran UMKM & usaha warga di Dusun Cilopadang", img: "assets/uploads/peta_gambar/UMKM Dusun Cilopadang.png", pdf: "data/UMKM/UMKM Dusun Cilopadang.pdf", catKey: "umkm" },
+    "longsor": { title: "Peta Bahaya Longsor", category: "Bahaya Longsor", desc: "Peta mitigasi & zonasi kerawanan bahaya longsor Desa Gunungsari", img: "assets/uploads/peta_gambar/Peta Bahaya Longsor.png", pdf: "data/Bahaya Longsor/Peta Bahaya Longsor.pdf", catKey: "longsor" }
+  };
+
+  const katConfig = {
+    pemerintahan:  { color: '#5C2D8E', icon: 'bi-building-gear', label: 'Pemerintahan & Pelayanan' },
+    pendidikan:    { color: '#2E5339', icon: 'bi-mortarboard-fill', label: 'Fasilitas Pendidikan' },
+    kesehatan:     { color: '#D9534F', icon: 'bi-heart-pulse-fill', label: 'Fasilitas Kesehatan' },
+    keagamaan:     { color: '#0284C7', icon: 'bi-moon-stars-fill', label: 'Tempat Ibadah & Keagamaan' },
+    umkm:          { color: '#8B4CB5', icon: 'bi-shop', label: 'UMKM & Industri Warga' },
+    wisata:        { color: '#F2A93B', icon: 'bi-tree-fill', label: 'Wisata & Alam' },
+    fasilitas_umum:{ color: '#6C757D', icon: 'bi-geo-alt-fill', label: 'Fasilitas Umum & Lainnya' }
+  };
+
+  // ─── State ──────────────────────────────────────────────────────────────────
+  let allLocations = [];
+  let hilyaGeoJsonMap = {};
+  let map = null, mapBatasAdmin = null, markerCluster = null;
+  let dusunPolygonLayer = null;
+  let selectedDusun    = 'semua';
+  let selectedKategori = 'semua';
+
+  async function fetchGeoJSON(directPath, fallbackPath) {
+    try {
+      let r = await fetch(directPath);
+      if (r.ok) return await r.json();
+    } catch(e) {}
+    try {
+      let r = await fetch(fallbackPath);
+      if (r.ok) return await r.json();
+    } catch(e) {}
+    return null;
+  }
+
+  // ─── Load Datasets ──────────────────────────────────────────────────────────
+  async function loadDatasets() {
+    try {
+      const [resUmkm, resFasum, resBatasDesa, resBatasDusun, resBatasRt, resBatasRw] = await Promise.all([
+        fetchGeoJSON('data/umkm.geojson', 'data/UMKM/Geojson UMKM/umkm.geojson'),
+        fetchGeoJSON('data/Fasum.geojson', 'data/Fasilitas Umum/Geojson Fasilitas Umum/Fasum.geojson'),
+        fetchGeoJSON('data/Batas_Desa.geojson', 'data/Peta Batas/Batas (SHP)/Batas_Desa.geojson'),
+        fetchGeoJSON('data/Batas_Dusun.geojson', 'data/Peta Batas/Batas (SHP)/Batas_Dusun.geojson'),
+        fetchGeoJSON('data/Batas_RT.geojson', 'data/Peta Batas/Batas (SHP)/Batas_RT.geojson'),
+        fetchGeoJSON('data/Batas_RW.geojson', 'data/Peta Batas/Batas (SHP)/Batas_RW.geojson')
+      ]);
+
+      // Detect if GeoJSON is already WGS84 (lon in range -180..180) or still UTM (large numbers)
+      function isAlreadyWgs84(gj) {
+        if (!gj || !gj.features || !gj.features.length) return true;
+        const f = gj.features[0];
+        if (!f.geometry) return true;
+        let coords;
+        const g = f.geometry;
+        if (g.type === 'Polygon') coords = g.coordinates[0][0];
+        else if (g.type === 'MultiPolygon') coords = g.coordinates[0][0][0];
+        else return true;
+        return coords && Math.abs(coords[0]) <= 180;
+      }
+
+      function smartReproject(gj, epsg) {
+        if (!gj) return null;
+        if (isAlreadyWgs84(gj)) return gj;  // already WGS84, no reprojection needed
+        return reprojectGeoJSON(gj, epsg);
+      }
+
+      // Load boundary data (already WGS84 if converted by Python script)
+      if (resBatasDesa)  hilyaGeoJsonMap.Batas_Desa  = smartReproject(resBatasDesa,  'EPSG:32749');
+      if (resBatasRt)    hilyaGeoJsonMap.Batas_RT     = normaliseRtProps(smartReproject(resBatasRt,    'EPSG:32749'));
+      if (resBatasRw)    hilyaGeoJsonMap.Batas_RW     = normaliseRwProps(smartReproject(resBatasRw,    'EPSG:32749'));
+
+      // Build Dusun boundaries from RW (RW1+2=Desa, RW3+4=Cikatomas, RW5+6=Cilopadang)
+      // This ensures Dusun polygons exactly match RW boundaries with no misalignment
+      const dusunFromRw = buildDusunFromRW(hilyaGeoJsonMap.Batas_RW);
+      if (dusunFromRw && dusunFromRw.features.length) {
+        hilyaGeoJsonMap.Batas_Dusun = dusunFromRw;
+        console.log('[GeoJSON] Batas_Dusun built from RW:', dusunFromRw.features.length, 'dusun');
+      } else if (resBatasDusun) {
+        // Fallback: use original Dusun shapefile
+        hilyaGeoJsonMap.Batas_Dusun = normaliseDusunProps(smartReproject(resBatasDusun, 'EPSG:32748'));
+        console.log('[GeoJSON] Batas_Dusun: using original shapefile (RW fallback)');
+      }
+
+      let locationsList = [];
+      let idCounter = 1;
+
+      // 1. UMKM Points (WGS84)
+      if (resUmkm && resUmkm.features) {
+        resUmkm.features.forEach(feat => {
+          const p = feat.properties || {}, geom = feat.geometry || {};
+          if (geom.type === 'Point' && geom.coordinates) {
+            let lng = geom.coordinates[0], lat = geom.coordinates[1];
+            if (lng > 180) lng /= 1e15;
+            if (lat < -90) lat /= 1e15;
+            const dusun = getDusunFromPolygonOrLat(lng, lat);
+            locationsList.push({
+              id: idCounter++,
+              nama: p.Name || p.nama || 'UMKM',
+              kategori: 'umkm',
+              dusun: dusun,
+              latitude: lat,
+              longitude: lng,
+              deskripsi: p.description || 'Usaha Mikro Kecil dan Menengah'
+            });
+          }
+        });
+      }
+
+      // 2. Fasum Points (Scaled 1e15 -> WGS84)
+      if (resFasum && resFasum.features) {
+        resFasum.features.forEach(feat => {
+          const p = feat.properties || {}, geom = feat.geometry || {};
+          if (geom.type === 'Point' && geom.coordinates) {
+            let lng = geom.coordinates[0], lat = geom.coordinates[1];
+            if (lng > 180) lng /= 1e15;
+            if (lat < -90) lat /= 1e15;
+
+            const name = (p.Name || p.nama || '').trim();
+            const lower = name.toLowerCase();
+            let kat = 'fasilitas_umum';
+            if (/sekolah|sdn|mts|paud|ponpes|madrasah|sma|yayasan|kober/i.test(lower)) kat = 'pendidikan';
+            else if (/masjid|mushola|musholla|mesjid/i.test(lower)) kat = 'keagamaan';
+            else if (/poskesdes|posyandu|puskesmas/i.test(lower)) kat = 'kesehatan';
+            else if (/kantor desa|bumdes/i.test(lower)) kat = 'pemerintahan';
+            else if (/wisata|tubing|kolam/i.test(lower)) kat = 'wisata';
+            else if (/warung|toko|pabrik|bengkel|produksi|penggilingan|seblak|cell|ayam|sandal|depot/i.test(lower)) kat = 'umkm';
+
+            const dusun = getDusunFromPolygonOrLat(lng, lat);
+            locationsList.push({
+              id: idCounter++,
+              nama: name || 'Fasilitas Umum',
+              kategori: kat,
+              dusun: dusun,
+              latitude: lat,
+              longitude: lng,
+              deskripsi: 'Fasilitas Publik Desa Gunungsari'
+            });
+          }
+        });
+      }
+
+      allLocations = locationsList;
+    } catch(e) {
+      console.error('GeoJSON load error:', e);
+    }
+
+    updateCounts();
+    initMap();
+    filterDirectory();
+  }
+
+  // ─── Update Counter Badges ─────────────────────────────────────────────────
+  function updateCounts() {
+    const counts = { semua: allLocations.length, pemerintahan: 0, pendidikan: 0, kesehatan: 0, keagamaan: 0, umkm: 0, wisata: 0, fasilitas_umum: 0 };
+    const dC = { semua: allLocations.length, 'Dusun Desa': 0, 'Dusun Cikatomas': 0, 'Dusun Cilopadang': 0 };
+
+    allLocations.forEach(loc => {
+      if (counts[loc.kategori] !== undefined) counts[loc.kategori]++;
+      if (dC[loc.dusun] !== undefined) dC[loc.dusun]++;
+    });
+
+    const setTxt = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
+    setTxt('badgeSemuaCount', counts.semua);
+    setTxt('badgePemCount', counts.pemerintahan);
+    setTxt('badgePendCount', counts.pendidikan);
+    setTxt('badgeKesCount', counts.kesehatan);
+    setTxt('badgeAgamaCount', counts.keagamaan);
+    setTxt('badgeUmkmCount', counts.umkm);
+    setTxt('badgeWisataCount', counts.wisata);
+    setTxt('badgeFasumCount', counts.fasilitas_umum);
+
+    setTxt('badgeDusunSemua', dC.semua);
+    setTxt('badgeDusunDesa', dC['Dusun Desa']);
+    setTxt('badgeDusunCikatomas', dC['Dusun Cikatomas']);
+    setTxt('badgeDusunCilopadang', dC['Dusun Cilopadang']);
+  }
+
+  // ─── Init Map WebGIS (Tab 1) ───────────────────────────────────────────────
+  function initMap() {
+    const container = document.getElementById('mapContainer');
+    if (!container) return;
+
+    if (map) {
+      setTimeout(() => map.invalidateSize(), 200);
+      renderMarkers();
+      return;
+    }
+
+    map = L.map('mapContainer', {
+      center: [-7.2540, 108.3085],
+      zoom: 14,
+      minZoom: 11,
+      maxZoom: 19
+    });
+
+    const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 19 }).addTo(map);
+    const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: '&copy; Esri World Imagery', maxZoom: 19 });
+
+    // Draw Dusun Polygons Overlay
+    if (hilyaGeoJsonMap.Batas_Dusun && hilyaGeoJsonMap.Batas_Dusun.features && hilyaGeoJsonMap.Batas_Dusun.features.length) {
+      dusunPolygonLayer = L.geoJSON(hilyaGeoJsonMap.Batas_Dusun, {
+        style: feat => {
+          const w = (feat.properties && feat.properties.warna) || '#8B4CB5';
+          return { color: w, weight: 2.5, opacity: 0.95, fillColor: w, fillOpacity: 0.18 };
+        },
+        onEachFeature: (feat, layer) => {
+          const nm = (feat.properties && feat.properties.nama_dusun) || 'Dusun';
+          layer.bindTooltip('<strong>' + nm + '</strong>', { sticky: true, direction: 'top' });
+        }
+      }).addTo(map);
+
+      try {
+        const b = dusunPolygonLayer.getBounds();
+        if (b.isValid()) map.fitBounds(b, { padding: [30, 30], maxZoom: 15 });
+      } catch(e) {}
+    }
+
+    // Marker Cluster
+    markerCluster = L.markerClusterGroup({
+      maxClusterRadius: 35,
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: false,
+      zoomToBoundsOnClick: true,
+      polygonOptions: { fillOpacity: 0, opacity: 0, weight: 0 }
+    }).addTo(map);
+
+    L.control.layers({ 'Peta Jalan': osm, 'Satelit HD': sat }, {}, { position: 'topright' }).addTo(map);
+
+    renderMarkers();
+    setTimeout(() => map.invalidateSize(), 300);
+  }
+
+  function createMarkerIcon(kategori) {
+    const cfg = katConfig[kategori] || { color: '#6C757D', icon: 'bi-geo-alt-fill' };
+    const html = `<div style="background:${cfg.color};width:32px;height:32px;border-radius:50%;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;"><i class="bi ${cfg.icon}" style="color:#fff;font-size:13px;"></i></div>`;
+    return L.divIcon({ className: 'custom-gis-marker', html, iconSize: [32, 32], iconAnchor: [16, 16] });
+  }
+
+  function renderMarkers(zoomToSelectedDusun = false) {
+    if (!markerCluster) return;
+    markerCluster.clearLayers();
+
+    const filtered = allLocations.filter(loc => {
+      const matchDusun = (selectedDusun === 'semua' || loc.dusun === selectedDusun);
+      const matchKat   = (selectedKategori === 'semua' || loc.kategori === selectedKategori);
+      return matchDusun && matchKat;
+    });
+
+    filtered.forEach(loc => {
+      const m = L.marker([loc.latitude, loc.longitude], { icon: createMarkerIcon(loc.kategori) });
+      m.on('click', () => showDetailModal(loc));
+      markerCluster.addLayer(m);
+    });
+
+    if (zoomToSelectedDusun && selectedDusun !== 'semua' && dusunPolygonLayer) {
+      let targetBounds = null;
+      dusunPolygonLayer.eachLayer(layer => {
+        const props = layer.feature && layer.feature.properties;
+        if (props && props.nama_dusun === selectedDusun) {
+          try { targetBounds = layer.getBounds(); } catch(e) {}
+        }
+      });
+      if (targetBounds && targetBounds.isValid()) {
+        map.fitBounds(targetBounds, { padding: [40, 40], maxZoom: 16 });
+      }
+    } else if (zoomToSelectedDusun && selectedDusun === 'semua' && dusunPolygonLayer) {
+      try { const b = dusunPolygonLayer.getBounds(); if (b.isValid()) map.fitBounds(b, { padding: [30, 30], maxZoom: 15 }); } catch(e) {}
+    }
+
+    const labelEl = document.getElementById('activeFilterLabel');
+    if (labelEl) {
+      const dLabel = selectedDusun === 'semua' ? 'Semua Dusun' : selectedDusun;
+      const kLabel = selectedKategori === 'semua' ? 'Semua Layer' : (katConfig[selectedKategori]?.label || selectedKategori);
+      labelEl.textContent = `Menampilkan: ${kLabel} | ${dLabel} (${filtered.length} titik)`;
+    }
+  }
+
+  function showDetailModal(loc) {
+    const cfg = katConfig[loc.kategori] || { color: '#5C2D8E', icon: 'bi-geo-alt-fill', label: loc.kategori };
+    document.getElementById('modalNamaLokasi').textContent    = loc.nama || '—';
+    document.getElementById('modalKategoriLabel').textContent = cfg.label;
+    document.getElementById('modalDusunVal').textContent      = loc.dusun || 'Dusun Desa';
+    document.getElementById('modalDeskripsiVal').textContent  = loc.deskripsi || 'Lokasi terverifikasi Desa Gunungsari.';
+    document.getElementById('modalKoordinat').textContent     = parseFloat(loc.latitude).toFixed(6) + ', ' + parseFloat(loc.longitude).toFixed(6);
+    document.getElementById('btnGoogleMaps').href             = 'https://www.google.com/maps?q=' + loc.latitude + ',' + loc.longitude;
+    document.getElementById('modalHeaderBg').style.background = cfg.color;
+    document.getElementById('modalIconClass').className       = 'bi ' + cfg.icon;
+    new bootstrap.Modal(document.getElementById('modalDetailLokasi')).show();
+  }
+
+  function filterDirectory() {
+    const term = (document.getElementById('searchDir')?.value || '').toLowerCase();
+    const filtered = allLocations.filter(loc => {
+      const matchDusun = (selectedDusun === 'semua' || loc.dusun === selectedDusun);
+      const matchKat   = (selectedKategori === 'semua' || loc.kategori === selectedKategori);
+      const matchTerm  = !term || (loc.nama || '').toLowerCase().includes(term) || (loc.dusun || '').toLowerCase().includes(term);
+      return matchDusun && matchKat && matchTerm;
+    });
+    populateDirectory(filtered);
+  }
+
+  function populateDirectory(locations) {
+    const tbody = document.getElementById('dirTableBody');
+    if (!tbody) return;
+    tbody.innerHTML = '';
+
+    if (!locations.length) {
+      tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4"><i class="bi bi-info-circle fs-4 d-block mb-1"></i>Tidak ada data lokasi yang cocok.</td></tr>';
+      return;
+    }
+
+    locations.forEach(loc => {
+      const cfg = katConfig[loc.kategori] || { label: loc.kategori, color: '#5C2D8E' };
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong class="font-outfit text-dark">${escHtml(loc.nama)}</strong></td>
+        <td><span class="badge text-white px-3 py-1" style="background-color:${cfg.color};font-size:11px;">${escHtml(cfg.label)}</span></td>
+        <td><small class="fw-semibold text-dark"><i class="bi bi-geo-alt-fill me-1 text-danger"></i>${escHtml(loc.dusun)}</small></td>
+        <td><small class="text-muted">${escHtml((loc.deskripsi || '-').substring(0, 50))}</small></td>
+        <td class="text-end">
+          <button class="btn btn-sm btn-outline-primary rounded-pill btn-focus-map px-3" data-lat="${loc.latitude}" data-lng="${loc.longitude}">
+            <i class="bi bi-map-fill me-1"></i>Peta
+          </button>
+        </td>`;
+      tbody.appendChild(tr);
+    });
+
+    document.querySelectorAll('.btn-focus-map').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const lat = parseFloat(this.dataset.lat), lng = parseFloat(this.dataset.lng);
+        bootstrap.Tab.getOrCreateInstance(document.getElementById('webgis-tab')).show();
+        setTimeout(() => { if (map) map.setView([lat, lng], 17); }, 300);
+      });
+    });
+  }
+
+  // ─── Init Map Batas Administrasi (Tab 2) ──────────────────────────────────
+  function initMapBatasAdmin() {
+    const container = document.getElementById('mapBatasAdmin');
+    if (!container) return;
+
+    if (mapBatasAdmin) {
+      setTimeout(() => mapBatasAdmin.invalidateSize(), 200);
+      return;
+    }
+
+    setTimeout(() => {
+      mapBatasAdmin = L.map('mapBatasAdmin', {
+        center: [-7.2540, 108.3085], zoom: 14, minZoom: 10, maxZoom: 19
+      });
+
+      const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 19 }).addTo(mapBatasAdmin);
+      const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { attribution: '&copy; Esri World Imagery', maxZoom: 19 });
+
+      const groupDesa  = L.featureGroup();
+      const groupDusun = L.featureGroup();
+      const groupRW    = L.featureGroup();
+      const groupRT    = L.featureGroup();
+
+      let fitTarget = null;
+
+      if (hilyaGeoJsonMap.Batas_Desa && hilyaGeoJsonMap.Batas_Desa.features && hilyaGeoJsonMap.Batas_Desa.features.length) {
+        L.geoJSON(hilyaGeoJsonMap.Batas_Desa, {
+          style: { color: '#FFE600', weight: 4.5, opacity: 1, fill: false }
+        }).bindTooltip('Batas Desa Gunungsari', { sticky: true }).addTo(groupDesa);
+        fitTarget = groupDesa;
+      }
+
+      if (hilyaGeoJsonMap.Batas_Dusun && hilyaGeoJsonMap.Batas_Dusun.features && hilyaGeoJsonMap.Batas_Dusun.features.length) {
+        L.geoJSON(hilyaGeoJsonMap.Batas_Dusun, {
+          style: feat => ({
+            color:       (feat.properties && feat.properties.warna) || '#8B4CB5',
+            weight:      2.5,
+            opacity:     0.9,
+            fillColor:   (feat.properties && feat.properties.warna) || '#8B4CB5',
+            fillOpacity: 0.18
+          }),
+          onEachFeature: (feat, layer) => {
+            const nm = (feat.properties && feat.properties.nama_dusun) || 'Dusun';
+            layer.bindTooltip('<strong>' + nm + '</strong>', { sticky: true });
+          }
+        }).addTo(groupDusun);
+        if (!fitTarget) fitTarget = groupDusun;
+      }
+
+      if (hilyaGeoJsonMap.Batas_RW && hilyaGeoJsonMap.Batas_RW.features && hilyaGeoJsonMap.Batas_RW.features.length) {
+        L.geoJSON(hilyaGeoJsonMap.Batas_RW, {
+          style: { color: '#00B4D8', weight: 2, opacity: 0.85, fill: false },
+          onEachFeature: (feat, layer) => {
+            const rw = (feat.properties && feat.properties.nama_rw) || 'RW';
+            layer.bindTooltip('Batas ' + rw, { sticky: true });
+          }
+        }).addTo(groupRW);
+      }
+
+      if (hilyaGeoJsonMap.Batas_RT && hilyaGeoJsonMap.Batas_RT.features && hilyaGeoJsonMap.Batas_RT.features.length) {
+        L.geoJSON(hilyaGeoJsonMap.Batas_RT, {
+          style: { color: '#FFD700', weight: 1.8, opacity: 0.95, fillColor: '#FFD700', fillOpacity: 0.18 },
+          onEachFeature: (feat, layer) => {
+            const p = feat.properties || {};
+            const rtText = p.nama_rt || p.Nama_RT || p.NAMA_RT || 'RT';
+            layer.bindTooltip(rtText, { permanent: true, direction: 'center', className: 'polygon-rt-label' });
+            layer.bindPopup('<div class="p-2"><h6 class="fw-bold mb-1">' + rtText + '</h6></div>');
+          }
+        }).addTo(groupRT);
+        if (!fitTarget) fitTarget = rtGeo;
+      }
+
+      [groupDesa, groupDusun, groupRW, groupRT].forEach(g => g.addTo(mapBatasAdmin));
+
+      if (fitTarget) {
+        try {
+          const b = fitTarget.getBounds();
+          if (b.isValid()) mapBatasAdmin.fitBounds(b, { padding: [25, 25] });
+          else mapBatasAdmin.setView([-7.2540, 108.3085], 14);
+        } catch(e) { mapBatasAdmin.setView([-7.2540, 108.3085], 14); }
+      }
+
+      L.control.layers(
+        { 'Peta Jalan': osm, 'Satelit HD': sat },
+        {
+          'Batas Desa Utama': groupDesa,
+          'Batas Dusun': groupDusun,
+          'Batas RW': groupRW,
+          'Batas RT (Label Permanen)': groupRT
+        },
+        { position: 'topright', collapsed: false }
+      ).addTo(mapBatasAdmin);
+
+      setTimeout(() => mapBatasAdmin.invalidateSize(), 300);
+    }, 250);
+  }
+
+  // ─── Init Tematik Selector (Tab 3) ─────────────────────────────────────────
+  function initTematikSelector() {
+    const selectEl = document.getElementById('selectMapTematik');
+    if (!selectEl) return;
+
+    function updateTematikDisplay(mapKey) {
+      const data = tematikMapData[mapKey];
+      if (!data) return;
+      document.getElementById('activeMapTitle').textContent = data.title;
+      document.getElementById('activeMapDesc').textContent  = data.desc;
+      document.getElementById('activeMapCatBadge').textContent = data.category;
+      document.getElementById('imgTematikPreview').src      = data.img;
+      document.getElementById('imgTematikPreview').alt      = data.title;
+      document.getElementById('btnTematikDownloadPdf').href = data.pdf;
+
+      document.querySelectorAll('.btn-tematik-cat').forEach(b => {
+        const match = b.dataset.cat === 'all' || b.dataset.cat === data.catKey;
+        b.classList.toggle('btn-primary', match);
+        b.classList.toggle('btn-outline-secondary', !match);
+      });
+    }
+
+    selectEl.addEventListener('change', function() { updateTematikDisplay(this.value); });
+
+    document.querySelectorAll('.btn-tematik-cat').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const cat = this.dataset.cat;
+        document.querySelectorAll('.btn-tematik-cat').forEach(b => { b.classList.remove('active','btn-primary'); b.classList.add('btn-outline-secondary'); });
+        this.classList.add('active','btn-primary'); this.classList.remove('btn-outline-secondary');
+        const mapOf = { all: 'peta_rt_rw_2026', batas: 'peta_rt_rw_2026', fasum: 'fasum_desa', umkm: 'umkm_desa', longsor: 'longsor' };
+        const key = mapOf[cat] || 'peta_rt_rw_2026';
+        selectEl.value = key; updateTematikDisplay(key);
+      });
+    });
+
+    updateTematikDisplay(selectEl.value || 'peta_rt_rw_2026');
+  }
+
+  // ─── Event Listeners ────────────────────────────────────────────────────────
+  document.querySelectorAll('.btn-dusun-item').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.btn-dusun-item').forEach(b => {
+        b.classList.remove('active','btn-primary'); b.classList.add('btn-outline-secondary');
+        const badge = b.querySelector('.badge');
+        if (badge) badge.className = 'badge bg-light text-dark border rounded-pill';
+      });
+      this.classList.add('active','btn-primary'); this.classList.remove('btn-outline-secondary');
+      const badge = this.querySelector('.badge');
+      if (badge) badge.className = 'badge bg-white text-primary border rounded-pill';
+
+      selectedDusun = this.dataset.dusun;
+      renderMarkers(true);
+      filterDirectory();
+    });
+  });
+
+  document.querySelectorAll('.btn-kat-item').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.btn-kat-item').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      selectedKategori = this.dataset.kat;
+      renderMarkers();
+      filterDirectory();
+    });
+  });
+
+  document.getElementById('btnResetAllFilters')?.addEventListener('click', function() {
+    selectedDusun = 'semua'; selectedKategori = 'semua';
+    document.querySelectorAll('.btn-dusun-item').forEach(b => { b.classList.remove('active','btn-primary'); b.classList.add('btn-outline-secondary'); const badge = b.querySelector('.badge'); if (badge) badge.className = 'badge bg-light text-dark border rounded-pill'; });
+    const semuaBtn = document.querySelector('.btn-dusun-item[data-dusun="semua"]');
+    if (semuaBtn) { semuaBtn.classList.add('active','btn-primary'); semuaBtn.classList.remove('btn-outline-secondary'); const badge = semuaBtn.querySelector('.badge'); if (badge) badge.className = 'badge bg-white text-primary border rounded-pill'; }
+    document.querySelectorAll('.btn-kat-item').forEach(b => b.classList.remove('active'));
+    document.querySelector('.btn-kat-item[data-kat="semua"]')?.classList.add('active');
+    renderMarkers(true);
+    filterDirectory();
+  });
+
+  document.getElementById('btnResetMap')?.addEventListener('click', function() {
+    if (map && dusunPolygonLayer) {
+      try { const b = dusunPolygonLayer.getBounds(); if (b.isValid()) { map.fitBounds(b, { padding: [30, 30], maxZoom: 15 }); return; } } catch(e) {}
+    }
+    if (map) map.setView([-7.2540, 108.3085], 14);
+  });
+
+  document.querySelectorAll('.btn-statis-switch').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.btn-statis-switch').forEach(b => { b.classList.remove('active','btn-primary'); b.classList.add('btn-outline-secondary'); });
+      this.classList.add('active','btn-primary');
+      document.getElementById('titleBatasStatis').textContent = this.dataset.title;
+      document.getElementById('imgBatasStatisPreview').src    = this.dataset.img;
+      document.getElementById('btnDownloadBatasPDF').href     = this.dataset.pdf;
+    });
+  });
+
+  const btnModeInteraktif = document.getElementById('btnModeInteraktif');
+  const btnModeStatis     = document.getElementById('btnModeStatis');
+  const viewInteraktif    = document.getElementById('viewBatasInteraktif');
+  const viewStatis        = document.getElementById('viewBatasStatis');
+  if (btnModeInteraktif && btnModeStatis) {
+    btnModeInteraktif.addEventListener('click', function() {
+      btnModeInteraktif.classList.add('btn-primary','active'); btnModeInteraktif.classList.remove('btn-outline-secondary');
+      btnModeStatis.classList.remove('btn-primary','active'); btnModeStatis.classList.add('btn-outline-secondary');
+      viewInteraktif.classList.remove('d-none'); viewStatis.classList.add('d-none');
+      initMapBatasAdmin();
+    });
+    btnModeStatis.addEventListener('click', function() {
+      btnModeStatis.classList.add('btn-primary','active'); btnModeStatis.classList.remove('btn-outline-secondary');
+      btnModeInteraktif.classList.remove('btn-primary','active'); btnModeInteraktif.classList.add('btn-outline-secondary');
+      viewStatis.classList.remove('d-none'); viewInteraktif.classList.add('d-none');
+    });
+  }
+
+  document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tabBtn => {
+    tabBtn.addEventListener('shown.bs.tab', function(e) {
+      const id = e.target.id;
+      if (id === 'webgis-tab') { setTimeout(() => { if (map) map.invalidateSize(); }, 200); }
+      if (id === 'admin-tab')  {
+        setTimeout(() => {
+          if (viewInteraktif && !viewInteraktif.classList.contains('d-none')) {
+            initMapBatasAdmin();
+          }
+        }, 250);
+      }
+    });
+  });
+
+  document.getElementById('searchDir')?.addEventListener('input', filterDirectory);
+
+  window.openMapModal = function(imgSrc, title) {
+    document.getElementById('modalImageHDTitle').textContent = title || 'Preview Peta HD';
+    document.getElementById('imgHDSource').src = imgSrc;
+    new bootstrap.Modal(document.getElementById('modalViewImageHD')).show();
+  };
+
+  function escHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  window.addEventListener('load', function() {
+    loadDatasets();
+    initTematikSelector();
+  });
+
+})();
+</script>
+
+</body>
+</html>

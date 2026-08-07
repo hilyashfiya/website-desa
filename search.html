@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pencarian global informasi lintas modul Desa Gunungsari: Berita, pengumuman, lokasi WebGIS, UMKM, dan pelayanan publik.">
+  <meta name="keywords" content="Pencarian Desa Gunungsari, Search WebGIS, Syarat Surat, Sadananya, Ciamis">
+  <meta name="robots" content="index, follow">
+  <title>Pencarian Global Portal Desa — Desa Gunungsari</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🏡</text></svg>">
+
+  <!-- Google Fonts: Outfit + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Sticky Header Wrapper -->
+<div class="sticky-top-wrapper" style="position:sticky; top:0; z-index:1030;">
+  <!-- Tier 1: Top Bar -->
+  <div class="navbar-topbar" style="background-color:#2D114C; border-bottom:1px solid rgba(255,255,255,0.08); padding:0.35rem 0;">
+    <div class="container-fluid container-xl d-flex justify-content-between align-items-center">
+      <small class="text-white-50 d-flex align-items-center gap-2" style="font-size:0.75rem; letter-spacing:0.3px;">
+        <i class="bi bi-geo-alt-fill text-gold" style="font-size:0.75rem;"></i>
+        Portal Digital &amp; WebGIS Desa Gunungsari
+      </small>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <i class="bi bi-shield-fill text-warning" style="font-size:0.65rem;"></i>Kec. Sadananya
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <img src="assets/img/logo-ciamis.png" alt="Ciamis" style="height:14px; max-height:14px; width:auto; vertical-align:middle;">
+          Kab. Ciamis
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(212,144,31,0.25); border:1px solid rgba(212,144,31,0.4); color:#FFFFFF;">
+          <i class="bi bi-circle-fill text-success" style="font-size:0.55rem;"></i>Data Aktif
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tier 2: Main Navbar -->
+  <nav class="navbar navbar-expand-xl navbar-dark" id="mainNavbar" style="background-color:#421C6B !important; padding:0.55rem 0;">
+    <div class="container-fluid container-xl">
+      <a class="navbar-brand py-0 d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/logo-ciamis.png" alt="Logo Desa Gunungsari" style="height:40px; max-height:40px; width:auto; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));" class="me-1">
+        <div class="d-flex flex-column lh-1">
+          <span class="fw-bold text-white font-outfit" style="font-size:1.1rem; letter-spacing:-0.2px;">Desa Gunungsari</span>
+          <small class="text-white-50" style="font-size:0.65rem; letter-spacing:0.4px; margin-top:3px;">Kec. Sadananya &bull; Kab. Ciamis</small>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto align-items-xl-center my-2 my-xl-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i>Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="profil.html"><i class="bi bi-building me-1"></i>Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="apbdes.html"><i class="bi bi-pie-chart-fill me-1"></i>APBDes</a></li>
+          <li class="nav-item"><a class="nav-link" href="potensi.html"><i class="bi bi-shop me-1"></i>Potensi</a></li>
+          <li class="nav-item"><a class="nav-link" href="peta.html"><i class="bi bi-map-fill me-1"></i>Wilayah &amp; Peta</a></li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="bi bi-newspaper me-1"></i>Informasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="dokumentasi.html"><i class="bi bi-images me-1"></i>Dokumentasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="pelayanan.html"><i class="bi bi-file-earmark-text me-1"></i>Pelayanan</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0 ms-xl-2">
+          <a class="nav-link nav-search-btn me-1 active" href="search.html" title="Cari di Portal"><i class="bi bi-search"></i></a>
+          <a class="nav-link navbar-cta ms-xl-1" href="kontak.html"><i class="bi bi-envelope-fill me-1"></i>Kontak</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- Clean Page Header -->
+<section class="page-header-clean" aria-label="Pencarian Global">
+  <div class="container text-center position-relative">
+    <div class="page-breadcrumb">
+      <a href="index.html">Beranda</a>
+      <span class="separator">/</span>
+      <span>Pencarian</span>
+    </div>
+    <p class="section-label justify-content-center mb-2">Pencarian Lintas Modul</p>
+    <h1 class="font-outfit"><i class="bi bi-search me-2 text-gold"></i>Pencarian Portal Desa</h1>
+    <p class="text-muted fs-5 mb-0">Cari berita, lokasi WebGIS, UMKM, fasilitas umum, dan informasi pelayanan desa</p>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="container">
+
+    <!-- Search Input Form -->
+    <div class="row justify-content-center mb-5 fade-in-up">
+      <div class="col-lg-12">
+        <form onsubmit="event.preventDefault(); executeSearch();" class="card p-3 shadow-sm border-0 rounded-4" style="background:var(--bg-white);">
+          <div class="input-group input-group-lg">
+            <span class="input-group-text bg-transparent border-0 text-muted"><i class="bi bi-search fs-4"></i></span>
+            <input type="text" id="searchInput" class="form-control border-0 font-inter"
+                   placeholder="Ketik kata kunci (mis. aren, kades, posyandu, domisili, cadas ngampar)..."
+                   value="" autofocus required style="box-shadow:none;">
+            <button type="submit" class="btn btn-primary-custom px-4 rounded-pill">
+              Cari Informasi
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="searchResultsArea" class="fade-in-up">
+      <div class="mb-4">
+        <h5 class="fw-bold font-outfit text-charcoal">
+          Hasil Pencarian untuk "<span class="text-primary-custom" id="searchKeywordLabel">aren</span>"
+        </h5>
+        <p class="text-muted small">Ditemukan <strong id="searchResultCount">4</strong> hasil terkait di seluruh modul portal.</p>
+      </div>
+
+      <div class="row g-4" id="searchContainer">
+        <!-- JS Rendered Results -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+
+<!-- Section Kepercayaan & Pengembang (KKN SPIG UPI) -->
+<section class="py-4 bg-light-subtle border-top border-bottom" aria-label="Informasi Pengembang">
+  <div class="container">
+    <div class="dev-credit-card p-4 p-md-4 px-lg-5">
+      <div class="row align-items-center g-3 g-md-4">
+        <div class="col-auto">
+          <div class="dev-credit-icon">
+            <i class="bi bi-mortarboard-fill"></i>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+            <span class="dev-credit-pill">
+              <i class="bi bi-heart-fill text-danger"></i> Dikembangkan oleh
+            </span>
+            <span class="dev-credit-tag">Kelompok 3</span>
+          </div>
+          <h4 class="fw-bold font-outfit text-dark mb-1" style="font-size: 1.25rem; letter-spacing: -0.2px;">
+            Mahasiswa KKN Universitas Pendidikan Indonesia
+          </h4>
+          <p class="text-secondary mb-0" style="line-height: 1.6; font-size: 0.88rem;">
+            Program Studi Survei Pemetaan dan Informasi Geografis (SPIG) &bull; Dalam rangka mendukung digitalisasi layanan informasi dan pengembangan WebGIS Desa Gunungsari.
+          </p>
+        </div>
+        <div class="col-lg-auto d-none d-lg-flex flex-column gap-2 align-items-end">
+          <span class="dev-credit-badge">
+            <i class="bi bi-geo-alt-fill text-primary"></i> WebGIS Presisi
+          </span>
+          <span class="dev-credit-badge">
+            <i class="bi bi-shield-check text-success"></i> FPIPS UPI 2026
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-section" role="contentinfo" style="background-color:#171520; color:rgba(255,255,255,0.7); padding-top:4rem; padding-bottom:2.5rem;">
+  <div class="container-fluid container-xl">
+    <div class="row g-4 g-lg-5 mb-4">
+
+      <!-- Col 1: Brand & Description -->
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div style="width:48px; height:48px; background:rgba(212,144,31,0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">🏡</div>
+          <div style="width:1px; height:32px; background:rgba(255,255,255,0.15);"></div>
+          <img src="assets/img/logo-ciamis.png" alt="Logo Kabupaten Ciamis" style="height:42px; width:auto;" title="Kabupaten Ciamis">
+        </div>
+        <div class="mb-3">
+          <h5 class="text-white fw-bold font-outfit mb-1" style="font-size:1.25rem;">Desa Gunungsari</h5>
+          <small class="text-white-50" style="font-size:0.78rem;">Kecamatan Sadananya, Kabupaten Ciamis</small>
+        </div>
+        <p class="small text-white-50 lh-base mb-3" style="font-size:0.85rem;">
+          Portal Informasi Digital Desa Gunungsari berbasis WebGIS — menyajikan profil wilayah, data kependudukan, potensi lokal, pelayanan publik, dan pemetaan geospasial yang transparan dan terverifikasi.
+        </p>
+        <div class="d-flex gap-2 flex-wrap">
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(92,45,142,0.25); border:1px solid rgba(92,45,142,0.4); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-geo-alt-fill text-warning me-1"></i>Kec. Sadananya
+          </span>
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(92,45,142,0.25); border:1px solid rgba(92,45,142,0.4); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-building-fill text-warning me-1"></i>Kab. Ciamis
+          </span>
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(40,167,69,0.2); border:1px solid rgba(40,167,69,0.35); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-map-fill text-success me-1"></i>WebGIS
+          </span>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigasi -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Navigasi
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-0" style="font-size:0.85rem;">
+          <li><a href="index.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Beranda</a></li>
+          <li><a href="profil.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Profil Desa</a></li>
+          <li><a href="peta.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Peta WebGIS</a></li>
+          <li><a href="peta.html#direktori-pane" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Direktori Lokasi</a></li>
+          <li><a href="potensi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Potensi Desa</a></li>
+          <li><a href="informasi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Berita &amp; Info</a></li>
+          <li><a href="apbdes.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Transparansi APBDes</a></li>
+          <li><a href="dokumentasi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Dokumentasi</a></li>
+          <li><a href="pelayanan.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Pelayanan</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Kantor Desa -->
+      <div class="col-lg-3 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Kantor Desa
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-3 mb-0" style="font-size:0.85rem; color:rgba(255,255,255,0.65);">
+          <li class="d-flex align-items-start gap-2">
+            <i class="bi bi-geo-alt-fill text-warning mt-1" style="flex-shrink:0;"></i>
+            <span>Desa Gunungsari, Kecamatan Sadananya, Kabupaten Ciamis, Provinsi Jawa Barat</span>
+          </li>
+          <li class="d-flex align-items-center gap-2">
+            <i class="bi bi-telephone-fill text-warning" style="flex-shrink:0;"></i>
+            <a href="tel:082133176920" class="text-white-50 text-decoration-none">082133176920</a>
+          </li>
+          <li class="d-flex align-items-center gap-2">
+            <i class="bi bi-envelope-fill text-warning" style="flex-shrink:0;"></i>
+            <a href="mailto:desagunungsari207@gmail.com" class="text-white-50 text-decoration-none">desagunungsari207@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Jam Operasional -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Jam Operasional
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-3" style="font-size:0.83rem;">
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Senin – Kamis</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 15.00</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Jumat</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 11.30</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center pt-1">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-muted"></i>Sabtu &amp; Minggu</span>
+            <span class="badge" style="background:rgba(220,53,69,0.2); color:#F87171; border:1px solid rgba(220,53,69,0.3); font-size:0.72rem;">Libur</span>
+          </li>
+        </ul>
+        <a href="kontak.html" class="btn btn-outline-light rounded-pill btn-sm w-100 py-2 fw-semibold" style="border-color:rgba(255,255,255,0.2); font-size:0.83rem;">
+          <i class="bi bi-envelope me-1"></i>Hubungi Kami
+        </a>
+      </div>
+
+    </div>
+
+    <hr style="border-color:rgba(255,255,255,0.08); margin:1.75rem 0;">
+
+    <!-- Bottom Bar -->
+    <div class="row align-items-center g-3">
+      <div class="col-md-7 text-center text-md-start">
+        <p class="mb-1 text-white-50" style="font-size:0.82rem;">
+          &copy; 2026 Portal Digital Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis.
+        </p>
+        <p class="mb-0 text-white-50" style="font-size:0.73rem; opacity:0.65; line-height:1.5;">
+          Developed in collaboration with <strong class="text-warning">KKN SPIG</strong> — Penguatan Sistem Informasi Geospasial Desa. Portal Resmi Pemerintah Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis.
+        </p>
+      </div>
+      <div class="col-md-5 text-center text-md-end">
+        <div class="d-inline-flex align-items-center gap-2">
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="https://wa.me/6282133176920" target="_blank" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="btn btn-back-top rounded-circle shadow-lg" id="btnBackTop" aria-label="Kembali ke atas" style="position:fixed; bottom:25px; right:25px; width:44px; height:44px; background:#5C2D8E; color:#FFF; border:none; display:none; z-index:1050; align-items:center; justify-content:center;">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+const searchableData = [
+  { type: 'lokasi', title: 'Sentra Gula Semut Aren Bestari', desc: 'Pengolahan dan produksi gula semut aren organik murni khas Desa Gunungsari.', category: 'UMKM & Industri', dusun: 'Dusun Desa', link: 'peta.html' },
+  { type: 'lokasi', title: 'Kantor & Balai Desa Gunungsari', desc: 'Pusat pemerintahan dan pelayanan administrasi warga Desa Gunungsari.', category: 'Pemerintahan', dusun: 'Dusun Desa', link: 'peta.html' },
+  { type: 'lokasi', title: 'Mata Air & Sungai Cadas Ngampar', desc: 'Ekowisata alam mata air dan aliran sungai cadas jernih pegunungan Sawal.', category: 'Wisata & Alam', dusun: 'Dusun Cilopadang', link: 'peta.html' },
+  { type: 'berita', title: 'Pelaksanaan Musdes Penetapan RKPDes 2026', desc: 'Musyawarah Desa menetapkan Rencana Kerja Pemerintah Desa Gunungsari Tahun 2026.', category: 'Pemerintahan', date: '12 Jun 2026', link: 'informasi.html' },
+  { type: 'berita', title: 'Gotong Royong Bersih Sungai Dusun Gunungsari', desc: 'Ratusan warga turun bersama membersihkan aliran sungai.', category: 'Lingkungan', date: '25 Mei 2026', link: 'informasi.html' },
+  { type: 'pelayanan', title: 'Surat Keterangan Usaha (SKU)', desc: 'Pengurusan surat keterangan usaha bagi pelaku UMKM dan pedagang lokal.', category: 'Pelayanan Publik', link: 'pelayanan.html' },
+  { type: 'pelayanan', title: 'Surat Keterangan Domisili', desc: 'Pengantar surat keterangan domisili perorangan maupun lembaga/badan.', category: 'Pelayanan Publik', link: 'pelayanan.html' },
+  { type: 'pelayanan', title: 'Surat Keterangan Tidak Mampu (SKTM)', desc: 'Persyaratan dan pembuatan SKTM untuk KIS PBI, beasiswa, atau pengobatan.', category: 'Pelayanan Publik', link: 'pelayanan.html' }
+];
+
+function executeSearch() {
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  document.getElementById('searchKeywordLabel').textContent = query || 'semua';
+
+  const results = searchableData.filter(item =>
+    item.title.toLowerCase().includes(query) ||
+    item.desc.toLowerCase().includes(query) ||
+    item.category.toLowerCase().includes(query) ||
+    (item.dusun && item.dusun.toLowerCase().includes(query))
+  );
+
+  document.getElementById('searchResultCount').textContent = results.length;
+  const container = document.getElementById('searchContainer');
+  container.innerHTML = '';
+
+  if (results.length === 0) {
+    container.innerHTML = `
+      <div class="col-12 text-center py-5">
+        <i class="bi bi-search fs-1 text-muted d-block mb-3"></i>
+        <h5>Tidak ditemukan hasil</h5>
+        <p class="text-muted">Coba gunakan kata kunci lain seperti <em>"aren"</em>, <em>"domisili"</em>, <em>"posyandu"</em>, atau <em>"kades"</em>.</p>
+      </div>
+    `;
+    return;
+  }
+
+  results.forEach(res => {
+    let icon = 'bi-geo-alt-fill text-warning';
+    let btnText = 'Lihat di Peta WebGIS';
+    if (res.type === 'berita') { icon = 'bi-newspaper text-gold'; btnText = 'Baca Selengkapnya'; }
+    if (res.type === 'pelayanan') { icon = 'bi-file-earmark-text text-sage'; btnText = 'Panduan & Syarat'; }
+
+    const card = document.createElement('div');
+    card.className = 'col-md-6 col-lg-4';
+    card.innerHTML = `
+      <div class="search-result-item h-100 d-flex flex-column p-4 bg-white rounded-4 shadow-sm border">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="badge bg-primary-subtle text-primary border font-outfit" style="font-size:0.75rem;">${res.category}</span>
+          ${res.dusun ? `<small class="text-muted ms-auto" style="font-size:0.75rem;"><i class="bi bi-geo me-1"></i>${res.dusun}</small>` : ''}
+          ${res.date ? `<small class="text-muted ms-auto" style="font-size:0.75rem;"><i class="bi bi-calendar3 me-1"></i>${res.date}</small>` : ''}
+        </div>
+        <h6 class="fw-bold font-outfit text-charcoal mb-2">${res.title}</h6>
+        <p class="text-muted small mb-3 flex-grow-1" style="line-height:1.6;">${res.desc}</p>
+        <a href="${res.link}" class="btn btn-sm btn-outline-purple mt-auto align-self-start">
+          <i class="bi ${icon} me-1"></i>${btnText}
+        </a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const q = urlParams.get('q') || 'aren';
+  document.getElementById('searchInput').value = q;
+  executeSearch();
+});
+</script>
+
+</body>
+</html>

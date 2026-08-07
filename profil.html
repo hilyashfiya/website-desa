@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Profil resmi Desa Gunungsari Kecamatan Sadananya Kabupaten Ciamis: Sambutan Kepala Desa, sejarah wilayah, visi misi, data pokok Kemendagri, kelembagaan, aparatur desa, infografis kependudukan, galeri desa, dan desa digital.">
+  <meta name="keywords" content="Profil Desa Gunungsari, Sejarah Desa, Visi Misi Desa, Sadananya, Ciamis, Kepala Desa Eman S, Prodeskel, KKN SPIG UPI, BPD, WebGIS">
+  <meta name="robots" content="index, follow">
+  <title>Profil &amp; Infografis Desa — Portal Digital Desa Gunungsari</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🏡</text></svg>">
+
+  <!-- Google Fonts: Outfit + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Premium Enhancement Layer -->
+  <link rel="stylesheet" href="assets/css/premium.css">
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div id="scrollProgress" aria-hidden="true"></div>
+
+<!-- Sticky Header Wrapper -->
+<div class="sticky-top-wrapper" style="position:sticky; top:0; z-index:1030;">
+  <!-- Tier 1: Top Bar -->
+  <div class="navbar-topbar" style="background-color:#2D114C; border-bottom:1px solid rgba(255,255,255,0.08); padding:0.35rem 0;">
+    <div class="container-fluid container-xl d-flex justify-content-between align-items-center">
+      <small class="text-white-50 d-flex align-items-center gap-2" style="font-size:0.75rem; letter-spacing:0.3px;">
+        <i class="bi bi-geo-alt-fill text-gold" style="font-size:0.75rem;"></i>
+        Portal Digital &amp; WebGIS Desa Gunungsari
+      </small>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <i class="bi bi-shield-fill text-warning" style="font-size:0.65rem;"></i>Kec. Sadananya
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <img src="assets/img/logo-ciamis.png" alt="Ciamis" style="height:14px; max-height:14px; width:auto; vertical-align:middle;">
+          Kab. Ciamis
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(212,144,31,0.25); border:1px solid rgba(212,144,31,0.4); color:#FFFFFF;">
+          <i class="bi bi-circle-fill text-success" style="font-size:0.55rem;"></i>Data Aktif
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tier 2: Main Navbar -->
+  <nav class="navbar navbar-expand-xl navbar-dark" id="mainNavbar" style="background-color:#421C6B !important; padding:0.55rem 0;">
+    <div class="container-fluid container-xl">
+      <a class="navbar-brand py-0 d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/logo-ciamis.png" alt="Logo Desa Gunungsari" style="height:40px; max-height:40px; width:auto; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));" class="me-1">
+        <div class="d-flex flex-column lh-1">
+          <span class="fw-bold text-white font-outfit" style="font-size:1.1rem; letter-spacing:-0.2px;">Desa Gunungsari</span>
+          <small class="text-white-50" style="font-size:0.65rem; letter-spacing:0.4px; margin-top:3px;">Kec. Sadananya &bull; Kab. Ciamis</small>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto align-items-xl-center my-2 my-xl-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i>Beranda</a></li>
+          <li class="nav-item"><a class="nav-link active" href="profil.html"><i class="bi bi-building me-1"></i>Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="apbdes.html"><i class="bi bi-pie-chart-fill me-1"></i>APBDes</a></li>
+          <li class="nav-item"><a class="nav-link" href="potensi.html"><i class="bi bi-shop me-1"></i>Potensi</a></li>
+          <li class="nav-item"><a class="nav-link" href="peta.html"><i class="bi bi-map-fill me-1"></i>Wilayah &amp; Peta</a></li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="bi bi-newspaper me-1"></i>Informasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="dokumentasi.html"><i class="bi bi-images me-1"></i>Dokumentasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="pelayanan.html"><i class="bi bi-file-earmark-text me-1"></i>Pelayanan</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0 ms-xl-2">
+          <button class="nav-link nav-search-btn me-1" id="navSearchBtn" type="button" title="Cari di Portal" aria-label="Buka pencarian" aria-expanded="false">
+            <i class="bi bi-search text-white"></i>
+            <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Cari..." aria-label="Kolom pencarian">
+          </button>
+          <a class="nav-link navbar-cta ms-xl-1" href="kontak.html"><i class="bi bi-envelope-fill me-1"></i>Kontak</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- ========================================================
+     1. HERO SECTION — Premium 2-Column Profil Header
+     ======================================================== -->
+<section class="bg-topo-pattern position-relative py-5 border-bottom" aria-label="Profil dan Infografis Desa">
+  <div class="topographic-lines" aria-hidden="true"></div>
+
+  <div class="container position-relative" style="z-index: 2;">
+    <div class="row align-items-center g-5 py-2">
+      <!-- Left: Headline & Breadcrumbs -->
+      <div class="col-lg-6 hero-content">
+        <div class="page-breadcrumb mb-2" style="font-size:0.85rem; color:var(--text-muted);">
+          <a href="index.html" class="text-decoration-none text-muted">Beranda</a>
+          <span class="mx-1">/</span>
+          <span class="fw-semibold text-primary">Profil Desa</span>
+        </div>
+
+        <div class="hero-badge-tag fade-in-up visible mb-3">
+          <i class="bi bi-patch-check-fill text-gold me-1"></i>
+          PROFIL RESMI WILAYAH &amp; INFOGRAFIS
+        </div>
+
+        <h1 class="hero-main-title font-outfit fade-in-up visible mb-3" style="font-size: 2.35rem; line-height: 1.25;">
+          Mengenal Lebih Dekat <span>Desa Gunungsari</span>
+        </h1>
+
+        <p class="hero-desc fade-in-up visible mb-4" style="font-size:1.02rem; line-height:1.8;">
+          Profil lengkap Desa Gunungsari, Kecamatan Sadananya, Kabupaten Ciamis — menyajikan jejak sejarah pembentukan, sambutan Kepala Desa, visi misi, data pokok kependudukan, kelembagaan, serta struktur aparatur desa.
+        </p>
+
+        <!-- Tag pills -->
+        <div class="d-flex align-items-center gap-2 flex-wrap fade-in-up visible" aria-label="Konteks wilayah">
+          <div class="geo-tag-pill">
+            <i class="bi bi-geo-alt-fill text-primary" style="font-size:0.75rem;"></i>
+            Kec. Sadananya, Kab. Ciamis
+          </div>
+          <div class="geo-tag-pill">
+            <i class="bi bi-mountains text-sage" style="font-size:0.75rem;"></i>
+            Lereng Sawal (450-750 mdpl)
+          </div>
+          <div class="geo-tag-pill">
+            <i class="bi bi-hash text-gold" style="font-size:0.75rem;"></i>
+            Kode PUM: 3207042001
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Cinematic Hero Panorama Card -->
+      <div class="col-lg-6 fade-in-up visible">
+        <div class="hero-image-card">
+          <img src="assets/uploads/hero_1784859023.jpeg"
+               alt="Pemandangan Panorama Drone Desa Gunungsari Sadananya"
+               loading="eager" fetchpriority="high">
+
+          <!-- Location badge -->
+          <div class="hero-image-location" aria-label="Lokasi foto">
+            <i class="bi bi-geo-alt-fill" style="font-size:0.75rem;"></i>
+            Desa Gunungsari, Sadananya
+          </div>
+
+          <!-- Bottom floating badge -->
+          <div class="hero-image-badge">
+            <div class="d-flex align-items-center gap-3">
+              <div class="rounded-circle d-flex align-items-center justify-content-center"
+                   style="width:42px; height:42px; background:rgba(78, 110, 82, 0.12); color:#38523C; font-size:1.15rem; flex-shrink:0; border:1px solid rgba(78, 110, 82, 0.25);">
+                <i class="bi bi-tree-fill"></i>
+              </div>
+              <div>
+                <h6 class="mb-0 fw-bold font-outfit text-dark" style="font-size:0.92rem;">Identitas &amp; Lanskap Asri</h6>
+                <small class="text-muted" style="font-size:0.75rem;">Luas 365 Ha &bull; 3 Dusun &bull; 6 RW / 22 RT</small>
+              </div>
+            </div>
+            <span class="badge rounded-pill font-outfit fw-semibold"
+                  style="background:linear-gradient(135deg, #D4901F, #B37713); color:#fff; font-size:0.73rem; padding:0.42rem 0.85rem; flex-shrink:0; box-shadow:0 2px 8px rgba(212,144,31,0.25);">
+              Resmi ✓
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     MAIN CONTAINER WITH ALL SECTIONS PRESERVED
+     ======================================================== -->
+<section class="section-padding">
+  <div class="container">
+
+    <!-- Ringkasan Kuantitatif Wilayah Desa (4 Kartu) -->
+    <div class="row g-4 mb-5 stagger-children">
+      <div class="col-md-3 col-6 fade-in-up">
+        <div class="p-4 bg-white rounded-4 shadow-sm border text-center h-100" style="border: 1.5px solid rgba(92,45,142,0.25) !important; background: linear-gradient(180deg, #FFFFFF 0%, rgba(92,45,142,0.03) 100%) !important;">
+          <i class="bi bi-people-fill text-primary fs-1 mb-2 d-block"></i>
+          <span class="text-muted small d-block mb-1">Total Penduduk</span>
+          <h4 class="fw-bold mb-0 text-charcoal font-outfit" data-counter="3325" style="color:var(--primary) !important;">3.325</h4>
+          <small class="text-muted">Jiwa Terdata</small>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6 fade-in-up">
+        <div class="p-4 bg-white rounded-4 shadow-sm border text-center h-100">
+          <i class="bi bi-diagram-3-fill text-sage fs-1 mb-2 d-block"></i>
+          <span class="text-muted small d-block mb-1">Dusun Resmi</span>
+          <h4 class="fw-bold mb-0 text-charcoal font-outfit">3 Dusun</h4>
+          <small class="text-muted">Dusun Desa, Dusun Cikatomas, Dusun Cilopadang</small>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6 fade-in-up">
+        <div class="p-4 bg-white rounded-4 shadow-sm border text-center h-100">
+          <i class="bi bi-grid-fill text-primary-custom fs-1 mb-2 d-block"></i>
+          <span class="text-muted small d-block mb-1">Cakupan RT / RW</span>
+          <h4 class="fw-bold mb-0 text-charcoal font-outfit">6 RW / 22 RT</h4>
+          <small class="text-muted">Wilayah Administrasi</small>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-6 fade-in-up">
+        <div class="p-4 bg-white rounded-4 shadow-sm border text-center h-100">
+          <i class="bi bi-rulers text-gold fs-1 mb-2 d-block"></i>
+          <span class="text-muted small d-block mb-1">Luas Wilayah</span>
+          <h4 class="fw-bold mb-0 text-charcoal font-outfit" data-counter="365">365 Ha</h4>
+          <small class="text-muted">Lereng Sawal</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. SAMBUTAN KEPALA DESA -->
+    <div class="row mb-5 fade-in-up" id="sambutan">
+      <div class="col-12">
+        <div class="kades-card">
+          <img src="assets/uploads/profil/img_6a62d233ab6bd.png" alt="EMAN S" class="kades-avatar">
+
+          <div>
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+              <span class="badge rounded-pill bg-gold-subtle text-gold-dark fw-bold px-3 py-1 font-outfit" style="font-size:0.78rem; border:1px solid var(--gold-border);">
+                <i class="bi bi-patch-check-fill me-1 text-gold"></i>SAMBUTAN KEPALA DESA GUNUNGSARI
+              </span>
+            </div>
+            <h3 class="fw-bold font-outfit text-charcoal mb-1" style="font-size:1.6rem;">EMAN S</h3>
+            <p class="text-muted small mb-3">Kepala Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis</p>
+            <div class="font-inter text-body" style="line-height:1.85; font-size:0.96rem; white-space:pre-line;">
+Assalamu'alaikum warahmatullahi wabarakatuh.
+
+Puji syukur kita panjatkan ke hadirat Allah SWT atas segala rahmat dan karunia-Nya sehingga Website Resmi Desa Gunungsari dapat hadir sebagai media informasi dan pelayanan bagi masyarakat.
+
+Atas nama Pemerintah Desa Gunungsari, saya mengucapkan selamat datang kepada seluruh masyarakat, wisatawan, maupun para pengunjung website ini. Kehadiran website ini merupakan salah satu upaya kami untuk meningkatkan keterbukaan informasi, memperkenalkan potensi desa, serta memudahkan masyarakat dalam memperoleh berbagai informasi mengenai Desa Gunungsari.
+
+Desa Gunungsari memiliki beragam potensi yang patut dibanggakan, mulai dari kekayaan wisata alam, produk unggulan UMKM, sektor pertanian, hingga nilai-nilai budaya dan semangat gotong royong yang masih terjaga dengan baik. Melalui website ini, kami berharap seluruh potensi tersebut dapat dikenal lebih luas sehingga mampu mendorong kemajuan desa serta meningkatkan kesejahteraan masyarakat.
+
+Kami juga mengucapkan terima kasih kepada seluruh pihak yang telah berkontribusi dalam pengembangan website ini, khususnya kepada Mahasiswa KKN SPIG Universitas Pendidikan Indonesia yang telah mendukung penyusunan data serta pengembangan WebGIS Desa Gunungsari sebagai media informasi yang lebih interaktif dan bermanfaat.
+
+Kami menyadari bahwa website ini masih memerlukan penyempurnaan. Oleh karena itu, kritik dan saran yang membangun sangat kami harapkan demi peningkatan kualitas pelayanan kepada masyarakat.
+
+Semoga Website Desa Gunungsari dapat menjadi sarana informasi, komunikasi, dan promosi yang memberikan manfaat bagi seluruh masyarakat.
+
+Wassalamu'alaikum warahmatullahi wabarakatuh.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Infografis Mutasi Kependudukan -->
+    <div class="row g-4 mb-5 fade-in-up" id="mutasi-infografis">
+      <div class="col-12">
+        <div class="card border-0 rounded-4 shadow-sm p-4" style="background:#FAF8F4; border:1px solid #E8E2D5;">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+            <div>
+              <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-1 fw-bold font-outfit small">
+                <i class="bi bi-person-lines-fill me-1"></i>INFOGRAFIS MUTASI KEPENDUDUKAN
+              </span>
+              <h4 class="fw-bold font-outfit text-charcoal mb-0 mt-1">Data Kelahiran, Kematian &amp; Pergerakan Penduduk (2026)</h4>
+            </div>
+            <small class="text-muted"><i class="bi bi-database-check text-success me-1"></i>Tersinkronisasi Sistem Informasi Desa</small>
+          </div>
+          <div class="row g-3 text-center">
+            <div class="col-md-3 col-6">
+              <div class="p-3 bg-white rounded-3 border">
+                <i class="bi bi-balloon-fill text-success fs-3 mb-1 d-block"></i>
+                <h5 class="fw-bold text-dark font-outfit mb-0" data-counter="45">45</h5>
+                <small class="text-muted">Kelahiran (Bayi Lahir)</small>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="p-3 bg-white rounded-3 border">
+                <i class="bi bi-heartbreak-fill text-danger fs-3 mb-1 d-block"></i>
+                <h5 class="fw-bold text-dark font-outfit mb-0" data-counter="18">18</h5>
+                <small class="text-muted">Kematian (Meninggal)</small>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="p-3 bg-white rounded-3 border">
+                <i class="bi bi-box-arrow-in-right text-primary fs-3 mb-1 d-block"></i>
+                <h5 class="fw-bold text-dark font-outfit mb-0" data-counter="24">24</h5>
+                <small class="text-muted">Penduduk Masuk (Pindah In)</small>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="p-3 bg-white rounded-3 border">
+                <i class="bi bi-box-arrow-right text-warning fs-3 mb-1 d-block"></i>
+                <h5 class="fw-bold text-dark font-outfit mb-0" data-counter="12">12</h5>
+                <small class="text-muted">Penduduk Keluar (Pindah Out)</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. SEJARAH SINGKAT DESA & TIMELINE MODERN -->
+    <div class="row g-5 align-items-center mb-5" id="sejarah">
+      <div class="col-lg-5 fade-in-left">
+        <div class="editorial-img-box portrait">
+          <img src="assets/uploads/profil/img_6a623cb35a3cc.png" alt="Foto Sejarah Desa Gunungsari" loading="lazy">
+          <div class="editorial-img-badge">
+            <span class="badge-year">1936</span>
+            <span class="badge-label">Tahun Berdiri</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7 fade-in-right">
+        <div class="ps-lg-3">
+          <p class="section-label">Jejak Langkah</p>
+          <h2 class="section-heading mb-3"><i class="bi bi-hourglass-split text-gold me-2"></i>Sejarah Singkat &amp; Timeline Desa</h2>
+          <div class="font-inter text-body mb-4" style="line-height:1.85; font-size:0.97rem;">
+            Desa Gunungsari berdiri sejak tahun 1936 di kawasan perbukitan utara Kabupaten Ciamis. Nama "Gunungsari" diambil dari gabungan kata "Gunung" yang melambangkan lanskap pegunungan Sawal yang megah dan "Sari" yang bermakna keindahan serta kesuburan alam tanah Sunda.
+          </div>
+
+          <!-- Modern Timeline List -->
+          <div class="timeline-modern-wrapper">
+            <div class="timeline-modern-item">
+              <div class="timeline-modern-dot"><i class="bi bi-flag-fill" style="font-size:0.6rem; color:var(--primary);"></i></div>
+              <div class="timeline-modern-card">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h6 class="fw-bold font-outfit text-charcoal mb-0">Pembentukan Pemukiman Awal</h6>
+                  <span class="badge rounded-pill bg-purple-subtle text-primary fw-bold" style="font-size:0.72rem;">1936</span>
+                </div>
+                <p class="text-muted small mb-0" style="line-height:1.65;">
+                  Pembentukan awal pemukiman warga berbasis pertanian di lereng utara Gunung Sawal.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-modern-item">
+              <div class="timeline-modern-dot"><i class="bi bi-file-earmark-check-fill" style="font-size:0.6rem; color:var(--gold);"></i></div>
+              <div class="timeline-modern-card">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h6 class="fw-bold font-outfit text-charcoal mb-0">Penetapan Peraturan Daerah (Perda No. 6/2015)</h6>
+                  <span class="badge rounded-pill bg-gold-subtle text-gold-dark fw-bold" style="font-size:0.72rem;">2015</span>
+                </div>
+                <p class="text-muted small mb-0" style="line-height:1.65;">
+                  Penetapan legalitas batas administrasi desa dalam Lembaran Daerah Kabupaten Ciamis.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-modern-item">
+              <div class="timeline-modern-dot"><i class="bi bi-globe2" style="font-size:0.6rem; color:var(--sage);"></i></div>
+              <div class="timeline-modern-card">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h6 class="fw-bold font-outfit text-charcoal mb-0">Transformasi Desa Digital &amp; WebGIS</h6>
+                  <span class="badge rounded-pill bg-sage-subtle text-sage-dark fw-bold" style="font-size:0.72rem;">2026</span>
+                </div>
+                <p class="text-muted small mb-0" style="line-height:1.65;">
+                  Pengembangan sistem informasi geospasial WebGIS presisi dan penguatan transparansi publik.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. VISI & MISI DESA -->
+    <div class="row g-4 mb-5" id="visi-misi">
+      <div class="col-md-6 fade-in-up">
+        <div class="info-card h-100" style="border-top:4px solid var(--primary);">
+          <h4 class="text-charcoal font-outfit fw-bold mb-3"><i class="bi bi-eye-fill text-primary me-2"></i> Visi Desa Gunungsari</h4>
+          <p class="mb-0 text-charcoal font-inter" style="font-size:1.05rem; line-height:1.85; font-weight:500;">
+            "MEWUJUDKAN MASYARAKAT DESA GUNUNGSARI YANG UNGGUL, MAJU, MANUSIAWI, AMANAH, TAQWA (UMMAT) YANG BERLANDASKAN IMAN DAN TAQWA KEPADA ALLAH SWT."
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 fade-in-up">
+        <div class="info-card h-100" style="border-top:4px solid var(--gold);">
+          <h4 class="text-charcoal font-outfit fw-bold mb-3"><i class="bi bi-flag-fill text-gold me-2"></i> Misi Desa Gunungsari</h4>
+          <div style="color:var(--text-body); line-height:1.8;">
+            <ol class="mb-0 ps-3 font-inter" style="font-size:0.95rem; line-height:1.8;">
+              <li class="mb-2">Meningkatkan Tata Kelola Pemerintahan yang Bersih dan Berwibawa</li>
+              <li class="mb-2">Meningkatkan Kualitas Sumber Daya Manusia</li>
+              <li class="mb-2">Meningkatkan dan Menggali Potensi Alam untuk Menjadi Desa Unggulan di Bidang Pertanian dan Kepariwisataan</li>
+              <li class="mb-2">Meningkatkan Ekonomi Masyarakat dengan Mengangkat Budaya Lokal</li>
+              <li class="mb-2">Meningkatkan Sarana dan Prasarana Keagamaan</li>
+              <li class="mb-2">Meningkatkan Pendidikan Keagamaan</li>
+              <li class="mb-2">Meningkatkan Pelayanan Kesehatan Masyarakat</li>
+              <li class="mb-2">Meningkatkan Pelayanan Hukum, Politik dan Keamanan</li>
+              <li class="mb-2">Meningkatkan pembangunan infrastruktur yang mendukung pelayanan masyarakat desa dan pengembangan ruang publik</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. GEOGRAFIS & DATA SPASIAL -->
+    <div class="row g-4 mb-5" id="geografis">
+      <div class="col-md-7 fade-in-up">
+        <div class="info-card h-100" style="border-top:4px solid var(--sage);">
+          <h4 class="text-charcoal font-outfit fw-bold mb-3"><i class="bi bi-geo-alt-fill text-sage me-2"></i> Letak &amp; Kondisi Geografis</h4>
+          <p class="text-body mb-3" style="line-height:1.8; font-size:0.96rem;">
+            Desa Gunungsari secara administratif terletak di zona utara Kecamatan Sadananya, Kabupaten Ciamis, Jawa Barat. Berada tepat di kaki kawasan konservasi <strong>Gunung Sawal</strong>, desa ini memiliki topografi perbukitan dan lembah sejuk dengan ketinggian rata-rata 450 – 750 meter di atas permukaan laut (mdpl).
+          </p>
+          <div class="bg-cream p-3 rounded-3 border">
+            <h6 class="fw-bold text-dark mb-2 font-outfit" style="font-size:0.9rem;">Batas Wilayah Administrasi Resmi (Prodeskel Kemendagri):</h6>
+            <div style="font-size:0.88rem; color:var(--text-body); white-space:pre-line; line-height:1.75;">
+• Sebelah Utara  : Gunung Sawal
+• Sebelah Selatan: Desa Sadananya
+• Sebelah Timur  : Desa Tanjungsari
+• Sebelah Barat  : Desa Bendasari
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 fade-in-up">
+        <div class="info-card h-100" style="border-top:4px solid var(--primary);">
+          <h4 class="text-charcoal font-outfit fw-bold mb-3"><i class="bi bi-compass-fill text-primary me-2"></i> Data Spasial Resmi</h4>
+          <ul class="list-group list-group-flush mb-3 font-inter" style="font-size:0.9rem;">
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Kode PUM Desa</span>
+              <strong class="font-mono text-primary">3207042001</strong>
+            </li>
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Koordinat Resmi</span>
+              <strong class="font-mono">7.231836° S, 108.300309° E</strong>
+            </li>
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Luas Total Wilayah</span>
+              <strong>365 Ha</strong>
+            </li>
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Klasifikasi Desa</span>
+              <span class="badge bg-success-subtle text-success fw-semibold">SWASEMBADA</span>
+            </li>
+          </ul>
+          <a href="peta.html" class="btn btn-sm btn-primary-custom rounded-pill w-100 justify-content-center">
+            <i class="bi bi-map-fill me-1"></i>Buka Peta WebGIS Geospasial
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. DATA POKOK DESA -->
+    <div class="row g-4 mb-5 fade-in-up" id="data-pokok">
+      <div class="col-12">
+        <div class="card border-0 rounded-4 shadow-sm p-4 p-md-5" style="background:#FFFFFF; border-left:8px solid #D4901F !important; border:1px solid #EAE5D9;">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+            <div>
+              <span class="badge px-3.5 py-2.5 rounded-pill mb-2 font-outfit" style="background:#5C2D8E; color:#FFFFFF; font-weight:700; font-size:0.82rem; letter-spacing:0.5px; line-height:1.2;">
+                <i class="bi bi-patch-check-fill me-1 text-warning"></i>DATA POKOK DESA RESMI (PRODESKEL KEMENDAGRI)
+              </span>
+              <h4 class="fw-bold font-outfit mb-0 mt-1" style="color:#1E1530; font-size:1.4rem;">Identitas &amp; Penggunaan Lahan Wilayah Desa</h4>
+            </div>
+            <small class="fw-semibold px-3 py-1.5 bg-light rounded-pill border text-secondary font-inter" style="font-size:0.83rem;">
+              <i class="bi bi-bank me-1 text-primary"></i>Ditjen Bina Pemdes Kemendagri RI
+            </small>
+          </div>
+
+          <div class="row g-3 font-inter">
+            <div class="col-md-6 col-lg-4">
+              <div class="rounded-3 border h-100" style="background:#FAF8F4; border-color:#E8E2D5 !important; padding: 1.5rem 1.65rem !important;">
+                <h6 class="fw-bold mb-3 font-outfit" style="color:#5C2D8E; font-size:0.95rem;">
+                  <i class="bi bi-file-earmark-text-fill me-2"></i>Legalitas &amp; Pembentukan
+                </h6>
+                <ul class="list-unstyled small mb-0" style="color:#2D2738; line-height:2.1; font-size:0.9rem;">
+                  <li><strong style="color:#1E1530;">Tahun Pembentukan:</strong> 1936</li>
+                  <li><strong style="color:#1E1530;">Dasar Hukum:</strong> Perda No.6 Tahun 2015</li>
+                  <li><strong style="color:#1E1530;">Tipologi Desa:</strong> Persawahan</li>
+                  <li><strong style="color:#1E1530;">Kategori Desa:</strong> MULA</li>
+                  <li><strong style="color:#1E1530;">Komoditas Utama:</strong> Padi Sawah</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-5">
+              <div class="rounded-3 border h-100" style="background:#FAF8F4; border-color:#E8E2D5 !important; padding: 1.5rem 1.65rem !important;">
+                <h6 class="fw-bold mb-3 font-outfit" style="color:#4E6E52; font-size:0.95rem;">
+                  <i class="bi bi-pie-chart-fill me-2"></i>Penggunaan Lahan (Total 365 Ha)
+                </h6>
+                <div class="row g-2.5 small">
+                  <div class="col-6">
+                    <div class="rounded border bg-white" style="border-color:#DFD8C8 !important; padding: 0.85rem 1.15rem !important;">
+                      <span class="d-block fw-bold font-outfit" style="color:#1E1530; font-size:1.05rem;">81 Ha</span>
+                      <small class="fw-medium" style="color:#555555;">Lahan Sawah</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="rounded border bg-white" style="border-color:#DFD8C8 !important; padding: 0.85rem 1.15rem !important;">
+                      <span class="d-block fw-bold font-outfit" style="color:#1E1530; font-size:1.05rem;">120 Ha</span>
+                      <small class="fw-medium" style="color:#555555;">Lahan Ladang</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="rounded border bg-white" style="border-color:#DFD8C8 !important; padding: 0.85rem 1.15rem !important;">
+                      <span class="d-block fw-bold font-outfit" style="color:#1E1530; font-size:1.05rem;">86 Ha</span>
+                      <small class="fw-medium" style="color:#555555;">Lahan Perkebunan</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="rounded border bg-white" style="border-color:#DFD8C8 !important; padding: 0.85rem 1.15rem !important;">
+                      <span class="d-block fw-bold font-outfit" style="color:#1E1530; font-size:1.05rem;">36 Ha</span>
+                      <small class="fw-medium" style="color:#555555;">Kawasan Hutan</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="rounded border" style="background:#FFF8E7; border-color:#D4901F !important; padding: 0.85rem 1.15rem !important;">
+                      <span class="d-block fw-bold font-outfit" style="color:#B8730E; font-size:1.05rem;">21 Ha</span>
+                      <small class="fw-bold" style="color:#8A5300;">Tanah Kas Desa</small>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="rounded border bg-white" style="border-color:#DFD8C8 !important; padding: 0.85rem 1.15rem !important;">
+                      <span class="d-block fw-bold font-outfit" style="color:#1E1530; font-size:1.05rem;">41 Ha</span>
+                      <small class="fw-medium" style="color:#555555;">Lahan Lainnya</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-lg-3">
+              <div class="rounded-3 border h-100 d-flex flex-column justify-content-center text-center" style="background:#FAF8F4; border-color:#E8E2D5 !important; padding: 1.5rem 1.65rem !important;">
+                <i class="bi bi-person-badge-fill fs-1 mb-2" style="color:#D4901F;"></i>
+                <h6 class="fw-bold font-outfit mb-1" style="color:#1E1530; font-size:0.9rem;">Kepala Desa Gunungsari</h6>
+                <h5 class="fw-bold font-outfit mb-2" style="color:#5C2D8E; font-size:1.25rem; font-weight:800;">EMAN S</h5>
+                <span class="badge px-3 py-2 rounded-pill font-inter mx-auto border" style="background:#EAE5D9; color:#1E1530; font-weight:600; font-size:0.75rem;">Pendidikan: SLTA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. KELEMBAGAAN & ORBITRASI -->
+    <div class="row g-4 mb-5 fade-in-up" id="kelembagaan">
+      <div class="col-lg-7">
+        <div class="info-card h-100" style="border-top:4px solid var(--primary);">
+          <h4 class="text-charcoal font-outfit fw-bold mb-3"><i class="bi bi-diagram-3-fill text-primary me-2"></i> Kelembagaan Kemasyarakatan</h4>
+          <div class="row g-3 font-inter small">
+            <div class="col-md-6">
+              <div class="p-3 bg-cream rounded border">
+                <strong class="d-block text-dark fw-bold mb-1"><i class="bi bi-award-fill me-1 text-gold"></i>LPM Desa Gunungsari</strong>
+                <span class="text-muted">Lembaga Pemberdayaan Masyarakat (12 Pengurus Aktif)</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-cream rounded border">
+                <strong class="d-block text-dark fw-bold mb-1"><i class="bi bi-heart-fill me-1 text-danger"></i>TP PKK Desa</strong>
+                <span class="text-muted">Tim Penggerak PKK (45 Kader Aktif, 4 Pokja Utama)</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-cream rounded border">
+                <strong class="d-block text-dark fw-bold mb-1"><i class="bi bi-shop-window me-1 text-primary"></i>BUMDes Bestari</strong>
+                <span class="text-muted">Unit Usaha Aren, Air Bersih &amp; Perdagangan Lokal</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-cream rounded border">
+                <strong class="d-block text-dark fw-bold mb-1"><i class="bi bi-lightning-charge-fill me-1 text-warning"></i>Karang Taruna</strong>
+                <span class="text-muted">Karang Taruna Tunas Mekar (65 Pemuda Warga)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="info-card h-100" style="border-top:4px solid var(--sage);">
+          <h4 class="text-charcoal font-outfit fw-bold mb-3"><i class="bi bi-signpost-split-fill text-sage me-2"></i> Orbitrasi &amp; Aksesibilitas</h4>
+          <ul class="list-group list-group-flush small font-inter">
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Jarak ke Pusat Kecamatan (Sadananya)</span>
+              <strong class="font-mono">4,5 Km</strong>
+            </li>
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Jarak ke Ibu Kota Kabupaten (Ciamis)</span>
+              <strong class="font-mono">12,0 Km</strong>
+            </li>
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Jarak ke Ibu Kota Provinsi (Bandung)</span>
+              <strong class="font-mono">115,0 Km</strong>
+            </li>
+            <li class="list-group-item bg-transparent px-0 py-2 d-flex justify-content-between">
+              <span class="text-muted">Waktu Tempuh ke Kota Ciamis</span>
+              <strong>&plusmn; 25 Menit</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALERI DESA GUNUNGSARI (NEW SECTION) -->
+    <div class="mb-5 fade-in-up" id="galeri-desa">
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+        <div>
+          <p class="section-label">DOKUMENTASI VISUAL</p>
+          <h2 class="section-heading mb-1"><i class="bi bi-images text-primary me-2"></i>Galeri Pesona Desa Gunungsari</h2>
+          <p class="text-muted mb-0" style="font-size:0.95rem;">Panorama Gunung Sawal, budaya gotong royong, dan aktivitas kemasyarakatan</p>
+        </div>
+        <a href="dokumentasi.html" class="btn btn-outline-purple">
+          Lihat Seluruh Galeri <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+      <div class="row g-4 stagger-children">
+        <div class="col-md-4 col-sm-6 fade-in-up">
+          <div class="profil-gallery-card">
+            <img src="assets/uploads/mengenal_1784859023.jpeg" alt="Panorama Sawal Desa Gunungsari" loading="lazy">
+            <div class="profil-gallery-overlay">
+              <span class="badge bg-gold text-dark rounded-pill px-2.5 py-1 fw-bold mb-2 align-self-start" style="font-size:0.7rem;">LANSKAP ALAM</span>
+              <h6 class="fw-bold font-outfit mb-1">Panorama Lereng Gunung Sawal</h6>
+              <small class="text-white-50">Wilayah pertanian &amp; perbukitan yang asri</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fade-in-up">
+          <div class="profil-gallery-card">
+            <img src="assets/uploads/potensi/img_6a62d18894759.jpeg" alt="Ekowisata Cadas Ngampar" loading="lazy">
+            <div class="profil-gallery-overlay">
+              <span class="badge bg-primary text-white rounded-pill px-2.5 py-1 fw-bold mb-2 align-self-start" style="font-size:0.7rem;">EKOWISATA</span>
+              <h6 class="fw-bold font-outfit mb-1">Wisata Alam Cadas Ngampar</h6>
+              <small class="text-white-50">Bebatuan alami &amp; hulu sungai sejuk</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fade-in-up">
+          <div class="profil-gallery-card">
+            <img src="assets/img/wisata-alam.png" alt="Kerajinan Batu Akik UMKM" loading="lazy">
+            <div class="profil-gallery-overlay">
+              <span class="badge bg-success text-white rounded-pill px-2.5 py-1 fw-bold mb-2 align-self-start" style="font-size:0.7rem;">UMKM WARGA</span>
+              <h6 class="fw-bold font-outfit mb-1">Kerajinan Batu Akik Unggulan</h6>
+              <small class="text-white-50">Industri kreatif &amp; pengolahan batu alam</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fade-in-up">
+          <div class="profil-gallery-card">
+            <img src="assets/uploads/img_6a62debd619ac.jpeg" alt="Jumat Menanam Gotong Royong" loading="lazy">
+            <div class="profil-gallery-overlay">
+              <span class="badge bg-sage-subtle text-sage-dark rounded-pill px-2.5 py-1 fw-bold mb-2 align-self-start" style="font-size:0.7rem; background:#fff !important;">GOTONG ROYONG</span>
+              <h6 class="fw-bold font-outfit mb-1">Kegiatan Jum'at Menanam</h6>
+              <small class="text-white-50">Pelestarian lingkungan bersama warga</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fade-in-up">
+          <div class="profil-gallery-card">
+            <img src="assets/uploads/img_6a62dec921438.jpeg" alt="Pengajian Warga Dusun Cilopadang" loading="lazy">
+            <div class="profil-gallery-overlay">
+              <span class="badge bg-info text-white rounded-pill px-2.5 py-1 fw-bold mb-2 align-self-start" style="font-size:0.7rem;">KEAGAMAAN</span>
+              <h6 class="fw-bold font-outfit mb-1">Pengajian &amp; Silaturahmi Warga</h6>
+              <small class="text-white-50">Tradisi sosial &amp; keagamaan terawat</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 fade-in-up">
+          <div class="profil-gallery-card">
+            <img src="assets/uploads/img_6a6306e6e1b8e.jpg" alt="Rumah Belajar KKN Desa Gunungsari" loading="lazy">
+            <div class="profil-gallery-overlay">
+              <span class="badge bg-purple-subtle text-primary rounded-pill px-2.5 py-1 fw-bold mb-2 align-self-start" style="font-size:0.7rem; background:#fff !important;">PENDIDIKAN</span>
+              <h6 class="fw-bold font-outfit mb-1">Program Rumah Belajar Warga</h6>
+              <small class="text-white-50">Penguatan edukasi generasi muda</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISI DESA DIGITAL SHOWCASE (NEW SECTION) -->
+    <div class="mb-5 fade-in-up">
+      <div class="visi-digital-box">
+        <div class="row align-items-center g-4 position-relative" style="z-index:2;">
+          <div class="col-lg-12">
+            <span class="badge rounded-pill font-outfit mb-3"
+                  style="background:rgba(212,144,31,0.25); color:var(--gold-light); border:1px solid rgba(212,144,31,0.35); padding:0.45rem 1.1rem; font-size:0.8rem;">
+              ✦ TRANSFORMASI DESA DIGITAL
+            </span>
+            <h2 class="fw-bold font-outfit text-white mb-2" style="font-size:2.1rem; letter-spacing:-0.5px;">
+              Visi Desa Digital &amp; Platform WebGIS Geospasial
+            </h2>
+            <p class="mb-4" style="color:rgba(255,255,255,0.8); max-width:620px; line-height:1.8; font-size:0.98rem;">
+              Desa Gunungsari berkomitmen meningkatkan efisiensi tata kelola pemerintahan dan transparansi publik melalui penerapan Sistem Informasi Geospasial (WebGIS). Seluruh titik fasilitas umum, batas administrasi 3 dusun, hingga potensi ekonomi masyarakat terintegrasi dalam peta digital interaktif presisi.
+            </p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="webgis-feature-pill"><i class="bi bi-layers-fill"></i>Pemetaan Batas 3 Dusun</span>
+              <span class="webgis-feature-pill"><i class="bi bi-geo-alt-fill"></i>150 Titik Geospasial</span>
+              <span class="webgis-feature-pill"><i class="bi bi-pie-chart-fill"></i>Transparansi Data Prodeskel</span>
+              <span class="webgis-feature-pill"><i class="bi bi-shield-check"></i>Mitigasi Kerawanan Bencana</span>
+            </div>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a href="peta.html" class="btn btn-gold btn-lg-custom">
+              <i class="bi bi-map-fill"></i>Buka WebGIS Lengkap
+            </a>
+            <br>
+            <a href="dashboard.html" class="btn btn-outline-charcoal btn-sm mt-3"
+               style="border-color:rgba(255,255,255,0.25); color:rgba(255,255,255,0.85); background:rgba(255,255,255,0.08);">
+              <i class="bi bi-speedometer2 me-1"></i>Lihat Dashboard Kependudukan
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. APARATUR DESA (COMPLETE ORIGINAL LIST) -->
+    <div class="text-center mb-4 fade-in-up" id="struktur">
+      <div class="section-divider"></div>
+      <h2 class="section-heading">Pemerintah Desa Gunungsari</h2>
+      <p class="section-subheading">Perangkat Desa — Kepala Desa, Sekretariat, Kaur, Kasi, dan Kepala Dusun</p>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-5 stagger-children">
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d24e4cd2a.png" alt="Eman S" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Eman S</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kepala Desa</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SMA</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d25746aba.png" alt="Haris Sugara" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Haris Sugara</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Sekretaris Desa</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTA</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d261ef178.png" alt="Tita Rahayu, S.E" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Tita Rahayu, S.E</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kaur TU &amp; Umum</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d26ac4a32.png" alt="Budi Rahman, S.Kom" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Budi Rahman, S.Kom</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kaur Perencanaan</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d273a42ad.png" alt="Yayu Sri Rahayu" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Yayu Sri Rahayu</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kaur Keuangan</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTA</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d27b7afac.png" alt="Ade Mamat, S.H" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Ade Mamat, S.H</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kasi Pemerintahan</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d28429ccf.png" alt="Syahrul Mubarok, S.Pd" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Syahrul Mubarok, S.Pd</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kasi Kesejahteraan</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d28e09539.png" alt="Yedi Dunyati" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Yedi Dunyati</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kasi Pelayanan</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTA</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d299b51b3.png" alt="Yayan Suryansyah" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Yayan Suryansyah</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kepala Dusun Desa (Gerengseng)</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTA</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d2a413e98.png" alt="Yayat Ruhiat" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Yayat Ruhiat</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kepala Dusun Cikatomas</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTA</small></div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+        <div class="org-card">
+          <img src="assets/uploads/img_6a62d2ab58d47.png" alt="Hilmi Ahmad Kamal" class="org-avatar">
+          <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Hilmi Ahmad Kamal</h6>
+          <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Kepala Dusun Cilopadang</span>
+          <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTA</small></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BPD SECTION COMPLETE ORIGINAL -->
+    <div class="fade-in-up mb-5" id="bpd">
+      <div class="row align-items-center mb-4">
+        <div class="col">
+          <div class="section-divider"></div>
+          <h2 class="section-heading">Badan Permusyawaratan Desa (BPD)</h2>
+          <p class="section-subheading">Lembaga Legislatif Desa — Sejajar dengan Pemerintah Desa</p>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-lg-10 mx-auto">
+          <div class="info-card" style="border-top:4px solid var(--sage); background:#f8fdf9;">
+            <div class="row align-items-center g-3">
+              <div class="col-md-1 text-center">
+                <i class="bi bi-bank2 fs-1 text-success"></i>
+              </div>
+              <div class="col-md-11">
+                <h6 class="fw-bold text-dark mb-1">Tentang BPD Desa Gunungsari</h6>
+                <p class="text-muted small mb-0">
+                  BPD berkedudukan <strong>sejajar</strong> dengan Pemerintah Desa sebagai lembaga perwakilan warga (UU No. 6 Tahun 2014 tentang Desa). Fungsi BPD: membahas dan menyepakati rancangan peraturan desa, menampung dan menyalurkan aspirasi masyarakat, serta melakukan <strong>pengawasan kinerja</strong> Kepala Desa. BPD bukan bagian dari struktur eksekutif desa.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center stagger-children">
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #4E6E52;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#4E6E52,#6E9273);">H</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Hilman Hakim, S.Ag., M.M</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Ketua</span>
+            <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S2</small></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #4E6E52;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#4E6E52,#6E9273);">J</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Jajat, S.Pd.I</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Wakil Ketua</span>
+            <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #4E6E52;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#4E6E52,#6E9273);">R</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Rully Maliandi Darajat, S.Pd</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Sekretaris</span>
+            <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #4E6E52;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#4E6E52,#6E9273);">W</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Wahyu</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Anggota</span>
+            <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTA</small></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #4E6E52;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#4E6E52,#6E9273);">N</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Nur Asiah Jamil, S.Pd</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Anggota</span>
+            <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #4E6E52;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#4E6E52,#6E9273);">D</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Dadang, S.H</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Anggota</span>
+            <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>S1</small></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #4E6E52;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#4E6E52,#6E9273);">A</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Adang Risanto</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">Anggota</span>
+            <div><small class="text-muted" style="font-size:0.72rem;"><i class="bi bi-mortarboard me-1"></i>SLTP</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BABINKAMTIBMAS & BABINSA SECTION COMPLETE ORIGINAL -->
+    <div class="fade-in-up mb-5" id="babinkamtibmas">
+      <div class="section-divider"></div>
+      <h2 class="section-heading">Babinkamtibmas &amp; Babinsa</h2>
+      <p class="section-subheading">Aparat Keamanan Wilayah Desa Gunungsari</p>
+      <div class="row g-4 justify-content-center mt-2 stagger-children">
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #C0392B;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#C0392B,#6E9273);">Y</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Yoga Siswanto</h6>
+            <div class="mb-1"><span class="badge bg-danger-subtle text-danger fw-bold" style="font-size:0.75rem;">AIPDA</span></div>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">BHABINKAMTIBMAS</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #C0392B;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#C0392B,#6E9273);">S</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Syahidin</h6>
+            <div class="mb-1"><span class="badge bg-danger-subtle text-danger fw-bold" style="font-size:0.75rem;">Serda</span></div>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">BABINSA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- P3UKD SECTION COMPLETE ORIGINAL -->
+    <div class="fade-in-up mb-5" id="p3ukd">
+      <div class="section-divider"></div>
+      <h2 class="section-heading">P3UKD</h2>
+      <div class="row g-4 justify-content-center mt-2 stagger-children">
+        <div class="col-6 col-md-4 col-lg-3 fade-in-up">
+          <div class="org-card" style="border-top:3px solid #D4901F;">
+            <div class="org-avatar-placeholder" style="background:linear-gradient(135deg,#D4901F,#6E9273);">R</div>
+            <h6 class="text-dark fw-bold mb-1" style="font-size:0.95rem;">Roni</h6>
+            <span class="badge rounded-pill bg-purple-subtle text-primary-custom fw-semibold mb-1" style="font-size:0.76rem;">P3UKD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. INFOGRAFIS KEPENDUDUKAN (EXACT DATABASE VALUES) -->
+    <div class="text-center mb-4 fade-in-up" id="statistik">
+      <div class="section-divider"></div>
+      <h2 class="section-heading">Infografis Kependudukan</h2>
+      <p class="section-subheading">Visualisasi data demografi warga Desa Gunungsari</p>
+    </div>
+
+    <div class="row g-4 stagger-children">
+      <!-- Jenis Kelamin -->
+      <div class="col-md-6 fade-in-up">
+        <div class="chart-container p-4 bg-white rounded-4 shadow-sm border">
+          <h5 class="chart-title fw-bold font-outfit mb-3"><i class="bi bi-pie-chart-fill me-2 text-primary"></i>Proporsi Jenis Kelamin</h5>
+          <div style="position:relative; height:320px;">
+            <canvas id="chartGender"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Usia -->
+      <div class="col-md-6 fade-in-up">
+        <div class="chart-container p-4 bg-white rounded-4 shadow-sm border">
+          <h5 class="chart-title fw-bold font-outfit mb-3"><i class="bi bi-bar-chart-fill me-2 text-gold"></i>Distribusi Kelompok Usia</h5>
+          <div style="position:relative; height:320px;">
+            <canvas id="chartAge"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mata Pencaharian -->
+      <div class="col-md-6 fade-in-up">
+        <div class="chart-container p-4 bg-white rounded-4 shadow-sm border">
+          <h5 class="chart-title fw-bold font-outfit mb-3"><i class="bi bi-briefcase-fill me-2 text-sage"></i>Sektor Mata Pencaharian</h5>
+          <div style="position:relative; height:320px;">
+            <canvas id="chartJob"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pendidikan -->
+      <div class="col-md-6 fade-in-up">
+        <div class="chart-container p-4 bg-white rounded-4 shadow-sm border">
+          <h5 class="chart-title fw-bold font-outfit mb-3"><i class="bi bi-mortarboard-fill me-2 text-primary"></i>Tingkat Pendidikan Warga</h5>
+          <div style="position:relative; height:320px;">
+            <canvas id="chartEdu"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+
+<!-- Section Kepercayaan & Pengembang (KKN SPIG UPI) -->
+<!-- Section Kepercayaan & Pengembang (KKN SPIG UPI) -->
+<section class="py-4 bg-light-subtle border-top border-bottom" aria-label="Informasi Pengembang">
+  <div class="container">
+    <div class="dev-credit-card p-4 p-md-4 px-lg-5">
+      <div class="row align-items-center g-3 g-md-4">
+        <div class="col-auto">
+          <div class="dev-credit-icon">
+            <i class="bi bi-mortarboard-fill"></i>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+            <span class="dev-credit-pill">
+              <i class="bi bi-heart-fill text-danger"></i> Dikembangkan oleh
+            </span>
+            <span class="dev-credit-tag">Kelompok 3</span>
+          </div>
+          <h4 class="fw-bold font-outfit text-dark mb-1" style="font-size: 1.25rem; letter-spacing: -0.2px;">
+            Mahasiswa KKN Universitas Pendidikan Indonesia
+          </h4>
+          <p class="text-secondary mb-0" style="line-height: 1.6; font-size: 0.88rem;">
+            Program Studi Survei Pemetaan dan Informasi Geografis (SPIG) &bull; Dalam rangka mendukung digitalisasi layanan informasi dan pengembangan WebGIS Desa Gunungsari.
+          </p>
+        </div>
+        <div class="col-lg-auto d-none d-lg-flex flex-column gap-2 align-items-end">
+          <span class="dev-credit-badge">
+            <i class="bi bi-geo-alt-fill text-primary"></i> WebGIS Presisi
+          </span>
+          <span class="dev-credit-badge">
+            <i class="bi bi-shield-check text-success"></i> FPIPS UPI 2026
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-section" role="contentinfo" style="background-color:#171520; color:rgba(255,255,255,0.7); padding-top:4rem; padding-bottom:2.5rem;">
+  <div class="container-fluid container-xl">
+    <div class="row g-4 g-lg-5 mb-4">
+
+      <!-- Col 1: Brand & Description -->
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div style="width:48px; height:48px; background:rgba(212,144,31,0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">🏡</div>
+          <div style="width:1px; height:32px; background:rgba(255,255,255,0.15);"></div>
+          <img src="assets/img/logo-ciamis.png" alt="Logo Kabupaten Ciamis" style="height:42px; width:auto;" title="Kabupaten Ciamis">
+        </div>
+        <div class="mb-3">
+          <h5 class="text-white fw-bold font-outfit mb-1" style="font-size:1.25rem;">Desa Gunungsari</h5>
+          <small class="text-white-50" style="font-size:0.78rem;">Kecamatan Sadananya, Kabupaten Ciamis</small>
+        </div>
+        <p class="small text-white-50 lh-base mb-3" style="font-size:0.85rem;">
+          Portal Informasi Digital Desa Gunungsari berbasis WebGIS — menyajikan profil wilayah, data kependudukan, potensi lokal, pelayanan publik, dan pemetaan geospasial yang transparan dan terverifikasi.
+        </p>
+        <div class="d-flex gap-2 flex-wrap">
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(92,45,142,0.25); border:1px solid rgba(92,45,142,0.4); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-geo-alt-fill text-warning me-1"></i>Kec. Sadananya
+          </span>
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(92,45,142,0.25); border:1px solid rgba(92,45,142,0.4); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-building-fill text-warning me-1"></i>Kab. Ciamis
+          </span>
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(40,167,69,0.2); border:1px solid rgba(40,167,69,0.35); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-map-fill text-success me-1"></i>WebGIS
+          </span>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigasi -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Navigasi
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-0" style="font-size:0.85rem;">
+          <li><a href="index.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Beranda</a></li>
+          <li><a href="profil.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Profil Desa</a></li>
+          <li><a href="peta.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Peta WebGIS</a></li>
+          <li><a href="peta.html#direktori-pane" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Direktori Lokasi</a></li>
+          <li><a href="potensi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Potensi Desa</a></li>
+          <li><a href="informasi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Berita &amp; Info</a></li>
+          <li><a href="apbdes.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Transparansi APBDes</a></li>
+          <li><a href="dokumentasi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Dokumentasi</a></li>
+          <li><a href="pelayanan.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Pelayanan</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Kantor Desa -->
+      <div class="col-lg-3 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Kantor Desa
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-3 mb-0" style="font-size:0.85rem; color:rgba(255,255,255,0.65);">
+          <li class="d-flex align-items-start gap-2">
+            <i class="bi bi-geo-alt-fill text-warning mt-1" style="flex-shrink:0;"></i>
+            <span>Desa Gunungsari, Kecamatan Sadananya, Kabupaten Ciamis, Provinsi Jawa Barat</span>
+          </li>
+          <li class="d-flex align-items-center gap-2">
+            <i class="bi bi-telephone-fill text-warning" style="flex-shrink:0;"></i>
+            <a href="tel:082133176920" class="text-white-50 text-decoration-none">082133176920</a>
+          </li>
+          <li class="d-flex align-items-center gap-2">
+            <i class="bi bi-envelope-fill text-warning" style="flex-shrink:0;"></i>
+            <a href="mailto:desagunungsari207@gmail.com" class="text-white-50 text-decoration-none">desagunungsari207@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Jam Operasional -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Jam Operasional
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-3" style="font-size:0.83rem;">
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Senin – Kamis</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 15.00</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Jumat</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 11.30</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center pt-1">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-muted"></i>Sabtu &amp; Minggu</span>
+            <span class="badge" style="background:rgba(220,53,69,0.2); color:#F87171; border:1px solid rgba(220,53,69,0.3); font-size:0.72rem;">Libur</span>
+          </li>
+        </ul>
+        <a href="kontak.html" class="btn btn-outline-light rounded-pill btn-sm w-100 py-2 fw-semibold" style="border-color:rgba(255,255,255,0.2); font-size:0.83rem;">
+          <i class="bi bi-envelope me-1"></i>Hubungi Kami
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Professional Credit Block — KKN SPIG Universitas Pendidikan Indonesia -->
+    <div class="credit-kkn-block">
+      <div class="row align-items-center g-3">
+        <div class="col-lg-12">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="credit-upi-badge">
+              <i class="bi bi-mortarboard-fill text-warning"></i> UNIVERSITAS PENDIDIKAN INDONESIA
+            </span>
+            <span class="badge bg-purple-subtle text-primary border rounded-pill" style="font-size:0.73rem;">
+              KKN SPIG 2026 &bull; Kelompok 3
+            </span>
+          </div>
+          <h6 class="text-white fw-bold font-outfit mb-1" style="font-size:1.02rem;">
+            Pengembangan Portal Digital &amp; Sistem Informasi Geospasial (WebGIS)
+          </h6>
+          <p class="small text-white-50 mb-0" style="line-height:1.65; font-size:0.84rem;">
+            Portal WebGIS dan sistem informasi digital ini dikembangkan secara akademis dan profesional oleh <strong>Mahasiswa KKN Kelompok 3 Program Studi Survei Pemetaan dan Informasi Geospasial (SPIG)</strong>, Fakultas Pendidikan Ilmu Pengetahuan Sosial (FPIPS), Universitas Pendidikan Indonesia (UPI) Bandung sebagai bentuk kontribusi nyata digitalisasi dan pemetaan geospasial presisi Desa Gunungsari.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <div class="p-2.5 rounded-3 border d-inline-block text-start" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.12) !important;">
+            <small class="text-white-50 d-block mb-1" style="font-size:0.74rem;">Tim Pengembang KKN SPIG UPI:</small>
+            <span class="badge bg-gold-subtle text-gold-dark border fw-bold me-1" style="font-size:0.7rem;">SPIG FPIPS UPI</span>
+            <span class="badge bg-light text-dark border fw-bold" style="font-size:0.7rem;">Kab. Ciamis 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr style="border-color:rgba(255,255,255,0.08); margin:1.75rem 0;">
+
+    <!-- Bottom Bar -->
+    <div class="row align-items-center g-3">
+      <div class="col-md-7 text-center text-md-start">
+        <p class="mb-1 text-white-50" style="font-size:0.82rem;">
+          &copy; 2026 Portal Digital Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis.
+        </p>
+        <p class="mb-0 text-white-50" style="font-size:0.73rem; opacity:0.65; line-height:1.5;">
+          Developed in collaboration with <strong class="text-warning">KKN SPIG UPI</strong> — Penguatan Sistem Informasi Geospasial Desa. Portal Resmi Pemerintah Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis.
+        </p>
+      </div>
+      <div class="col-md-5 text-center text-md-end">
+        <div class="d-inline-flex align-items-center gap-2">
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="https://wa.me/6282133176920" target="_blank" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="btn btn-back-top rounded-circle shadow-lg" id="btnBackTop" aria-label="Kembali ke atas" style="position:fixed; bottom:25px; right:25px; width:44px; height:44px; background:#5C2D8E; color:#FFF; border:none; display:none; z-index:1050; align-items:center; justify-content:center;">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+// ============================================================
+// PREMIUM ENHANCEMENT SCRIPTS — Profil Desa
+// ============================================================
+(function() {
+  'use strict';
+
+  // ── 1. Scroll Progress Bar ──────────────────────────────────
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress() {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? (scrolled / total) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + '%';
+  }
+
+  // ── 2. Sticky Navbar Blur on Scroll ────────────────────────
+  const stickyWrapper = document.querySelector('.sticky-top-wrapper');
+  function updateNavbar() {
+    const scrolled = window.scrollY > 10;
+    if (stickyWrapper) stickyWrapper.classList.toggle('scrolled', scrolled);
+  }
+
+  window.addEventListener('scroll', function() {
+    updateProgress();
+    updateNavbar();
+  }, { passive: true });
+
+  updateProgress();
+  updateNavbar();
+
+  // ── 3. Expandable Search ────────────────────────────────────
+  const searchBtn = document.getElementById('navSearchBtn');
+  const searchInput = document.getElementById('navSearchInput');
+  if (searchBtn && searchInput) {
+    searchBtn.addEventListener('click', function(e) {
+      const isExpanded = searchBtn.classList.toggle('expanded');
+      searchBtn.setAttribute('aria-expanded', isExpanded);
+      if (isExpanded) {
+        setTimeout(function() { searchInput.focus(); }, 320);
+      }
+      e.stopPropagation();
+    });
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && searchInput.value.trim()) {
+        window.location.href = 'search.html?q=' + encodeURIComponent(searchInput.value.trim());
+      }
+      if (e.key === 'Escape') {
+        searchBtn.classList.remove('expanded');
+        searchBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!searchBtn.contains(e.target)) {
+        searchBtn.classList.remove('expanded');
+        searchBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // ── 4. Scroll Reveal (IntersectionObserver) ─────────────────
+  const revealEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    revealEls.forEach(function(el) {
+      if (!el.classList.contains('visible')) {
+        revealObserver.observe(el);
+      }
+    });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  // ── 5. Count-up Animation ───────────────────────────────────
+  function countUp(el, target, duration) {
+    const start = performance.now();
+    const step = function(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(ease * target);
+      el.textContent = current.toLocaleString('id-ID');
+      if (progress < 1) requestAnimationFrame(step);
+      else { el.textContent = target.toLocaleString('id-ID'); el.classList.remove('counting'); }
+    };
+    el.classList.add('counting');
+    requestAnimationFrame(step);
+  }
+
+  const counterEls = document.querySelectorAll('[data-counter]');
+  if (counterEls.length && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.counter, 10);
+          if (!isNaN(target)) countUp(el, target, 1800);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    counterEls.forEach(function(el) { counterObserver.observe(el); });
+  }
+
+  // ── 6. Back to Top Visibility ──────────────────────────────
+  const backTopBtn = document.getElementById('btnBackTop');
+  if (backTopBtn) {
+    window.addEventListener('scroll', function() {
+      const show = window.scrollY > 400;
+      backTopBtn.style.display = show ? 'flex' : 'none';
+    }, { passive: true });
+    backTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+})();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const chartData = {
+    "jenis_kelamin": {
+        "labels": ["Laki-laki", "Perempuan"],
+        "data": [1665, 1660]
+    },
+    "usia": {
+        "labels": ["0-14 tahun", "15-24 tahun", "25-54 tahun", "55-64 tahun", "65+ tahun"],
+        "data": [677, 559, 1368, 367, 351]
+    },
+    "pendidikan": {
+        "labels": ["Tamat SD", "SLTA/Sederajat", "S1/Strata I", "Tidak/Belum Sekolah", "Diploma I/II", "SLTP/Sederajat", "Belum Tamat SD", "Diploma III", "Strata II"],
+        "data": [1487, 453, 82, 234, 6, 791, 257, 11, 3]
+    },
+    "mata_pencaharian": {
+        "labels": ["Petani/Pekebun", "Mengurus Rumah Tangga", "Pedagang", "Wiraswasta", "Pelajar/Mahasiswa", "Belum/Tidak Bekerja", "Guru", "PNS", "Karyawan Honorer", "Buruh Harian Lepas"],
+        "data": [90, 962, 106, 534, 963, 380, 10, 17, 20, 147]
+    }
+  };
+  const colors = ['#5C2D8E','#D4901F','#4E6E52','#7844B0','#E8A638','#6E9273','#421C6B','#B37713','#2E5339','#0284C7'];
+
+  const chartOpts = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'bottom', labels: { padding: 12, usePointStyle: true, font: { size: 11, family: 'Inter' } } }
+    }
+  };
+
+  // 1. Jenis Kelamin
+  if (chartData.jenis_kelamin && document.getElementById('chartGender')) {
+    new Chart(document.getElementById('chartGender'), {
+      type: 'pie',
+      data: {
+        labels: chartData.jenis_kelamin.labels,
+        datasets: [{
+          data: chartData.jenis_kelamin.data,
+          backgroundColor: ['#5C2D8E', '#D4901F'],
+          borderWidth: 3,
+          borderColor: '#fff'
+        }]
+      },
+      options: chartOpts
+    });
+  }
+
+  // 2. Usia
+  if (chartData.usia && document.getElementById('chartAge')) {
+    new Chart(document.getElementById('chartAge'), {
+      type: 'bar',
+      data: {
+        labels: chartData.usia.labels,
+        datasets: [{
+          label: 'Jumlah Penduduk',
+          data: chartData.usia.data,
+          backgroundColor: '#5C2D8E',
+          borderRadius: 8,
+          maxBarThickness: 50
+        }]
+      },
+      options: {
+        ...chartOpts,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { family: 'Inter' } } },
+          x: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 11 } } }
+        }
+      }
+    });
+  }
+
+  // 3. Mata Pencaharian
+  if (chartData.mata_pencaharian && document.getElementById('chartJob')) {
+    new Chart(document.getElementById('chartJob'), {
+      type: 'doughnut',
+      data: {
+        labels: chartData.mata_pencaharian.labels,
+        datasets: [{
+          data: chartData.mata_pencaharian.data,
+          backgroundColor: colors,
+          borderWidth: 2,
+          borderColor: '#fff'
+        }]
+      },
+      options: chartOpts
+    });
+  }
+
+  // 4. Pendidikan
+  if (chartData.pendidikan && document.getElementById('chartEdu')) {
+    new Chart(document.getElementById('chartEdu'), {
+      type: 'bar',
+      data: {
+        labels: chartData.pendidikan.labels,
+        datasets: [{
+          label: 'Jumlah Penduduk',
+          data: chartData.pendidikan.data,
+          backgroundColor: '#D4901F',
+          borderRadius: 8,
+          maxBarThickness: 40
+        }]
+      },
+      options: {
+        ...chartOpts,
+        indexAxis: 'y',
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { family: 'Inter' } } },
+          y: { grid: { display: false }, ticks: { font: { family: 'Inter', size: 10 } } }
+        }
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,355 @@
+/* ===========================================
+   Admin Panel — Compro Desa Gunungsari
+   =========================================== */
+
+:root {
+  --admin-sidebar: #1E1530;
+  --admin-sidebar-active: rgba(255,255,255,.1);
+  --admin-primary: #6B2C91;
+  --admin-bg: #F4F2F8;
+}
+
+body.admin-body {
+  background: var(--admin-bg);
+}
+
+/* --- Admin Login --- */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #3D1558 0%, #5B2273 50%, #4A1D6B 100%);
+  padding: 1rem;
+}
+.login-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2);
+}
+.login-card h3 {
+  font-weight: 800;
+  margin-bottom: .5rem;
+}
+.login-card .login-subtitle {
+  color: #6C757D;
+  font-size: .9rem;
+  margin-bottom: 2rem;
+}
+.login-card .form-control {
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  border: 2px solid #E9ECEF;
+  font-size: .92rem;
+  transition: border-color .3s;
+}
+.login-card .form-control:focus {
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 3px rgba(46,125,50,.15);
+}
+.login-card .btn-login {
+  background: var(--admin-primary);
+  border: none;
+  border-radius: 10px;
+  padding: .75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  color: #fff;
+  transition: all .3s;
+}
+.login-card .btn-login:hover {
+  background: #1B5E20;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(46,125,50,.35);
+}
+
+/* --- Admin Layout --- */
+.admin-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar — Rock Solid Fixed Dimensions */
+.admin-sidebar {
+  width: 270px !important;
+  min-width: 270px !important;
+  max-width: 270px !important;
+  background: var(--admin-sidebar) !important;
+  color: #fff !important;
+  padding: 1.25rem 0 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  overflow-y: scroll !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255,255,255,0.2) transparent !important;
+  transition: transform .3s !important;
+  box-sizing: border-box !important;
+}
+.admin-sidebar::-webkit-scrollbar {
+  width: 5px !important;
+}
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2) !important;
+  border-radius: 4px !important;
+}
+
+.admin-sidebar .sidebar-brand {
+  padding: 0 1.25rem 1.25rem !important;
+  border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  margin-bottom: 0.5rem !important;
+}
+.admin-sidebar .sidebar-brand h5 {
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  margin-bottom: .15rem !important;
+  white-space: nowrap !important;
+}
+.admin-sidebar .sidebar-brand small {
+  color: rgba(255,255,255,.5) !important;
+  font-size: .75rem !important;
+  white-space: nowrap !important;
+}
+.sidebar-nav {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.sidebar-nav li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.sidebar-nav .nav-label {
+  padding: .75rem 1.25rem .25rem !important;
+  font-size: .65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  color: rgba(255,255,255,.4) !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+.sidebar-nav a {
+  display: flex !important;
+  align-items: center !important;
+  gap: .75rem !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding: 0 1.25rem !important;
+  color: rgba(255,255,255,.75) !important;
+  font-size: .84rem !important;
+  font-weight: 500 !important;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease !important;
+  border-left: 4px solid transparent !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+  line-height: 38px !important;
+}
+.sidebar-nav a:hover {
+  background: rgba(255,255,255,.08) !important;
+  color: #FFFFFF !important;
+}
+.sidebar-nav a.active {
+  background: rgba(255,255,255,.15) !important;
+  color: #FFFFFF !important;
+  border-left-color: #D4901F !important;
+  font-weight: 600 !important;
+}
+.sidebar-nav a i {
+  font-size: 1.05rem !important;
+  width: 22px !important;
+  text-align: center !important;
+  flex-shrink: 0 !important;
+}
+
+/* Main Content */
+.admin-main {
+  flex: 1;
+  margin-left: 270px !important;
+  padding: 2rem;
+}
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E9ECEF;
+}
+.admin-topbar h4 {
+  font-weight: 700;
+  margin-bottom: .15rem;
+}
+.admin-topbar .breadcrumb {
+  margin-bottom: 0;
+  font-size: .85rem;
+}
+.btn-sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Dashboard Cards */
+.dash-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  border: 1px solid #E9ECEF;
+  transition: all .3s;
+  height: 100%;
+}
+.dash-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+}
+.dash-card .dash-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+.dash-card .dash-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #212529;
+}
+.dash-card .dash-label {
+  color: #6C757D;
+  font-size: .85rem;
+}
+
+/* Admin Table */
+.admin-table-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  border: 1px solid #E9ECEF;
+}
+.admin-table-card .table {
+  margin-bottom: 0;
+}
+.admin-table-card .table th {
+  font-weight: 600;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: #6C757D;
+  border-bottom: 2px solid #E9ECEF;
+  padding: .75rem;
+}
+.admin-table-card .table td {
+  padding: .75rem;
+  vertical-align: middle;
+  font-size: .9rem;
+}
+.admin-table-card .table img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Admin Form */
+.admin-form-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  border: 1px solid #E9ECEF;
+}
+.admin-form-card .form-label {
+  font-weight: 600;
+  font-size: .88rem;
+  color: #333;
+}
+.admin-form-card .form-control,
+.admin-form-card .form-select {
+  border-radius: 10px;
+  border: 2px solid #E9ECEF;
+  padding: .6rem 1rem;
+  transition: border-color .3s;
+}
+.admin-form-card .form-control:focus,
+.admin-form-card .form-select:focus {
+  border-color: var(--admin-primary);
+  box-shadow: 0 0 0 3px rgba(46,125,50,.12);
+}
+.admin-form-card textarea.form-control {
+  min-height: 120px;
+}
+
+/* Alert */
+.alert-custom {
+  border-radius: 10px;
+  border: none;
+  font-size: .9rem;
+}
+
+/* --- Admin Stat Cards --- */
+.admin-stat-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.admin-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+.admin-stat-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+.admin-stat-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* --- Responsive Admin --- */
+@media (max-width: 991.98px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+  .admin-sidebar.show {
+    transform: translateX(0);
+  }
+  .admin-main {
+    margin-left: 0;
+  }
+  .btn-sidebar-toggle {
+    display: inline-block;
+  }
+}
+@media (max-width: 575.98px) {
+  .admin-main {
+    padding: 1rem;
+  }
+  .admin-form-card {
+    padding: 1.25rem;
+  }
+}

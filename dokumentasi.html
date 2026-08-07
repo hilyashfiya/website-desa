@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galeri foto dan arsip digital kegiatan pemerintahan, sosial, budaya, kesehatan, dan pembangunan Desa Gunungsari, Kecamatan Sadananya, Kabupaten Ciamis.">
+  <meta name="keywords" content="Dokumentasi Desa Gunungsari, Galeri Foto, Video Profil, Sadananya, Ciamis">
+  <meta name="robots" content="index, follow">
+  <title>Dokumentasi &amp; Galeri | Portal Desa Gunungsari</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>🏡</text></svg>">
+
+  <!-- Google Fonts: Outfit + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+  /* Seamless & Premium GLightbox Lightbox Overlay */
+  .gslide-description {
+    background: rgba(15, 23, 42, 0.92) !important;
+    backdrop-filter: blur(12px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+    padding: 16px 24px !important;
+  }
+  .gdesc-inner {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 850px !important;
+  }
+  .gslide-title {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: #FFFFFF !important;
+    margin-bottom: 6px !important;
+    line-height: 1.35 !important;
+  }
+  .gslide-desc {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.88rem !important;
+    color: rgba(241, 245, 249, 0.88) !important;
+    line-height: 1.6 !important;
+    margin-bottom: 0 !important;
+  }
+  .gslide-image img {
+    border-radius: 12px !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6) !important;
+  }
+
+  /* Modal detail custom size */
+  .modal-dok-custom {
+    max-width: 720px !important;
+  }
+  .modal-dok-img-box {
+    max-height: 380px;
+    background: #0F172A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .modal-dok-img-box img {
+    max-height: 380px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  </style>
+
+  <script>
+  // Global Data & Filtering Functions defined early in head
+  window.dokDataset = [{"id": 19, "judul": "Kolaborasi Pemerintah Desa Gunungsari, Dinas Kehutanan, dan Mahasiswa KKN SPIG UPI dalam Kegiatan Jum'at Menanam", "kategori": "gotong_royong", "cat_label": "Sosial & Gotong Royong", "cat_icon": "bi-people-fill", "cat_color": "#28A745", "cat_bg": "rgba(40,167,69,0.1)", "tanggal": "17 Jul 2026", "file": "assets/uploads/img_6a62debd619ac.jpeg", "deskripsi": "Kegiatan Jum'at Menanam merupakan bentuk kolaborasi antara Pemerintah Desa Gunungsari, Dinas Kehutanan, dan Mahasiswa KKN SPIG Universitas Pendidikan Indonesia (UPI) dalam mendukung pelestarian lingkungan. Kegiatan ini dilaksanakan melalui penanaman pohon di lokasi yang telah ditentukan sebagai upaya meningkatkan tutupan vegetasi, menjaga keseimbangan ekosistem, serta menumbuhkan kepedulian masyarakat terhadap pentingnya menjaga kelestarian alam. Diharapkan kegiatan ini dapat memberikan manfaat jangka panjang bagi lingkungan sekaligus memperkuat semangat gotong royong dalam mewujudkan desa yang hijau dan berkelanjutan.", "isTall": true}, {"id": 20, "judul": "Mahasiswa KKN SPIG UPI Berpartisipasi dalam Kegiatan Pengajian Bersama Masyarakat RT 022 Dusun Cilopadang", "kategori": "kegiatan_desa", "cat_label": "Pemerintahan Desa", "cat_icon": "bi-building", "cat_color": "#5C2D8E", "cat_bg": "rgba(92,45,142,0.1)", "tanggal": "15 Jul 2026", "file": "assets/uploads/img_6a62dec921438.jpeg", "deskripsi": "Kegiatan pengajian di RT 022 Dusun Cilopadang menjadi salah satu sarana untuk mempererat silaturahmi serta meningkatkan nilai-nilai keagamaan di lingkungan masyarakat. Kegiatan ini diikuti oleh masyarakat setempat bersama Mahasiswa KKN SPIG Universitas Pendidikan Indonesia (UPI) sebagai bentuk partisipasi dalam mendukung kegiatan keagamaan di desa. Melalui pengajian ini, diharapkan terjalin hubungan yang semakin erat antara mahasiswa dan masyarakat serta tercipta lingkungan yang harmonis, religius, dan penuh semangat kebersamaan.", "isTall": false}, {"id": 22, "judul": "Rumah Belajar KKN Bersama Anak-Anak Dusun Cikatomas", "kategori": "kegiatan_desa", "cat_label": "Pemerintahan Desa", "cat_icon": "bi-building", "cat_color": "#5C2D8E", "cat_bg": "rgba(92,45,142,0.1)", "tanggal": "11 Jul 2026", "file": "assets/uploads/img_6a6306e6e1b8e.jpg", "deskripsi": "Rumah Belajar KKN merupakan program pendidikan yang diselenggarakan oleh Mahasiswa KKN SPI Universitas Pendidikan Indonesia (UPI) bagi anak-anak di Dusun Cikatomas, Desa Gunungsari. Kegiatan ini bertujuan untuk memberikan pendampingan belajar, membantu memahami materi pelajaran, serta meningkatkan motivasi dan semangat belajar anak-anak melalui suasana belajar yang interaktif dan menyenangkan. Selain mendukung perkembangan akademik, program ini juga menjadi wadah untuk membangun kedekatan antara mahasiswa KKN dan masyarakat melalui kegiatan pendidikan yang bermanfaat.", "isTall": false}, {"id": 21, "judul": "Kegiatan Mengajar Mengaji Bersama Anak-Anak di Dusun Cilopadang", "kategori": "kegiatan_desa", "cat_label": "Pemerintahan Desa", "cat_icon": "bi-building", "cat_color": "#5C2D8E", "cat_bg": "rgba(92,45,142,0.1)", "tanggal": "08 Jul 2026", "file": "assets/uploads/img_6a63067bca867.jpg", "deskripsi": "Kegiatan mengajar mengaji merupakan salah satu bentuk pengabdian Mahasiswa KKN SPI Universitas Pendidikan Indonesia (UPI) kepada masyarakat di Dusun Cilopadang, Desa Gunungsari. Kegiatan ini dilaksanakan untuk mendampingi anak-anak dalam belajar membaca Al-Qur'an, memperbaiki tajwid, serta menanamkan nilai-nilai keislaman sejak dini. Selain meningkatkan kemampuan membaca Al-Qur'an, kegiatan ini juga menjadi sarana mempererat hubungan antara mahasiswa KKN dengan masyarakat melalui pembinaan keagamaan yang dilakukan secara rutin dan penuh kebersamaan.", "isTall": true}, {"id": 18, "judul": "Sosialisasi Pencegahan Stunting untuk Meningkatkan Kesadaran Masyarakat Desa Gunungsari", "kategori": "kesehatan", "cat_label": "Kesehatan & Posyandu", "cat_icon": "bi-heart-pulse-fill", "cat_color": "#DC3545", "cat_bg": "rgba(220,53,69,0.1)", "tanggal": "07 Jul 2026", "file": "assets/uploads/img_6a62df184922b.jpg", "deskripsi": "Sosialisasi Pencegahan Stunting merupakan kegiatan edukasi yang bertujuan untuk meningkatkan pengetahuan dan kesadaran masyarakat mengenai pentingnya pencegahan stunting sejak dini. Kegiatan ini membahas pemenuhan gizi seimbang bagi ibu hamil, ibu menyusui, dan balita, pentingnya pola asuh yang baik, serta penerapan perilaku hidup bersih dan sehat. Melalui kegiatan ini diharapkan masyarakat Desa Gunungsari semakin memahami langkah-langkah pencegahan stunting guna mewujudkan generasi yang sehat, cerdas, dan berkualitas.", "isTall": false}];
+  window.glightboxInstance = null;
+
+  window.categoryTitleMap = {
+    'all': 'Semua Dokumentasi<br><span class="text-gradient-gold">Kegiatan Desa</span>',
+    'kegiatan_desa': 'Dokumentasi<br><span class="text-gradient-purple">Pemerintahan Desa</span>',
+    'gotong_royong': 'Dokumentasi<br><span class="text-gradient-purple">Sosial &amp; Gotong Royong</span>',
+    'kesehatan': 'Dokumentasi<br><span class="text-gradient-purple">Kesehatan &amp; Posyandu</span>'
+  };
+
+  window.initLightbox = function() {
+    if (typeof GLightbox !== 'undefined') {
+      if (window.glightboxInstance) window.glightboxInstance.destroy();
+      window.glightboxInstance = GLightbox({
+        selector: '.dok-item:not([style*="display: none"]) .glightbox',
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+        draggable: true,
+        openEffect: 'zoom',
+        closeEffect: 'zoom'
+      });
+    }
+  };
+
+  window.openDetailModal = function(index) {
+    const dok = window.dokDataset[index];
+    if (!dok) return;
+
+    document.getElementById('dokModalImg').src = dok.file;
+    document.getElementById('dokModalHeaderBg').style.background = dok.cat_color;
+    document.getElementById('dokModalCatIcon').className = 'bi ' + dok.cat_icon + ' me-1';
+    document.getElementById('dokModalCatLabel').textContent = dok.cat_label;
+    document.getElementById('dokModalDate').innerHTML = '<i class="bi bi-calendar3 me-1"></i>' + dok.tanggal;
+    document.getElementById('dokModalTitle').textContent = dok.judul;
+    document.getElementById('dokModalDesc').textContent = dok.deskripsi;
+
+    const zoomBtn = document.getElementById('dokModalZoomBtn');
+    zoomBtn.onclick = function(e) {
+      e.preventDefault();
+      const modalEl = document.getElementById('modalDetailDokumentasi');
+      const modalInst = bootstrap.Modal.getInstance(modalEl);
+      if (modalInst) modalInst.hide();
+      setTimeout(() => {
+        const items = document.querySelectorAll('.dok-masonry-item');
+        if (items[index]) {
+          const link = items[index].querySelector('a.glightbox');
+          if (link) link.click();
+        }
+      }, 350);
+    };
+
+    new bootstrap.Modal(document.getElementById('modalDetailDokumentasi')).show();
+  };
+
+  window.filterDokumentasi = function(category, btnElement) {
+    document.querySelectorAll('.dok-cat-card').forEach(b => b.classList.remove('active'));
+    if (btnElement) btnElement.classList.add('active');
+
+    const resetBtnContainer = document.getElementById('resetFilterContainer');
+    if (resetBtnContainer) {
+      resetBtnContainer.style.display = (category === 'all') ? 'none' : 'block';
+    }
+
+    const headingTitle = document.getElementById('galleryHeadingTitle');
+    if (headingTitle && window.categoryTitleMap[category]) {
+      headingTitle.innerHTML = window.categoryTitleMap[category];
+    }
+
+    const items = document.querySelectorAll('.dok-item');
+    let visibleCount = 0;
+
+    items.forEach(item => {
+      const itemCat = item.getAttribute('data-category');
+      if (category === 'all' || itemCat === category) {
+        item.style.display = 'block';
+        visibleCount++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    const countLabel = document.getElementById('fotoCountLabel');
+    if (countLabel) countLabel.textContent = visibleCount;
+
+    window.initLightbox();
+  };
+  </script>
+</head>
+<body>
+
+<!-- Sticky Header Wrapper -->
+<div class="sticky-top-wrapper" style="position:sticky; top:0; z-index:1030;">
+  <div class="navbar-topbar" style="background-color:#2D114C; border-bottom:1px solid rgba(255,255,255,0.08); padding:0.35rem 0;">
+    <div class="container-fluid container-xl d-flex justify-content-between align-items-center">
+      <small class="text-white-50 d-flex align-items-center gap-2" style="font-size:0.75rem; letter-spacing:0.3px;">
+        <i class="bi bi-geo-alt-fill text-gold" style="font-size:0.75rem;"></i>
+        Portal Digital &amp; WebGIS Desa Gunungsari
+      </small>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <i class="bi bi-shield-fill text-warning" style="font-size:0.65rem;"></i>Kec. Sadananya
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-none d-sm-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.85);">
+          <img src="assets/img/logo-ciamis.png" alt="Ciamis" style="height:14px; max-height:14px; width:auto; vertical-align:middle;">
+          Kab. Ciamis
+        </span>
+        <span class="badge fw-normal py-1 px-2 d-inline-flex align-items-center gap-1" style="font-size:0.68rem; background:rgba(212,144,31,0.25); border:1px solid rgba(212,144,31,0.4); color:#FFFFFF;">
+          <i class="bi bi-circle-fill text-success" style="font-size:0.55rem;"></i>Data Aktif
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-xl navbar-dark" id="mainNavbar" style="background-color:#421C6B !important; padding:0.55rem 0;">
+    <div class="container-fluid container-xl">
+      <a class="navbar-brand py-0 d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/logo-ciamis.png" alt="Logo Desa Gunungsari" style="height:40px; max-height:40px; width:auto; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));" class="me-1">
+        <div class="d-flex flex-column lh-1">
+          <span class="fw-bold text-white font-outfit" style="font-size:1.1rem; letter-spacing:-0.2px;">Desa Gunungsari</span>
+          <small class="text-white-50" style="font-size:0.65rem; letter-spacing:0.4px; margin-top:3px;">Kec. Sadananya &bull; Kab. Ciamis</small>
+        </div>
+      </a>
+
+      <button class="navbar-toggler border-0 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto align-items-xl-center my-2 my-xl-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i>Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="profil.html"><i class="bi bi-building me-1"></i>Profil</a></li>
+          <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="apbdes.html"><i class="bi bi-pie-chart-fill me-1"></i>APBDes</a></li>
+          <li class="nav-item"><a class="nav-link" href="potensi.html"><i class="bi bi-shop me-1"></i>Potensi</a></li>
+          <li class="nav-item"><a class="nav-link" href="peta.html"><i class="bi bi-map-fill me-1"></i>Wilayah &amp; Peta</a></li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html"><i class="bi bi-newspaper me-1"></i>Informasi</a></li>
+          <li class="nav-item"><a class="nav-link active" href="dokumentasi.html"><i class="bi bi-images me-1"></i>Dokumentasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="pelayanan.html"><i class="bi bi-file-earmark-text me-1"></i>Pelayanan</a></li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-2 mt-2 mt-xl-0 ms-xl-2">
+          <a class="nav-link nav-search-btn me-1" href="search.html" title="Cari di Portal"><i class="bi bi-search"></i></a>
+          <a class="nav-link navbar-cta ms-xl-1" href="kontak.html"><i class="bi bi-envelope-fill me-1"></i>Kontak</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO SECTION -->
+<section class="dok-hero" aria-label="Arsip Dokumentasi Desa Gunungsari">
+  <div class="dok-hero-bg"></div>
+  <div class="container position-relative" style="z-index:2;">
+    <div class="page-breadcrumb mb-3 dok-breadcrumb">
+      <a href="index.html">Beranda</a>
+      <span class="separator">/</span>
+      <span>Dokumentasi</span>
+    </div>
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <p class="section-label mb-3" style="color:rgba(255,255,255,0.7); border-color:rgba(255,255,255,0.3);">
+          <i class="bi bi-images me-2"></i>Arsip Visual Desa
+        </p>
+        <h1 class="font-outfit text-white fw-bold mb-3" style="font-size:clamp(2rem,4vw,3rem); line-height:1.15;">
+          Galeri &amp; Arsip<br><span style="color:var(--gold-light);">Digital Desa</span>
+        </h1>
+        <p class="text-white-50 fs-5 mb-4">
+          Rekam jejak visual kegiatan pemerintahan, sosial, budaya, dan pembangunan Desa Gunungsari.
+        </p>
+        <div class="d-flex gap-4 flex-wrap">
+          <div class="dok-quick-stat">
+            <div class="dok-quick-num">5+</div>
+            <div class="dok-quick-label">Foto Dokumentasi</div>
+          </div>
+          <div class="dok-stat-divider"></div>
+          <div class="dok-quick-stat">
+            <div class="dok-quick-num">3</div>
+            <div class="dok-quick-label">Kategori Aktif</div>
+          </div>
+          <div class="dok-stat-divider"></div>
+          <div class="dok-quick-stat">
+            <div class="dok-quick-num">2026</div>
+            <div class="dok-quick-label">Tahun Arsip</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="dok-hero-mosaic">
+          <div class="dok-hero-img large">
+            <img src="assets/uploads/mengenal_1784859023.jpeg" alt="Mengenal Desa" loading="lazy">
+          </div>
+          <div class="dok-hero-img">
+            <img src="assets/uploads/hero_1784859023.jpeg" alt="Desa Gunungsari" loading="lazy">
+          </div>
+          <div class="dok-hero-img">
+            <img src="assets/uploads/img_6a62df184922b.jpg" alt="Kegiatan Posyandu" loading="lazy">
+          </div>
+          <div class="dok-hero-img">
+            <img src="assets/uploads/img_6a62debd619ac.jpeg" alt="Jumat Menanam" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1 — KATEGORI OVERVIEW CARDS (Hanya Kategori yang Memiliki Foto &amp; Berfungsi) -->
+<section class="section-padding bg-body">
+  <div class="container">
+    <div class="row align-items-end mb-4 fade-in-up">
+      <div class="col-md-8">
+        <p class="section-label"><i class="bi bi-grid-3x3-gap me-2"></i>Kategori Dokumentasi</p>
+        <h2 class="section-title">Telusuri Berdasarkan<br><span class="text-gradient-purple">Jenis Kegiatan</span></h2>
+      </div>
+    </div>
+
+    <div class="row g-3 fade-in-up">
+      <!-- Semua -->
+      <div class="col-6 col-md-3">
+        <button class="dok-cat-card active w-100 text-start border-0 shadow-sm" data-filter="all" onclick="filterDokumentasi('all', this)">
+          <div class="dok-cat-icon" style="background:var(--primary-bg); color:var(--primary);">
+            <i class="bi bi-collection-fill"></i>
+          </div>
+          <div class="dok-cat-name">Semua Kategori</div>
+          <div class="dok-cat-count">5 foto</div>
+        </button>
+      </div>
+
+      <!-- Pemerintahan Desa (3 foto) -->
+      <div class="col-6 col-md-3">
+        <button class="dok-cat-card w-100 text-start border-0 shadow-sm" data-filter="kegiatan_desa" onclick="filterDokumentasi('kegiatan_desa', this)">
+          <div class="dok-cat-icon" style="background:var(--primary-bg); color:var(--primary);">
+            <i class="bi bi-building"></i>
+          </div>
+          <div class="dok-cat-name">Pemerintahan Desa</div>
+          <div class="dok-cat-count">3 foto</div>
+        </button>
+      </div>
+
+      <!-- Sosial & Gotong Royong (1 foto) -->
+      <div class="col-6 col-md-3">
+        <button class="dok-cat-card w-100 text-start border-0 shadow-sm" data-filter="gotong_royong" onclick="filterDokumentasi('gotong_royong', this)">
+          <div class="dok-cat-icon" style="background:rgba(40,167,69,0.1); color:var(--success);">
+            <i class="bi bi-people-fill"></i>
+          </div>
+          <div class="dok-cat-name">Sosial &amp; Gotong Royong</div>
+          <div class="dok-cat-count">1 foto</div>
+        </button>
+      </div>
+
+      <!-- Kesehatan & Posyandu (1 foto) -->
+      <div class="col-6 col-md-3">
+        <button class="dok-cat-card w-100 text-start border-0 shadow-sm" data-filter="kesehatan" onclick="filterDokumentasi('kesehatan', this)">
+          <div class="dok-cat-icon" style="background:rgba(220,53,69,0.1); color:var(--danger);">
+            <i class="bi bi-heart-pulse-fill"></i>
+          </div>
+          <div class="dok-cat-name">Kesehatan &amp; Posyandu</div>
+          <div class="dok-cat-count">1 foto</div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — MASONRY GALLERY UTAMA -->
+<section class="section-padding" style="background:var(--bg-cream);" id="galeri-utama">
+  <div class="container">
+    <div class="row align-items-end mb-4 fade-in-up">
+      <div class="col-md-8">
+        <p class="section-label"><i class="bi bi-images me-2"></i>Galeri Dokumentasi</p>
+        <h2 class="section-title" id="galleryHeadingTitle">Semua Dokumentasi<br><span class="text-gradient-gold">Kegiatan Desa</span></h2>
+      </div>
+      <div class="col-md-4 text-md-end mt-2 mt-md-0" id="resetFilterContainer" style="display:none;">
+        <button class="btn btn-outline-secondary rounded-pill px-3 py-1 btn-sm" onclick="filterDokumentasi('all', document.querySelector('[data-filter=\'all\']'))">
+          <i class="bi bi-x-circle me-1"></i>Reset Filter
+        </button>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-3 mb-4 fade-in-up">
+      <span class="badge-status active" style="font-size:0.8rem; padding:0.4rem 0.9rem;">
+        <i class="bi bi-images me-1"></i><span id="fotoCountLabel">5</span> foto
+      </span>
+      <span class="text-muted small">Data resmi Desa Gunungsari</span>
+    </div>
+
+    <!-- Masonry Gallery Grid -->
+    <div class="dok-masonry" id="galeri-grid">
+
+      <!-- ITEM 1: 19 -->
+      <div class="dok-masonry-item tall fade-in-up dok-item" data-category="gotong_royong" data-index="0">
+        <a href="assets/uploads/img_6a62debd619ac.jpeg" class="glightbox" data-gallery="gallery-main"
+           data-title="Kolaborasi Pemerintah Desa Gunungsari, Dinas Kehutanan, dan Mahasiswa KKN SPIG UPI dalam Kegiatan Jum'at Menanam"
+           data-description="Kegiatan Jum'at Menanam merupakan bentuk kolaborasi antara Pemerintah Desa Gunungsari, Dinas Kehutanan, dan Mahasiswa KKN SPIG Universitas Pendidikan Indonesia (UPI) dalam mendukung pelestarian lingkungan. Kegiatan ini dilaksanakan melalui penanaman pohon di lokasi yang telah ditentukan sebagai upaya meningkatkan tutupan vegetasi, menjaga keseimbangan ekosistem, serta menumbuhkan kepedulian masyarakat terhadap pentingnya menjaga kelestarian alam. Diharapkan kegiatan ini dapat memberikan manfaat jangka panjang bagi lingkungan sekaligus memperkuat semangat gotong royong dalam mewujudkan desa yang hijau dan berkelanjutan. &amp;mdash; 17 Jul 2026">
+          <img src="assets/uploads/img_6a62debd619ac.jpeg" alt="Kolaborasi Pemerintah Desa Gunungsari, Dinas Kehutanan, dan Mahasiswa KKN SPIG UPI dalam Kegiatan Jum'at Menanam" loading="lazy">
+          <div class="dok-masonry-overlay">
+            <div class="dok-masonry-top">
+              <span class="dok-kat-pill" style="background:rgba(40,167,69,0.1); color:#28A745; border:1px solid #28A74530;">
+                <i class="bi bi-people-fill me-1"></i>Sosial & Gotong Royong
+              </span>
+            </div>
+            <div class="dok-masonry-bottom">
+              <h5 class="dok-masonry-title">Kolaborasi Pemerintah Desa Gunungsari, Dinas Kehutanan, dan Mahasiswa KKN SPIG UPI dalam Kegiatan Jum'at Menanam</h5>
+              <p class="dok-masonry-desc">Kegiatan Jum'at Menanam merupakan bentuk kolaborasi antara Pemerintah Desa Gunungsari, Din...</p>
+              <div class="dok-masonry-meta">
+                <span><i class="bi bi-calendar3 me-1"></i>17 Jul 2026</span>
+                <span class="dok-zoom-btn" onclick="openDetailModal(0); event.preventDefault(); event.stopPropagation();" title="Buka Detail Lengkap">
+                  <i class="bi bi-info-circle-fill"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ITEM 2: 20 -->
+      <div class="dok-masonry-item fade-in-up dok-item" data-category="kegiatan_desa" data-index="1">
+        <a href="assets/uploads/img_6a62dec921438.jpeg" class="glightbox" data-gallery="gallery-main"
+           data-title="Mahasiswa KKN SPIG UPI Berpartisipasi dalam Kegiatan Pengajian Bersama Masyarakat RT 022 Dusun Cilopadang"
+           data-description="Kegiatan pengajian di RT 022 Dusun Cilopadang menjadi salah satu sarana untuk mempererat silaturahmi serta meningkatkan nilai-nilai keagamaan di lingkungan masyarakat. Kegiatan ini diikuti oleh masyarakat setempat bersama Mahasiswa KKN SPIG Universitas Pendidikan Indonesia (UPI) sebagai bentuk partisipasi dalam mendukung kegiatan keagamaan di desa. Melalui pengajian ini, diharapkan terjalin hubungan yang semakin erat antara mahasiswa dan masyarakat serta tercipta lingkungan yang harmonis, religius, dan penuh semangat kebersamaan. &amp;mdash; 15 Jul 2026">
+          <img src="assets/uploads/img_6a62dec921438.jpeg" alt="Mahasiswa KKN SPIG UPI Berpartisipasi dalam Kegiatan Pengajian Bersama Masyarakat RT 022 Dusun Cilopadang" loading="lazy">
+          <div class="dok-masonry-overlay">
+            <div class="dok-masonry-top">
+              <span class="dok-kat-pill" style="background:rgba(92,45,142,0.1); color:#5C2D8E; border:1px solid #5C2D8E30;">
+                <i class="bi bi-building me-1"></i>Pemerintahan Desa
+              </span>
+            </div>
+            <div class="dok-masonry-bottom">
+              <h5 class="dok-masonry-title">Mahasiswa KKN SPIG UPI Berpartisipasi dalam Kegiatan Pengajian Bersama Masyarakat RT 022 Dusun Cilopadang</h5>
+              <p class="dok-masonry-desc">Kegiatan pengajian di RT 022 Dusun Cilopadang menjadi salah satu sarana untuk mempererat s...</p>
+              <div class="dok-masonry-meta">
+                <span><i class="bi bi-calendar3 me-1"></i>15 Jul 2026</span>
+                <span class="dok-zoom-btn" onclick="openDetailModal(1); event.preventDefault(); event.stopPropagation();" title="Buka Detail Lengkap">
+                  <i class="bi bi-info-circle-fill"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ITEM 3: 22 -->
+      <div class="dok-masonry-item fade-in-up dok-item" data-category="kegiatan_desa" data-index="2">
+        <a href="assets/uploads/img_6a6306e6e1b8e.jpg" class="glightbox" data-gallery="gallery-main"
+           data-title="Rumah Belajar KKN Bersama Anak-Anak Dusun Cikatomas"
+           data-description="Rumah Belajar KKN merupakan program pendidikan yang diselenggarakan oleh Mahasiswa KKN SPI Universitas Pendidikan Indonesia (UPI) bagi anak-anak di Dusun Cikatomas, Desa Gunungsari. Kegiatan ini bertujuan untuk memberikan pendampingan belajar, membantu memahami materi pelajaran, serta meningkatkan motivasi dan semangat belajar anak-anak melalui suasana belajar yang interaktif dan menyenangkan. Selain mendukung perkembangan akademik, program ini juga menjadi wadah untuk membangun kedekatan antara mahasiswa KKN dan masyarakat melalui kegiatan pendidikan yang bermanfaat. &amp;mdash; 11 Jul 2026">
+          <img src="assets/uploads/img_6a6306e6e1b8e.jpg" alt="Rumah Belajar KKN Bersama Anak-Anak Dusun Cikatomas" loading="lazy">
+          <div class="dok-masonry-overlay">
+            <div class="dok-masonry-top">
+              <span class="dok-kat-pill" style="background:rgba(92,45,142,0.1); color:#5C2D8E; border:1px solid #5C2D8E30;">
+                <i class="bi bi-building me-1"></i>Pemerintahan Desa
+              </span>
+            </div>
+            <div class="dok-masonry-bottom">
+              <h5 class="dok-masonry-title">Rumah Belajar KKN Bersama Anak-Anak Dusun Cikatomas</h5>
+              <p class="dok-masonry-desc">Rumah Belajar KKN merupakan program pendidikan yang diselenggarakan oleh Mahasiswa KKN SPI...</p>
+              <div class="dok-masonry-meta">
+                <span><i class="bi bi-calendar3 me-1"></i>11 Jul 2026</span>
+                <span class="dok-zoom-btn" onclick="openDetailModal(2); event.preventDefault(); event.stopPropagation();" title="Buka Detail Lengkap">
+                  <i class="bi bi-info-circle-fill"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ITEM 4: 21 -->
+      <div class="dok-masonry-item tall fade-in-up dok-item" data-category="kegiatan_desa" data-index="3">
+        <a href="assets/uploads/img_6a63067bca867.jpg" class="glightbox" data-gallery="gallery-main"
+           data-title="Kegiatan Mengajar Mengaji Bersama Anak-Anak di Dusun Cilopadang"
+           data-description="Kegiatan mengajar mengaji merupakan salah satu bentuk pengabdian Mahasiswa KKN SPI Universitas Pendidikan Indonesia (UPI) kepada masyarakat di Dusun Cilopadang, Desa Gunungsari. Kegiatan ini dilaksanakan untuk mendampingi anak-anak dalam belajar membaca Al-Qur'an, memperbaiki tajwid, serta menanamkan nilai-nilai keislaman sejak dini. Selain meningkatkan kemampuan membaca Al-Qur'an, kegiatan ini juga menjadi sarana mempererat hubungan antara mahasiswa KKN dengan masyarakat melalui pembinaan keagamaan yang dilakukan secara rutin dan penuh kebersamaan. &amp;mdash; 08 Jul 2026">
+          <img src="assets/uploads/img_6a63067bca867.jpg" alt="Kegiatan Mengajar Mengaji Bersama Anak-Anak di Dusun Cilopadang" loading="lazy">
+          <div class="dok-masonry-overlay">
+            <div class="dok-masonry-top">
+              <span class="dok-kat-pill" style="background:rgba(92,45,142,0.1); color:#5C2D8E; border:1px solid #5C2D8E30;">
+                <i class="bi bi-building me-1"></i>Pemerintahan Desa
+              </span>
+            </div>
+            <div class="dok-masonry-bottom">
+              <h5 class="dok-masonry-title">Kegiatan Mengajar Mengaji Bersama Anak-Anak di Dusun Cilopadang</h5>
+              <p class="dok-masonry-desc">Kegiatan mengajar mengaji merupakan salah satu bentuk pengabdian Mahasiswa KKN SPI Univers...</p>
+              <div class="dok-masonry-meta">
+                <span><i class="bi bi-calendar3 me-1"></i>08 Jul 2026</span>
+                <span class="dok-zoom-btn" onclick="openDetailModal(3); event.preventDefault(); event.stopPropagation();" title="Buka Detail Lengkap">
+                  <i class="bi bi-info-circle-fill"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ITEM 5: 18 -->
+      <div class="dok-masonry-item fade-in-up dok-item" data-category="kesehatan" data-index="4">
+        <a href="assets/uploads/img_6a62df184922b.jpg" class="glightbox" data-gallery="gallery-main"
+           data-title="Sosialisasi Pencegahan Stunting untuk Meningkatkan Kesadaran Masyarakat Desa Gunungsari"
+           data-description="Sosialisasi Pencegahan Stunting merupakan kegiatan edukasi yang bertujuan untuk meningkatkan pengetahuan dan kesadaran masyarakat mengenai pentingnya pencegahan stunting sejak dini. Kegiatan ini membahas pemenuhan gizi seimbang bagi ibu hamil, ibu menyusui, dan balita, pentingnya pola asuh yang baik, serta penerapan perilaku hidup bersih dan sehat. Melalui kegiatan ini diharapkan masyarakat Desa Gunungsari semakin memahami langkah-langkah pencegahan stunting guna mewujudkan generasi yang sehat, cerdas, dan berkualitas. &amp;mdash; 07 Jul 2026">
+          <img src="assets/uploads/img_6a62df184922b.jpg" alt="Sosialisasi Pencegahan Stunting untuk Meningkatkan Kesadaran Masyarakat Desa Gunungsari" loading="lazy">
+          <div class="dok-masonry-overlay">
+            <div class="dok-masonry-top">
+              <span class="dok-kat-pill" style="background:rgba(220,53,69,0.1); color:#DC3545; border:1px solid #DC354530;">
+                <i class="bi bi-heart-pulse-fill me-1"></i>Kesehatan & Posyandu
+              </span>
+            </div>
+            <div class="dok-masonry-bottom">
+              <h5 class="dok-masonry-title">Sosialisasi Pencegahan Stunting untuk Meningkatkan Kesadaran Masyarakat Desa Gunungsari</h5>
+              <p class="dok-masonry-desc">Sosialisasi Pencegahan Stunting merupakan kegiatan edukasi yang bertujuan untuk meningkatk...</p>
+              <div class="dok-masonry-meta">
+                <span><i class="bi bi-calendar3 me-1"></i>07 Jul 2026</span>
+                <span class="dok-zoom-btn" onclick="openDetailModal(4); event.preventDefault(); event.stopPropagation();" title="Buka Detail Lengkap">
+                  <i class="bi bi-info-circle-fill"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — HIGHLIGHT VIDEO (1 Video Resmi Playable Presisi) -->
+<section class="section-padding bg-body" id="video-section">
+  <div class="container">
+    <div class="row align-items-center justify-content-center g-4">
+      <div class="col-lg-10 col-xl-9 text-center fade-in-up">
+        <p class="section-label mb-2"><i class="bi bi-play-circle me-2"></i>Video Profil &amp; Kegiatan</p>
+        <h2 class="section-title mb-2">Galeri Video Resmi<br><span class="text-gradient-purple">Desa Gunungsari</span></h2>
+        <p class="text-muted small mb-4">Saksikan tayangan dokumentasi resmi potensi, keindahan alam, dan kegiatan Desa Gunungsari.</p>
+
+        <!-- Video Player Box Frame 16:9 langsung playable YouTube Player -->
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden text-start">
+          <div class="ratio ratio-16x9 bg-black rounded-4 overflow-hidden">
+            <iframe src="https://www.youtube.com/embed/oKVORgIUP7E?rel=0&autoplay=0"
+                    title="DESA WISATA GUNUNGSARI TAHUN 2025"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                    style="border:none;"></iframe>
+          </div>
+          <div class="p-3 bg-white d-flex justify-content-between align-items-center flex-wrap gap-2 border-top">
+            <div>
+              <h6 class="fw-bold font-outfit text-dark mb-0"><i class="bi bi-play-btn-fill text-danger me-2"></i>DESA WISATA GUNUNGSARI TAHUN 2025</h6>
+              <small class="text-muted"><i class="bi bi-clock me-1 text-warning"></i>5 Menit &mdash; Dokumen Resmi Pemdes Gunungsari</small>
+            </div>
+            <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill font-mono">
+              <i class="bi bi-youtube me-1"></i>YouTube Official
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — CTA BANNER -->
+<section class="cta-banner-section">
+  <div class="cta-banner-bg"></div>
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row align-items-center justify-content-between g-4">
+      <div class="col-lg-7">
+        <p class="section-label mb-2" style="color:rgba(255,255,255,0.7); border-color:rgba(255,255,255,0.3);">
+          <i class="bi bi-upload me-2"></i>Kontribusi Dokumentasi
+        </p>
+        <h2 class="font-outfit text-white fw-bold mb-2" style="font-size:clamp(1.5rem,3vw,2.2rem);">
+          Punya Foto &amp; Video Kegiatan Desa?
+        </h2>
+        <p class="text-white-50 mb-0">
+          Bantu lengkapi arsip digital Desa Gunungsari. Kirimkan foto dan video dokumentasi kegiatan kepada Sekretariat Desa atau melalui kontak resmi.
+        </p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <div class="d-flex gap-3 flex-wrap justify-content-lg-end">
+          <a href="kontak.html" class="btn btn-gold btn-lg px-4">
+            <i class="bi bi-envelope me-2"></i>Kirim ke Desa
+          </a>
+          <a href="informasi.html" class="btn btn-outline-light btn-lg px-4">
+            <i class="bi bi-newspaper me-2"></i>Lihat Berita
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL DETAIL DOKUMENTASI LENGKAP -->
+<div class="modal fade" id="modalDetailDokumentasi" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dok-custom">
+    <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+      <div class="modal-header text-white border-0 py-3" id="dokModalHeaderBg" style="background:#5C2D8E;">
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge bg-white bg-opacity-25 text-white border px-3 py-1 rounded-pill" id="dokModalCatPill">
+            <i class="bi bi-folder me-1" id="dokModalCatIcon"></i><span id="dokModalCatLabel">Kategori</span>
+          </span>
+          <span class="text-white-75 small" id="dokModalDate"><i class="bi bi-calendar3 me-1"></i>Tanggal</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="modal-dok-img-box">
+          <img src="" id="dokModalImg" alt="Preview Foto Dokumentasi">
+        </div>
+        <div class="p-4">
+          <h5 class="fw-bold font-outfit text-dark mb-3" id="dokModalTitle" style="line-height:1.35;">Judul Dokumentasi</h5>
+          
+          <div class="p-3 bg-light rounded-3 border mb-3">
+            <div class="fw-bold text-dark mb-1 small text-uppercase" style="letter-spacing:0.5px;"><i class="bi bi-text-paragraph text-primary me-2"></i>Deskripsi &amp; Rincian Kegiatan</div>
+            <p class="text-secondary lh-base mb-0" id="dokModalDesc" style="font-size:0.92rem; text-align:justify;">
+              Deskripsi lengkap akan ditampilkan di sini.
+            </p>
+          </div>
+
+          <div class="row g-2 text-muted small border-top pt-3">
+            <div class="col-sm-6"><i class="bi bi-building me-1 text-primary"></i><strong>Penyelenggara:</strong> Pemdes &amp; KKN SPIG UPI</div>
+            <div class="col-sm-6"><i class="bi bi-shield-check me-1 text-success"></i><strong>Status Arsip:</strong> Terverifikasi Digital</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 bg-light px-4 py-3 d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary rounded-pill px-4 btn-sm" data-bs-dismiss="modal">Tutup</button>
+        <div class="d-flex gap-2">
+          <button type="button" id="dokModalZoomBtn" class="btn btn-primary rounded-pill px-4 btn-sm fw-semibold">
+            <i class="bi bi-arrows-fullscreen me-1"></i>Mode Fullscreen Lightbox
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer matching Image 2 -->
+<!-- Footer matching Image 2 -->
+
+<!-- Section Kepercayaan & Pengembang (KKN SPIG UPI) -->
+<section class="py-4 bg-light-subtle border-top border-bottom" aria-label="Informasi Pengembang">
+  <div class="container">
+    <div class="dev-credit-card p-4 p-md-4 px-lg-5">
+      <div class="row align-items-center g-3 g-md-4">
+        <div class="col-auto">
+          <div class="dev-credit-icon">
+            <i class="bi bi-mortarboard-fill"></i>
+          </div>
+        </div>
+        <div class="col">
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+            <span class="dev-credit-pill">
+              <i class="bi bi-heart-fill text-danger"></i> Dikembangkan oleh
+            </span>
+            <span class="dev-credit-tag">Kelompok 3</span>
+          </div>
+          <h4 class="fw-bold font-outfit text-dark mb-1" style="font-size: 1.25rem; letter-spacing: -0.2px;">
+            Mahasiswa KKN Universitas Pendidikan Indonesia
+          </h4>
+          <p class="text-secondary mb-0" style="line-height: 1.6; font-size: 0.88rem;">
+            Program Studi Survei Pemetaan dan Informasi Geografis (SPIG) &bull; Dalam rangka mendukung digitalisasi layanan informasi dan pengembangan WebGIS Desa Gunungsari.
+          </p>
+        </div>
+        <div class="col-lg-auto d-none d-lg-flex flex-column gap-2 align-items-end">
+          <span class="dev-credit-badge">
+            <i class="bi bi-geo-alt-fill text-primary"></i> WebGIS Presisi
+          </span>
+          <span class="dev-credit-badge">
+            <i class="bi bi-shield-check text-success"></i> FPIPS UPI 2026
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-section" role="contentinfo" style="background-color:#171520; color:rgba(255,255,255,0.7); padding-top:4rem; padding-bottom:2.5rem;">
+  <div class="container-fluid container-xl">
+    <div class="row g-4 g-lg-5 mb-4">
+
+      <!-- Col 1: Brand & Description -->
+      <div class="col-lg-4 col-md-6">
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <div style="width:48px; height:48px; background:rgba(212,144,31,0.15); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0;">🏡</div>
+          <div style="width:1px; height:32px; background:rgba(255,255,255,0.15);"></div>
+          <img src="assets/img/logo-ciamis.png" alt="Logo Kabupaten Ciamis" style="height:42px; width:auto;" title="Kabupaten Ciamis">
+        </div>
+        <div class="mb-3">
+          <h5 class="text-white fw-bold font-outfit mb-1" style="font-size:1.25rem;">Desa Gunungsari</h5>
+          <small class="text-white-50" style="font-size:0.78rem;">Kecamatan Sadananya, Kabupaten Ciamis</small>
+        </div>
+        <p class="small text-white-50 lh-base mb-3" style="font-size:0.85rem;">
+          Portal Informasi Digital Desa Gunungsari berbasis WebGIS — menyajikan profil wilayah, data kependudukan, potensi lokal, pelayanan publik, dan pemetaan geospasial yang transparan dan terverifikasi.
+        </p>
+        <div class="d-flex gap-2 flex-wrap">
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(92,45,142,0.25); border:1px solid rgba(92,45,142,0.4); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-geo-alt-fill text-warning me-1"></i>Kec. Sadananya
+          </span>
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(92,45,142,0.25); border:1px solid rgba(92,45,142,0.4); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-building-fill text-warning me-1"></i>Kab. Ciamis
+          </span>
+          <span class="badge py-2 px-3 fw-normal" style="font-size:0.72rem; background:rgba(40,167,69,0.2); border:1px solid rgba(40,167,69,0.35); color:rgba(255,255,255,0.85);">
+            <i class="bi bi-map-fill text-success me-1"></i>WebGIS
+          </span>
+        </div>
+      </div>
+
+      <!-- Col 2: Navigasi -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Navigasi
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-0" style="font-size:0.85rem;">
+          <li><a href="index.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Beranda</a></li>
+          <li><a href="profil.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Profil Desa</a></li>
+          <li><a href="peta.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Peta WebGIS</a></li>
+          <li><a href="peta.html#direktori-pane" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Direktori Lokasi</a></li>
+          <li><a href="potensi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Potensi Desa</a></li>
+          <li><a href="informasi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Berita &amp; Info</a></li>
+          <li><a href="apbdes.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Transparansi APBDes</a></li>
+          <li><a href="dokumentasi.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Dokumentasi</a></li>
+          <li><a href="pelayanan.html" class="text-white-50 text-decoration-none d-inline-flex align-items-center gap-1"><i class="bi bi-chevron-right" style="font-size:0.7rem;"></i> Pelayanan</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Kantor Desa -->
+      <div class="col-lg-3 col-md-3 col-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Kantor Desa
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-3 mb-0" style="font-size:0.85rem; color:rgba(255,255,255,0.65);">
+          <li class="d-flex align-items-start gap-2">
+            <i class="bi bi-geo-alt-fill text-warning mt-1" style="flex-shrink:0;"></i>
+            <span>Desa Gunungsari, Kecamatan Sadananya, Kabupaten Ciamis, Provinsi Jawa Barat</span>
+          </li>
+          <li class="d-flex align-items-center gap-2">
+            <i class="bi bi-telephone-fill text-warning" style="flex-shrink:0;"></i>
+            <a href="tel:082133176920" class="text-white-50 text-decoration-none">082133176920</a>
+          </li>
+          <li class="d-flex align-items-center gap-2">
+            <i class="bi bi-envelope-fill text-warning" style="flex-shrink:0;"></i>
+            <a href="mailto:desagunungsari207@gmail.com" class="text-white-50 text-decoration-none">desagunungsari207@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Jam Operasional -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="text-white font-outfit fw-bold mb-3 pb-2 position-relative" style="font-size:1.05rem;">
+          Jam Operasional
+          <span style="position:absolute; bottom:0; left:0; width:28px; height:2px; background:#F59E0B;"></span>
+        </h6>
+        <ul class="list-unstyled small d-flex flex-column gap-2 mb-3" style="font-size:0.83rem;">
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Senin – Kamis</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 15.00</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center pb-2 border-bottom border-white-10">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-warning"></i>Jumat</span>
+            <span class="badge font-monospace" style="background:rgba(255,255,255,0.08); color:#E2E8F0; font-size:0.75rem;">08.00 – 11.30</span>
+          </li>
+          <li class="d-flex justify-content-between align-items-center pt-1">
+            <span class="text-white-50"><i class="bi bi-clock me-2 text-muted"></i>Sabtu &amp; Minggu</span>
+            <span class="badge" style="background:rgba(220,53,69,0.2); color:#F87171; border:1px solid rgba(220,53,69,0.3); font-size:0.72rem;">Libur</span>
+          </li>
+        </ul>
+        <a href="kontak.html" class="btn btn-outline-light rounded-pill btn-sm w-100 py-2 fw-semibold" style="border-color:rgba(255,255,255,0.2); font-size:0.83rem;">
+          <i class="bi bi-envelope me-1"></i>Hubungi Kami
+        </a>
+      </div>
+
+    </div>
+
+    <hr style="border-color:rgba(255,255,255,0.08); margin:1.75rem 0;">
+
+    <!-- Bottom Bar -->
+    <div class="row align-items-center g-3">
+      <div class="col-md-7 text-center text-md-start">
+        <p class="mb-1 text-white-50" style="font-size:0.82rem;">
+          &copy; 2026 Portal Digital Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis.
+        </p>
+        <p class="mb-0 text-white-50" style="font-size:0.73rem; opacity:0.65; line-height:1.5;">
+          Developed in collaboration with <strong class="text-warning">KKN SPIG</strong> — Penguatan Sistem Informasi Geospasial Desa. Portal Resmi Pemerintah Desa Gunungsari — Kecamatan Sadananya, Kabupaten Ciamis.
+        </p>
+      </div>
+      <div class="col-md-5 text-center text-md-end">
+        <div class="d-inline-flex align-items-center gap-2">
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="https://wa.me/6282133176920" target="_blank" class="btn btn-dark btn-sm rounded-circle d-inline-flex align-items-center justify-content-center p-0" style="width:34px; height:34px; background:rgba(255,255,255,0.08); color:#FFF; border:none;" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="btn btn-back-top rounded-circle shadow-lg" id="btnBackTop" aria-label="Kembali ke atas" style="position:fixed; bottom:25px; right:25px; width:44px; height:44px; background:#5C2D8E; color:#FFF; border:none; display:none; z-index:1050; align-items:center; justify-content:center;">
+  <i class="bi bi-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {{
+  window.initLightbox();
+
+  // Attach click listeners to category cards
+  document.querySelectorAll('.dok-cat-card').forEach(btn => {{
+    btn.addEventListener('click', function() {{
+      const filter = this.getAttribute('data-filter');
+      if (filter && typeof window.filterDokumentasi === 'function') {{
+        window.filterDokumentasi(filter, this);
+      }}
+    }});
+  }});
+}});
+</script>
+
+</body>
+</html>
